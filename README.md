@@ -1,11 +1,11 @@
 
 
-# ALAGA: Pet Supplies E-store
+# ALAGA: Pet Supplies E-store 📱
 
 ---
 
 <p align="center">
-    <img src="screenshots/logo.jpg" width="150"/><br><br>
+    <img src="#" width="150"/><br><br>
     A fully functioning e-commerce platform<br>
     for a pet supplies store, featuring customer<br>
     and business owner functionalities <br>
@@ -14,20 +14,30 @@
 
 ---
 
-    A basic fullstack mobile social media application that fosters simple functions:
-    
-      📝: writing posts
-      ❤️: liking
-      💬: commenting
-    
+    A basic fullstack web-based e-commerce application that fosters simple functions:
+
+        🛒: browse products
+        🔍: search products
+        📝: add/edit/delete products (business owner only)
+        🛍️: add to cart
+        📦: checkout (without online payment)
+        💬: comment on products
+        ⭐: rate products
+        📄: view order history
+        📊: view sales report (business owner only)
+
 ---
 
     other features include:
     
-      👤: basic user authentication
-      🔐: ensured security
-      ✅: proper error handling
-      ⚡: fast and responsive UI
+        👤: basic user authentication
+        🔐: ensured security
+        ✅: proper error handling
+        ⚡: fast and responsive UI
+        🎨: clean and intuitive UI/UX design
+        🧩: modular and scalable architecture
+        🔄: seamless navigation and user flow
+        📚: well-documented codebase
 
 ---
 
