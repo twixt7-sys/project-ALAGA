@@ -1,0 +1,165 @@
+{
+	"project_name":
+	"Alaga: Pet Supplies E-store",
+
+	"description":
+	"A fully functioning e-commerce platform for a pet supplies store, featuring customer and business owner functionalities without online payments.",
+
+	"user_roles": {
+		"business_owner": {
+			"permissions": [
+				"manage_inventory",
+				"view_sales_reports",
+				"update_product_listings",
+				"view_customer_orders",
+				"update_order_status"
+			]
+		},
+		"customer": {
+			"permissions": [
+				"browse_products",
+				"search_products",
+				"add_to_cart",
+				"update_cart",
+				"checkout",
+				"view_order_history"
+			]
+		}
+	},
+
+	"core_entities": {
+		"user": {
+			"fields": {
+				"user_id": "integer (PK)",
+				"username": "string",
+				"password": "string (hashed)",
+				"email": "string",
+				"role": "enum('business_owner', 'customer')",
+				"date_joined": "datetime"
+			}
+		},
+		"product": {
+			"fields": {
+				"product_id": "integer (PK)",
+				"name": "string",
+				"description": "string",
+				"category": "string",
+				"price": "decimal",
+				"stock_quantity": "integer",
+				"image_url": "string (optional)",
+				"date_added": "datetime"
+			}
+		},
+		"cart": {
+			"fields": {
+				"cart_id": "integer (PK)",
+				"user_id": "integer (FK to user)",
+				"created_at": "datetime",
+				"updated_at": "datetime"
+			}
+		},
+		"cart_item": {
+			"fields": {
+				"cart_item_id": "integer (PK)",
+				"cart_id": "integer (FK to cart)",
+				"product_id": "integer (FK to product)",
+				"quantity": "integer"
+			}
+		},
+		"order": {
+			"fields": {
+				"order_id": "integer (PK)",
+				"user_id": "integer (FK to user)",
+				"order_date": "datetime",
+				"total_amount": "decimal",
+				"status": "enum('Pending', 'Processing', 'Completed', 'Cancelled')"
+			}
+		},
+		"order_item": {
+			"fields": {
+				"order_item_id": "integer (PK)",
+				"order_id": "integer (FK to order)",
+				"product_id": "integer (FK to product)",
+				"quantity": "integer",
+				"price_at_purchase": "decimal"
+			}
+		},
+		"inventory_log": {
+			"fields": {
+				"log_id": "integer (PK)",
+				"product_id": "integer (FK to product)",
+				"change_type": "enum('Restock', 'Sale', 'Adjustment')",
+				"quantity_changed": "integer",
+				"timestamp": "datetime"
+			}
+		},
+		"sales_report": {
+			"fields": {
+				"report_id": "integer (PK)",
+				"generated_by": "integer (FK to business_owner)",
+				"date_generated": "datetime",
+				"total_sales": "decimal",
+				"total_orders": "integer",
+				"top_selling_products": "array of product_ids"
+			}
+		}
+	},
+
+	"core_operations": {
+		"customer": {
+			"search_products": "GET /products?search=query",
+			"add_to_cart": "POST /cart/items",
+			"update_cart_item": "PUT /cart/items/{id}",
+			"remove_from_cart": "DELETE /cart/items/{id}",
+			"checkout": "POST /checkout",
+			"view_orders": "GET /orders"
+		},
+		"business_owner": {
+			"add_product": "POST /products",
+			"update_product": "PUT /products/{id}",
+			"delete_product": "DELETE /products/{id}",
+			"view_inventory": "GET /inventory",
+			"generate_sales_report": "GET /reports/sales"
+		}
+	},
+
+	"system_rules": {
+		"no_online_payment": true,
+		"checkout_process": [
+			"validate_cart_items",
+			"deduct_stock_quantity",
+			"create_order_and_order_items",
+			"clear_cart_after_successful_checkout"
+		],
+		"inventory_management": {
+			"restock": "manual by business_owner",
+			"auto_deduct_on_checkout": true
+		}
+	},
+
+	"tech_suggestions": {
+		"frontend": ["Angular", "TailwindCSS"],
+		"backend": ["Flask", "Node.js", "Express"],
+		"database": ["MySQL", "PostgreSQL"],
+		"authentication": ["JWT-based or Session-based login system"]
+	},
+
+	"ui_theme": {
+		"name": "Warm Brown Aesthetic",
+		"description": "An earthy and caring palette reflecting Alaga’s nurturing identity.",
+		"colors": {
+			"primary": "#8B6B4F",
+			"secondary": "#F5E6CC",
+			"accent": "#D99873",
+			"background": "#FAF8F5",
+			"text_primary": "#3C3C3C",
+			"text_secondary": "#7A7A7A"
+		},
+		"design_principles": [
+			"cozy, trustworthy, and organic look",
+			"use rounded corners and soft shadows",
+			"limit bright colors to highlights or CTAs",
+			"prefer natural imagery — wood textures, pets, or cozy spaces"
+		]
+	}
+}
