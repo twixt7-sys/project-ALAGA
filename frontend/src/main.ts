@@ -2,19 +2,78 @@ import { bootstrapApplication } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  template: `
-    <main>
-      <img [src]="url" alt="Alaga Logo" width="200" class="auth-logo"/>
-      <h1 class="text-3xl font-bold underline">{{title}}</h1>
-      <p>Your trusted partner in pet care</p>
-    </main>
-  `
+	selector: 'app-root',
+	standalone: true,
+	template: `
+		<main class="flex min-h-screen items-center justify-center bg-[#faf8f3]">
+			<section class="w-full max-w-sm bg-white rounded-2xl shadow-md p-8 flex flex-col items-center">
+				<img [src]="url" alt="Alaga Logo" class="w-24 h-24 rounded-full mb-4" />
+
+				<h2 class="text-lg font-medium text-[#7b6149]">Alaga: Pet Supplies E-store</h2>
+				<p class="text-sm text-gray-500 mb-6">Your trusted partner in pet care</p>
+
+				<!-- Toggle -->
+				<div class="flex bg-[#f7ebd4] rounded-full p-1 mb-6 w-64 justify-between">
+					<button
+						type="button"
+						class="flex-1 px-4 py-1 text-sm font-medium text-[#7b6149] bg-white rounded-full shadow-sm transition"
+					>
+						Login
+					</button>
+					<button
+						type="button"
+						class="flex-1 px-4 py-1 text-sm font-medium text-[#7b6149] rounded-full hover:bg-[#f2dec1] transition"
+					>
+						Register
+					</button>
+				</div>
+
+				<!-- Form -->
+				<form class="w-full space-y-4 text-left">
+					<div>
+						<label for="email" class="block text-sm font-medium text-gray-700 mb-1">
+							Email
+						</label>
+						<input
+							id="email"
+							type="email"
+							placeholder="your@email.com"
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#a27b5c] focus:border-[#a27b5c] outline-none"
+						/>
+					</div>
+
+					<div>
+						<label for="password" class="block text-sm font-medium text-gray-700 mb-1">
+							Password
+						</label>
+						<input
+							id="password"
+							type="password"
+							placeholder="••••••••"
+							class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-[#a27b5c] focus:border-[#a27b5c] outline-none"
+						/>
+					</div>
+
+					<button
+						type="submit"
+						class="w-full py-2 text-white bg-[#8c6b4f] rounded-md font-medium hover:bg-[#7b6149] transition"
+					>
+						Login
+					</button>
+				</form>
+
+				<!-- Demo credentials -->
+				<div class="mt-6 w-full p-3 rounded-md bg-[#f7ebd4] text-sm text-[#7b6149]">
+					<p class="font-medium">Demo credentials:</p>
+					<p>Customer: customer@example.com / customer123</p>
+					<p>Admin: admin@alaga.com / admin123</p>
+				</div>
+			</section>
+		</main>
+	`
 })
 class App {
-  title = 'ALAGA: Pet Supplies E-store';
-  url = 'https://i.imgur.com/4ZLHm0Y.png';
+	url = 'https://i.imgur.com/4ZLHm0Y.png';
 }
 
 bootstrapApplication(App);

@@ -48,7 +48,7 @@
   <th align="center" width="300"> Database </th>
 <tr align="center">
     <td width="300" height="150">
-        <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" width="150"/>
+        <img src="https://img.shields.io/badge/Laravel-FF2D20?logo=laravel&logoColor=white" width="150"/>
     </td>
     <td width="300">
         <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" width="150"/>
