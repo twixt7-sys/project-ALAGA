@@ -50,11 +50,11 @@
     <td width="300" height="150">
         <img src="https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white" width="150"/>
     </td>
-    <td width="300"> 
-        <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" width="150"/>
+    <td width="300">
+        <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" width="150"/>
     </td>
-    <td width="300"> 
-        <img src="https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=white" width="180"/>
+    <td width="300">
+        <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" width="180"/>
     </td>
 </tr>
 </table>
@@ -66,25 +66,13 @@
 <table>
     <tr>
         <td>
-            <img src="screenshots/login.jpg" width="300"/>
+            <img src="" alt="ss0" width="300"/>
         </td>
         <td>
-            <img src="screenshots/register.jpg" width="300"/>
+            <img src="" alt="ss1" width="300"/>
         </td>
         <td>
-            <img src="screenshots/homepage.jpg" width="300"/>
-        </td>
-        <td>
-            <img src="screenshots/FAB.jpg" width="300"/>
-        </td>
-        <td>
-            <img src="screenshots/comment.jpg" width="300"/>
-        </td>
-        <td>
-            <img src="screenshots/comment2.jpg" width="300"/>
-        </td>
-        <td>
-            <img src="screenshots/createpost.jpg" width="300"/>
+            <img src="" alt="ss2" width="300"/>
         </td>
     </tr>
 </table>
