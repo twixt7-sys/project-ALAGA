@@ -1,6 +1,20 @@
 import { bootstrapApplication } from '@angular/platform-browser';
-import { appConfig } from './app/app.config';
-import { App } from './app/app';
+import { Component } from '@angular/core';
 
-bootstrapApplication(App, appConfig)
-  .catch((err) => console.error(err));
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  template: `
+    <main>
+      <img [src]="url" alt="Alaga Logo" width="200" class="auth-logo"/>
+      <h1 class="text-3xl font-bold underline">{{title}}</h1>
+      <p>Your trusted partner in pet care</p>
+    </main>
+  `
+})
+class App {
+  title = 'ALAGA: Pet Supplies E-store';
+  url = 'https://i.imgur.com/4ZLHm0Y.png';
+}
+
+bootstrapApplication(App);
