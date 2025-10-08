@@ -9,4 +9,5 @@ import { RouterOutlet } from '@angular/router';
 })
 export class App {
   protected readonly title = signal('frontend');
+	url = 'https://i.imgur.com/4ZLHm0Y.png';
 }
