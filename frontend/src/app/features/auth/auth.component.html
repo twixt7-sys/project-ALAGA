@@ -1,35 +1,36 @@
-<main class="flex min-h-screen items-center justify-center bg-[#faf8f3]">
-	<section class="w-full max-w-sm bg-white rounded-2xl shadow-md p-8 flex flex-col items-center">
-		<img [src]="url" alt="Alaga Logo" class="w-24 h-24 rounded-full mb-4" />
+<main class="auth-container">
+	<section class="auth-card">
+		<img [src]="url" alt="Alaga Logo" class="logo" />
 
-		<h2 class="text-lg font-medium text-[#7b6149]">Alaga: Pet Supplies E-store testtt</h2>
-		<p class="text-sm text-gray-500 mb-6">Your trusted partner in pet care</p>
+		<h2 class="title">Alaga: Pet Supplies E-store</h2>
+		<p class="subtitle">Your trusted partner in pet care</p>
 
-		<!-- Toggle -->
-		<div class="flex bg-[#f7ebd4] rounded-full p-1 mb-6 w-64 justify-between">
+		<div class="toggle">
 			<button
 				type="button"
-				class="flex-1 px-4 py-1 text-sm font-medium text-[#7b6149] rounded-full"
-				[class.bg-white]="login"
-				[class.shadow-sm]="login"
+				class="toggle-btn"
+				[class.active]="login()"
 				(click)="toggleForm(true)"
 			>
 				Login
 			</button>
 
-			<button class="flex-1 px-4 py-1 text-sm font-medium text-[#7b6149] rounded-full"
+			<button
 				type="button"
-				[class.bg-white]="!login"
-				[class.shadow-sm]="!login"
+				class="toggle-btn"
+				[class.active]="!login()"
 				(click)="toggleForm(false)"
 			>
 				Register
 			</button>
 		</div>
 
-		<div class="w-full">
-			@if (login) { <login-form></login-form> } @else { <register-form></register-form> }
+		<div class="form-container">
+			@if (login()) {
+				<login-form />
+			} @else {
+				<register-form />
+			}
 		</div>
-    <test/>
 	</section>
 </main>

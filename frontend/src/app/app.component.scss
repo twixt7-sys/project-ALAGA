@@ -1,0 +1,35 @@
+@import './app.component.scss';
+
+.main {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: $bg;
+}
+
+.card {
+	width: 100%;
+	max-width: 22rem;
+	background: #fff;
+	border-radius: 1.25rem;
+	box-shadow: 0 8px 28px rgba(0, 0, 0, 0.06);
+	padding: 2rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+.logo {
+	width: 6rem;
+	height: 6rem;
+	border-radius: 50%;
+	object-fit: cover;
+	margin-bottom: 1rem;
+}
+
+.title { color: $primary-brown; font-size: 1.125rem; font-weight: 500; }
+.subtitle { color: $muted; margin-bottom: 1.25rem; font-size: .9rem; }
+
+.form-area { width: 100%; margin-top: 1rem; }
