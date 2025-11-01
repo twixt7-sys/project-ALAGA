@@ -1,0 +1,89 @@
+alaga-ecommerce/
+│
+├── backend/                        # Flask backend (IT112)
+│   ├── app/
+│   │   ├── __init__.py
+│   │   ├── config.py               # Environment + DB configs
+│   │   ├── extensions.py           # For db, jwt, cors init
+│   │   │
+│   │   ├── models/                 # SQLAlchemy models
+│   │   │   ├── user.py
+│   │   │   ├── product.py
+│   │   │   ├── order.py
+│   │   │   ├── cart.py
+│   │   │   └── sales_report.py
+│   │   │
+│   │   ├── repositories/           # Repository layer (DB access logic)
+│   │   │   ├── user_repository.py
+│   │   │   ├── product_repository.py
+│   │   │   ├── order_repository.py
+│   │   │   └── cart_repository.py
+│   │   │
+│   │   ├── services/               # Business logic layer
+│   │   │   ├── user_service.py
+│   │   │   ├── product_service.py
+│   │   │   ├── order_service.py
+│   │   │   └── cart_service.py
+│   │   │
+│   │   ├── controllers/            # REST API endpoints
+│   │   │   ├── user_controller.py
+│   │   │   ├── product_controller.py
+│   │   │   ├── order_controller.py
+│   │   │   └── cart_controller.py
+│   │   │
+│   │   ├── routes.py               # Register all blueprints
+│   │   ├── utils/                  # Token utils, response helpers
+│   │   └── seed_data.py            # Sample data for testing
+│   │
+│   ├── tests/                      # Optional: unit tests
+│   ├── requirements.txt
+│   ├── run.py                      # Flask app entry point
+│   └── README.md
+│
+│
+
+├── frontend/                       # Angular frontend (IT113)
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── core/
+│   │   │   │   ├── guards/
+│   │   │   │   ├── interceptors/
+│   │   │   │   ├── models/
+│   │   │   │   ├── services/       # ApiService, AuthService (calls Flask API)
+│   │   │   │   └── utils/
+│   │   │   │
+│   │   │   ├── shared/
+│   │   │   │   ├── components/     # Navbar, Footer, ProductCard, etc.
+│   │   │   │   ├── directives/
+│   │   │   │   └── pipes/
+│   │   │   │
+│   │   │   ├── features/
+│   │   │   │   ├── auth/
+│   │   │   │   ├── products/
+│   │   │   │   ├── cart/
+│   │   │   │   ├── admin/
+│   │   │   │   └── user/
+│   │   │   │
+│   │   │   ├── app-routing.module.ts
+│   │   │   ├── app.component.ts
+│   │   │   └── app.module.ts
+│   │   │
+│   │   ├── assets/
+│   │   ├── environments/
+│   │   ├── styles.css
+│   │   └── main.ts
+│   │
+│   ├── package.json
+│   ├── tailwind.config.js
+│   └── angular.json
+│
+│
+├── docs/                           # Reports, ERDs, SDDs
+│   ├── SDD_Alaga_Ecommerce.pdf
+│   ├── ERD_Crowfoot_Diagram.png
+│   ├── ERD_Chen_Diagram.png
+│   ├── requirements.txt
+│   └── proposal.txt
+│
+└── README.md                       # Project overview and setup guide
+
