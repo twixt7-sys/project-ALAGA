@@ -1,0 +1,30 @@
+api
+├── auth                               # Authentication & user identity
+│   ├── POST register                  # Create a new user account
+│   ├── POST login                     # Authenticate user, returns JWT
+│   └── GET me                         # Get current logged-in user (JWT protected)
+│
+├── products                           # Product catalog management
+│   ├── GET /                          # List all products (supports ?search=&category=&page=&limit=)
+│   ├── GET {id}                       # Get a product by its ID
+│   ├── POST /                         # Create new product (business owner only)
+│   ├── PUT {id}                       # Update product details (business owner only)
+│   └── DELETE {id}                    # Delete a product (business owner only)
+│
+├── cart                               # Shopping cart operations
+│   ├── GET /                          # Get current user's cart
+│   ├── POST items                     # Add an item to cart { product_id, quantity }
+│   ├── PUT items/{cart_item_id}       # Update quantity of a cart item
+│   └── DELETE items/{cart_item_id}    # Remove item from cart
+│
+├── checkout                           # Checkout process
+│   └── POST /                         # Validate items, deduct stock, create order
+│
+├── orders                             # Order management
+│   ├── GET /                          # List current user's orders
+│   ├── GET {id}                       # Get specific order (must belong to user)
+│   └── PUT {id}                       # Update order status (business owner/admin only)
+│
+└── admin                              # Administrative endpoints
+    ├── GET inventory                  # View all products with stock info
+    └── GET reports/sales              # Generate sales report (?start_date=&end_date=)
