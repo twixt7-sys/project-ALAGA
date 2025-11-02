@@ -1,0 +1,92 @@
+{
+	"base_url": "/api/",
+	"content_type": "application/json",
+	"authentication": "JWT",
+	"http_verbs": {
+		"GET": "Read data",
+		"POST": "Create data",
+		"PUT": "Update/replace data",
+		"PATCH": "Partial update",
+		"DELETE": "Delete data"
+	},
+	"status_codes": {
+		"200": "OK - Request successful",
+		"201": "Created - Resource created successfully",
+		"400": "Bad Request - Invalid input",
+		"401": "Unauthorized - Authentication required or failed",
+		"404": "Not Found - Resource not found",
+		"500": "Internal Server Error - Unexpected server error"
+	},
+	"endpoints": {
+		"products": {
+			"GET /api/products": {
+				"description": "List products",
+				"query_params": ["search", "category", "page", "limit"]
+			},
+			"GET /api/products/{id}": {
+				"description": "Get product by ID"
+			},
+			"POST /api/products": {
+				"description": "Create new product (business owner only)"
+			},
+			"PUT /api/products/{id}": {
+				"description": "Update product (business owner only)"
+			},
+			"DELETE /api/products/{id}": {
+				"description": "Delete product (business owner only)"
+			}
+		},
+		"cart": {
+			"GET /api/cart": {
+				"description": "Get current user's cart"
+			},
+			"POST /api/cart/items": {
+				"description": "Add item to cart",
+				"body": {
+					"product_id": "integer",
+					"quantity": "integer"
+				}
+			},
+			"PUT /api/cart/items/{cart_item_id}": {
+				"description": "Update cart item quantity"
+			},
+			"DELETE /api/cart/items/{cart_item_id}": {
+				"description": "Remove item from cart"
+			}
+		},
+		"checkout_orders": {
+			"POST /api/checkout": {
+				"description": "Perform checkout (validate items, deduct stock, create order)"
+			},
+			"GET /api/orders": {
+				"description": "List user's orders"
+			},
+			"GET /api/orders/{id}": {
+				"description": "Get order by ID (must belong to current user)"
+			},
+			"PUT /api/orders/{id}": {
+				"description": "Update order status (business owner / admin only)"
+			}
+		},
+		"auth": {
+			"POST /api/auth/register": {
+				"description": "Register a new user"
+			},
+			"POST /api/auth/login": {
+				"description": "Authenticate user and return JWT"
+			},
+			"GET /api/auth/me": {
+				"description": "Get current authenticated user's info (protected)"
+			}
+		},
+		"admin": {
+			"GET /api/admin/inventory": {
+				"description": "View all products and stock (business owner / admin only)"
+			},
+			"GET /api/admin/reports/sales": {
+				"description": "Generate sales report",
+				"query_params": ["start_date", "end_date"]
+			}
+		}
+	}
+}
