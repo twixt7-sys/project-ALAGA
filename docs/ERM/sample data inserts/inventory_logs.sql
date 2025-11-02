@@ -1,0 +1,1 @@
+INSERT INTO inventory_logs (product_id, change_type, quantity_changed) VALUES (1,'Sale',2),(2,'Sale',1);
