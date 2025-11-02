@@ -1,0 +1,36 @@
+frontend                            # Angular frontend (IT113)
+├── src
+│   ├── app
+│   │   ├── core
+│   │   │   ├── guards
+│   │   │   ├── interceptors
+│   │   │   ├── models
+│   │   │   ├── services            # ApiService, AuthService (calls Flask API)
+│   │   │   └── utils
+│   │   │
+│   │   ├── shared
+│   │   │   ├── components          # Navbar, Footer, ProductCard, etc.
+│   │   │   ├── directives
+│   │   │   └── pipes
+│   │   │
+│   │   ├── features
+│   │   │   ├── auth
+│   │   │   │   ├── login
+│   │   │   │   └── register
+│   │   │   ├── products
+│   │   │   ├── cart
+│   │   │   ├── admin
+│   │   │   └── user
+│   │   │
+│   │   ├── app-routing.module.ts
+│   │   ├── app.component.ts
+│   │   └── app.module.ts
+│   │
+│   ├── assets
+│   ├── environments
+│   ├── styles.css
+│   └── main.ts
+│
+├── package.json
+├── tailwind.config.js
+└── angular.json
