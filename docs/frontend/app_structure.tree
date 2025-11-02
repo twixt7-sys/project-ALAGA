@@ -17,6 +17,16 @@ frontend                            # Angular frontend (IT113)
 │   │   │   ├── auth
 │   │   │   │   ├── login
 │   │   │   │   └── register
+│   │   │   ├── customer
+│   │   │   │   ├── shop
+│   │   │   │   ├── orders
+│   │   │   │   ├── cart
+│   │   │   │   └── checkout
+│   │   │   ├── admin
+│   │   │   │   ├── dashboard
+│   │   │   │   ├── inventory
+│   │   │   │   ├── orders
+│   │   │   │   └── products
 │   │   │   ├── products
 │   │   │   ├── cart
 │   │   │   ├── admin
