@@ -2,9 +2,17 @@ frontend                            # Angular frontend (IT113)
 ├── src
 │   ├── app
 │   │   ├── core
-│   │   │   ├── guards
-│   │   │   ├── interceptors
-│   │   │   ├── models
+│   │   │   ├── guards              # Route guards: auth.guard.ts, admin.guard.ts
+|   |   |   |   ├── auth.guard.ts
+|   |   |   |   └── admin.guard.ts
+│   │   │   ├── interceptors        # HttpInterceptor for adding auth tokens
+|   │   │   |   └── auth.interceptor.ts
+│   │   │   ├── models              # interfaces: User, Product, Order, Cart, Checkout
+│   |   |   |   ├── user.model.ts
+│   |   |   |   ├── product.model.ts
+|   |   |   |   ├── cart.model.ts
+|   |   |   |   ├── checkout.model.ts
+│   |   |   |   └── order.model.ts
 │   │   │   ├── services            # ApiService, AuthService (calls Flask API)
 │   │   │   └── utils
 │   │   │
@@ -27,10 +35,6 @@ frontend                            # Angular frontend (IT113)
 │   │   │   │   ├── inventory
 │   │   │   │   ├── orders
 │   │   │   │   └── products
-│   │   │   ├── products
-│   │   │   ├── cart
-│   │   │   ├── admin
-│   │   │   └── user
 │   │   │
 │   │   ├── app-routing.module.ts
 │   │   ├── app.component.ts
