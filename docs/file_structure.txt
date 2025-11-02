@@ -59,6 +59,8 @@ alaga-ecommerce/
 │   │   │   │
 │   │   │   ├── features/
 │   │   │   │   ├── auth/
+│   │   │   │   │   ├── login/
+│   │   │   │   │   └── register/
 │   │   │   │   ├── products/
 │   │   │   │   ├── cart/
 │   │   │   │   ├── admin/
