@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-admin',
   imports: [],
-  templateUrl: './admin.html',
-  styleUrl: './admin.scss',
+  templateUrl: './admin.component.html',
+  styleUrl: './admin.component.scss',
 })
 export class Admin {
 
