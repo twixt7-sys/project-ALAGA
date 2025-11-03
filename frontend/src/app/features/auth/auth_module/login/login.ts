@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -7,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrl: './login.scss',
 })
 export class Login {
+  @Output() switchToRegister = new EventEmitter<void>();
 
+  onClickMe(): void {
+    console.log('Login button clicked!');
+    this.switchToRegister.emit();
+  }
 }

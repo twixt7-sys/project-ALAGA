@@ -1,1 +1,5 @@
-<app-login></app-login>
+@if (loginEnabled()) {
+	<app-login (switchToRegister)="loginEnabled.set(false)"></app-login>
+} @else {
+	<app-register (switchToLogin)="loginEnabled.set(true)"></app-register>
+}

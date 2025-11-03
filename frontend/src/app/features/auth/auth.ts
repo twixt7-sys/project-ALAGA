@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { AuthModule } from './auth_module/auth-module';
 
 @Component({
@@ -8,5 +8,5 @@ import { AuthModule } from './auth_module/auth-module';
   styleUrl: './auth.scss',
 })
 export class Auth {
-
+  protected readonly loginEnabled = signal(false);
 }
