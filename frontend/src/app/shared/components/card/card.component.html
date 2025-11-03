@@ -4,9 +4,6 @@
 	[style.background-color]="backgroundColor"
 	[style.border-radius]="borderRadius"
 >
-	@if (title) {
-		<h3 class="card__title">{{ title }}</h3>
-	}
 	<div class="card__content">
 		<ng-content></ng-content>
 	</div>

@@ -10,6 +10,8 @@
 
 .card {
 	@extend .card;
+  display: flex;
+  flex-direction: column;
 	padding: $space-md;
 	border-radius: $radius-md;
 	background-color: $color-surface;

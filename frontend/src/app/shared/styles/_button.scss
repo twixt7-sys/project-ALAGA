@@ -12,7 +12,7 @@
   transition: all 0.2s ease;
 
 	&--secondary {
-		@include button($color-secondary, $color-text);
+		@include button($color-secondary, $color-text-primary);
 		@include shadow(sm);
 	}
 
