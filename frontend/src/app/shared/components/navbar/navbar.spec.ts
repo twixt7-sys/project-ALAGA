@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthToggle } from './auth-toggle';
+import { Navbar } from './navbar';
 
-describe('AuthToggle', () => {
-  let component: AuthToggle;
-  let fixture: ComponentFixture<AuthToggle>;
+describe('Navbar', () => {
+  let component: Navbar;
+  let fixture: ComponentFixture<Navbar>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AuthToggle]
+      imports: [Navbar]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AuthToggle);
+    fixture = TestBed.createComponent(Navbar);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
