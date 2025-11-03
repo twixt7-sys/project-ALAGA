@@ -12,4 +12,6 @@ export class Card {
   @Input() alignment: 'left' | 'center' | 'right' = 'center';
   @Input() backgroundColor: string = '#ffffff';
   @Input() borderRadius: string = '8px';
+  @Input() marginPadding: string[] = ['1rem', '1rem', '1rem', '1rem'];
+  @Input() size: 'small' | 'medium' | 'large' = 'medium';
 }

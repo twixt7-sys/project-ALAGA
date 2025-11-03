@@ -59,4 +59,15 @@
 		@include shadow(lg);
 		transform: translateY(-2px);
 	}
+
+  // size adjustments
+  &--size-small {
+    max-width: 300px;
+  }
+  &--size-medium {
+    max-width: 600px;
+  }
+  &--size-large {
+    max-width: 900px;
+  }
 }

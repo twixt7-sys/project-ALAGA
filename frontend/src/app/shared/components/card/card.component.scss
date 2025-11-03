@@ -31,6 +31,7 @@
 	}
 
   // alignment
+
   &.align-center {
     @extend .card--align-center;
   }
@@ -39,5 +40,16 @@
   }
   &.align-left {
     @extend .card--align-left;
+  }
+
+  // size adjustments
+  &.size-small {
+    max-width: 300px;
+  }
+  &.size-medium {
+    max-width: 600px;
+  }
+  &.size-large {
+    max-width: 900px;
   }
 }
