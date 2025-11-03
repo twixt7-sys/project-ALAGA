@@ -1,0 +1,50 @@
+@use '../../styles/shared-styles.scss' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.toggle-container {
+	position: relative;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 200px;
+	padding: $space-xs;
+	border-radius: $radius-lg;
+	background-color: lighten($color-surface, 4%);
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+	user-select: none;
+	overflow: hidden;
+}
+
+.toggle-option {
+	z-index: 2;
+	width: 50%;
+	text-align: center;
+	padding: $space-sm 0;
+	font-weight: 500;
+	color: rgba($text-color, 0.6);
+	transition: color 0.3s ease;
+
+	&.active {
+		color: $color-primary;
+		font-weight: 600;
+	}
+}
+
+.toggle-slider {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+	border-radius: $radius-lg;
+	background-color: rgba($color-primary, 0.15);
+	backdrop-filter: blur(2px);
+	box-shadow: 0 1px 4px rgba($color-primary, 0.25);
+	transition: all 0.3s ease;
+
+	&.right {
+		left: 50%;
+	}
+}

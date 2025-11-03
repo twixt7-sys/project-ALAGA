@@ -1,5 +1,18 @@
-@if (loginEnabled()) {
-	<app-login (switchToRegister)="loginEnabled.set(false)"></app-login>
-} @else {
-	<app-register (switchToLogin)="loginEnabled.set(true)"></app-register>
-}
+
+<app-card alignment="center" size="small">
+  {{ loginEnabled() ? 'Login' : 'Register' }}
+  <br><br>
+  <!-- <app-toggle-button
+    [options]="['Login', 'Register']"
+    [selectedIndex]="loginEnabled() ? 0 : 1"
+    (toggle)="loginEnabled.set($event === 'Login')"
+  ></app-toggle-button> -->
+  <app-toggle-button
+    (toggled)="loginEnabled.set($event === 'login')"
+  ></app-toggle-button>
+  @if (loginEnabled()) {
+	<app-login></app-login>
+  } @else {
+	<app-register></app-register>
+  }
+</app-card>

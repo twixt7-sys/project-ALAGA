@@ -1,7 +1,6 @@
 @use '../../styles/shared-styles.scss' as *;
 @use '../../styles/mixins' as *;
 @use '../../styles/variables' as *;
-@use '../../styles/card' as *;
 
 :host {
 	display: block;
@@ -52,6 +51,77 @@
     max-width: 600px;
   }
   &.size-large {
+    max-width: 900px;
+  }
+}
+
+.card {
+	@include shadow(sm);
+  display: flex;
+  flex-direction: column;
+	background-color: $color-surface;
+	border-radius: $radius-md;
+	padding: $space-md;
+	transition: all 0.2s ease;
+	color: $color-text-primary;
+
+	// sub-elements
+	&__title {
+		font-size: $font-size-md;
+		font-weight: 600;
+		margin-bottom: $space-sm;
+	}
+
+	&__content {
+		font-size: $font-size-base;
+		line-height: 1.5;
+	}
+
+	// variants
+	&--elevated {
+		@include shadow(md);
+		background-color: $color-surface;
+	}
+
+	&--outlined {
+		border: 1px solid $color-border;
+		background-color: $color-bg;
+		box-shadow: none;
+	}
+
+	&--flat {
+		background-color: transparent;
+		box-shadow: none;
+	}
+
+  // alignment
+  &--align-center {
+    align-items: center;
+    text-align: center;
+  }
+  &--align-right {
+    align-items: flex-end;
+    text-align: right;
+  }
+  &--align-left {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+	// hover states
+	&:hover {
+		@include shadow(lg);
+		transform: translateY(-2px);
+	}
+
+  // size adjustments
+  &--size-small {
+    max-width: 300px;
+  }
+  &--size-medium {
+    max-width: 600px;
+  }
+  &--size-large {
     max-width: 900px;
   }
 }

@@ -11,60 +11,14 @@
 	display: flex;
 	flex-direction: column;
 	gap: $space-xs;
-
-	label {
-		font-size: $font-size-sm;
-		color: $color-text-secondary;
-		font-weight: 500;
-	}
-
-	input {
-		width: 100%;
-		padding: $space-sm $space-md;
-		border: 1px solid $color-secondary;
-		border-radius: $radius-sm;
-		background-color: $color-surface;
-		color: $color-text-primary;
-		font-size: $font-size-base;
-		transition: border-color 0.2s ease, box-shadow 0.2s ease;
-
-		@include focus-ring($color-primary);
-	}
-
-	input:focus {
-		border-color: $color-primary;
-		box-shadow: 0 0 0 2px rgba($color-primary, 0.2);
-		outline: none;
-	}
-
-	&.error {
-		input {
-			border-color: $color-error;
-		}
-
-		label {
-			color: $color-error;
-		}
-	}
-}
-
-:host {
-	display: block;
-	width: 100%;
-}
-
-.text-input {
-	display: flex;
-	flex-direction: column;
-	gap: $space-xs;
 	width: 100%;
 	font-family: $font-family-base;
-	color: $color-text-primary;
+	color: $text-color;
 
 	label {
 		font-size: 0.9rem;
 		font-weight: 500;
-		color: mix($color-text-primary, $color-primary, 30%);
+		color: mix($text-color, $color-primary, 30%);
 		letter-spacing: 0.2px;
 	}
 
@@ -74,14 +28,14 @@
 		border: 1.5px solid rgba($color-primary, 0.2);
 		border-radius: $radius-md;
 		background-color: lighten($color-surface, 3%);
-		color: $color-text-primary;
+		color: $text-color;
 		font-size: 0.95rem;
 		transition: all 0.25s ease;
 		outline: none;
 		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 
 		&::placeholder {
-			color: rgba($color-text-primary, 0.5);
+			color: rgba($text-color, 0.5);
 			font-style: italic;
 		}
 
@@ -99,14 +53,14 @@
 
 		&:disabled {
 			background-color: darken($color-surface, 3%);
-			color: rgba($color-text-primary, 0.6);
+			color: rgba($text-color, 0.6);
 			cursor: not-allowed;
 		}
 	}
 
 	.helper-text {
 		font-size: 0.8rem;
-		color: rgba($color-text-primary, 0.6);
+		color: rgba($text-color, 0.6);
 		margin-top: 2px;
 
 		&.error {

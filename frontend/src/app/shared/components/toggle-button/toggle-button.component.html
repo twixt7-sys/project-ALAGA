@@ -1,0 +1,17 @@
+<div class="toggle-container">
+	<span
+		class="toggle-option"
+		[class.active]="selected === 'login'"
+		(click)="select('login')">
+		Login
+	</span>
+
+	<span
+		class="toggle-option"
+		[class.active]="selected === 'register'"
+		(click)="select('register')">
+		Register
+	</span>
+
+	<div class="toggle-slider" [class.right]="selected === 'register'"></div>
+</div>

@@ -58,3 +58,34 @@
 		background-color: darken($bg-color, 8%);
 	}
 }
+
+@mixin text-input($bg: $color-surface, $text: $color-text-primary) {
+	background-color: $bg;
+	color: $text;
+	padding: $space-sm $space-md;
+	border: 1px solid $color-border;
+	border-radius: $radius-sm;
+	font-size: $font-size-base;
+	line-height: $line-height-base;
+	font-family: $font-family-base;
+	width: 100%;
+
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+	&:focus {
+		border-color: $color-primary;
+		box-shadow: 0 0 0 2px rgba($color-primary, 0.2);
+		outline: none;
+	}
+
+	&::placeholder {
+		color: $color-muted;
+	}
+}
+
+@mixin focus-ring($color: $color-primary) {
+  &:focus {
+    box-shadow: 0 0 0 2px rgba($color, 0.2);
+    outline: none;
+  }
+}
