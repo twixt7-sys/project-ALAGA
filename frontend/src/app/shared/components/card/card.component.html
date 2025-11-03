@@ -1,11 +1,13 @@
 <div
 	class="card"
-	[ngClass]="variant"
+	[ngClass]="['card--' + variant, 'card--align-' + alignment]"
 	[style.background-color]="backgroundColor"
 	[style.border-radius]="borderRadius"
 >
-  @if (title) <h3>{{ title }}</h3>
-	<div class="card-content">
+	@if (title) {
+		<h3 class="card__title">{{ title }}</h3>
+	}
+	<div class="card__content">
 		<ng-content></ng-content>
 	</div>
 </div>

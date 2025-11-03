@@ -1,0 +1,7 @@
+@use './shared/styles/variables' as *;
+
+.app-container {
+ 	padding: 2rem;
+ 	background-color: $color-bg;
+ 	min-height: 100vh;
+ }

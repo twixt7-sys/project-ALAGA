@@ -9,7 +9,7 @@ import { Component, Input } from '@angular/core';
 export class Card {
   @Input() title = '';
   @Input() variant: 'elevated' | 'outlined' | 'flat' = 'elevated';
+  @Input() alignment: 'left' | 'center' | 'right' = 'center';
   @Input() backgroundColor: string = '#ffffff';
   @Input() borderRadius: string = '8px';
 }
-

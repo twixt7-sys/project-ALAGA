@@ -5,6 +5,7 @@ import { ComponentsModule } from './shared/components/components-module'
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [RouterOutlet, ComponentsModule],
   templateUrl: './app.html',
   styleUrl: './app.scss'

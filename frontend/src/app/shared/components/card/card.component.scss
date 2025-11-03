@@ -1,0 +1,43 @@
+@use '../../styles/shared-styles.scss' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+@use '../../styles/card' as *;
+
+:host {
+	display: block;
+	width: 100%;
+}
+
+.card {
+	@extend .card;
+	padding: $space-md;
+	border-radius: $radius-md;
+	background-color: $color-surface;
+
+	@include respond(sm) {
+		padding: $space-sm;
+	}
+
+  // variants
+
+	&.elevated {
+		@extend .card--elevated;
+	}
+	&.outlined {
+		@extend .card--outlined;
+	}
+	&.flat {
+		@extend .card--flat;
+	}
+
+  // alignment
+  &.align-center {
+    @extend .card--align-center;
+  }
+  &.align-right {
+    @extend .card--align-right;
+  }
+  &.align-left {
+    @extend .card--align-left;
+  }
+}

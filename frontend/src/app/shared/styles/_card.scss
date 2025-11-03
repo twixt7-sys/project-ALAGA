@@ -1,0 +1,62 @@
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+.card {
+	@include shadow(sm);
+  display: flex;
+  flex-direction: column;
+	background-color: $color-surface;
+	border-radius: $radius-md;
+	padding: $space-md;
+	transition: all 0.2s ease;
+	color: $color-text;
+
+	// sub-elements
+	&__title {
+		font-size: $font-size-md;
+		font-weight: 600;
+		margin-bottom: $space-sm;
+	}
+
+	&__content {
+		font-size: $font-size-base;
+		line-height: 1.5;
+	}
+
+	// variants
+	&--elevated {
+		@include shadow(md);
+		background-color: $color-surface;
+	}
+
+	&--outlined {
+		border: 1px solid $color-border;
+		background-color: $color-bg;
+		box-shadow: none;
+	}
+
+	&--flat {
+		background-color: transparent;
+		box-shadow: none;
+	}
+
+  // alignment
+  &--align-center {
+    align-items: center;
+    text-align: center;
+  }
+  &--align-right {
+    align-items: flex-end;
+    text-align: right;
+  }
+  &--align-left {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+	// hover states
+	&:hover {
+		@include shadow(lg);
+		transform: translateY(-2px);
+	}
+}

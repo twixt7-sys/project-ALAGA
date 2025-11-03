@@ -8,6 +8,7 @@ import { Card } from '../components/card/card.component';
   declarations: [Button, Card],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [Button, Card]
 })
 export class ComponentsModule { }
