@@ -1,12 +1,15 @@
-// Colors
-$color-primary: #a27b5c;
-$color-secondary: #d7c3a3;
-$color-accent: #4a3f35;
-$color-bg: #faf8f3;
-$color-text: #333;
-$color-muted: #777;
-$color-error: #d9534f;
-$color-success: #5cb85c;
+// Warm neutral pet-shop theme
+$color-primary: #8b6b4f;    // main accent (used for buttons, highlights)
+$color-secondary: #d8c3a5;  // subtle beige tone (secondary surfaces)
+$color-accent: #6b4e3a;     // deeper brown for text highlights/icons
+$color-bg: #faf6f0;         // overall background (soft cream)
+$color-surface: #ffffff;    // card background
+$color-text: #3b2e26;       // main readable text
+$color-muted: #8c7b70;      // muted/descriptive text
+$color-border: #e2d6ca;     // soft dividers and outlines
+$color-error: #d36b5e;      // alert/red tone
+$color-success: #6ca77c;    // soft green for success/confirm
+$color-hover: #9c7b5d;      // hover for buttons/links
 
 // Typography
 $font-family-base: 'Inter', sans-serif;
