@@ -1,12 +1,12 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ComponentsModule } from './shared/components/components-module'
-
+import { Auth } from './features/auth/auth';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ComponentsModule],
+  imports: [RouterOutlet, ComponentsModule, Auth],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
