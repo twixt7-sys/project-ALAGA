@@ -2,7 +2,7 @@
 
 @use 'variables' as *;
 @use 'mixins' as *;
-@use '../components/button';
+@use 'button' as *;
 
 // global reset
 * {
@@ -14,8 +14,8 @@
 // base styles
 body {
 	font-family: $font-family-base;
-	color: $text-color;
-	background-color: $background-color;
+	color: $color-text;
+	background-color: $color-bg;
 }
 
 // utility classes
