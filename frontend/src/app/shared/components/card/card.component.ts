@@ -8,7 +8,6 @@ import { Component, Input } from '@angular/core';
 })
 export class Card {
   @Input() title = '';
-  @Input() content = '';
   @Input() variant: 'elevated' | 'outlined' | 'flat' = 'elevated';
   @Input() backgroundColor: string = '#ffffff';
   @Input() borderRadius: string = '8px';

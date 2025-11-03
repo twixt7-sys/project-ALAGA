@@ -1,1 +1,11 @@
-<app-card></app-card>
+<div
+	class="card"
+	[ngClass]="variant"
+	[style.background-color]="backgroundColor"
+	[style.border-radius]="borderRadius"
+>
+  @if (title) <h3>{{ title }}</h3>
+	<div class="card-content">
+		<ng-content></ng-content>
+	</div>
+</div>
