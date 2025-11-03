@@ -1,0 +1,58 @@
+// Flex center
+@mixin flex-center($direction: row) {
+	display: flex;
+	flex-direction: $direction;
+	align-items: center;
+	justify-content: center;
+}
+
+// Responsive font size
+@mixin responsive-font($min, $max) {
+	font-size: clamp($min, $min + 1vw, $max);
+}
+
+// Box shadow
+@mixin shadow($type: md) {
+	@if $type == sm {
+		box-shadow: $shadow-sm;
+	} @else if $type == lg {
+		box-shadow: $shadow-lg;
+	} @else {
+		box-shadow: $shadow-md;
+	}
+}
+
+// Media query helper
+@mixin respond($breakpoint) {
+	@if $breakpoint == sm {
+		@media (max-width: $breakpoint-sm) { @content; }
+	} @else if $breakpoint == md {
+		@media (max-width: $breakpoint-md) { @content; }
+	} @else if $breakpoint == lg {
+		@media (max-width: $breakpoint-lg) { @content; }
+	} @else if $breakpoint == xl {
+		@media (max-width: $breakpoint-xl) { @content; }
+	}
+}
+
+// Truncate long text with ellipsis
+@mixin text-ellipsis {
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+// Button style
+@mixin button($bg-color: $color-primary, $text-color: #fff) {
+	background-color: $bg-color;
+	color: $text-color;
+	padding: $space-sm $space-md;
+	border: none;
+	border-radius: $border-radius-md;
+	cursor: pointer;
+	transition: background-color 0.2s ease;
+
+	&:hover {
+		background-color: darken($bg-color, 8%);
+	}
+}

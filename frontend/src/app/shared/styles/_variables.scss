@@ -1,0 +1,41 @@
+// Colors
+$color-primary: #a27b5c;
+$color-secondary: #d7c3a3;
+$color-accent: #4a3f35;
+$color-bg: #faf8f3;
+$color-text: #333;
+$color-muted: #777;
+$color-error: #d9534f;
+$color-success: #5cb85c;
+
+// Typography
+$font-family-base: 'Inter', sans-serif;
+$font-size-base: 16px;
+$font-size-sm: 14px;
+$font-size-lg: 20px;
+$line-height-base: 1.5;
+
+// Spacing scale (for margin/padding)
+$space-xxs: 0.25rem;
+$space-xs: 0.5rem;
+$space-sm: 0.75rem;
+$space-md: 1rem;
+$space-lg: 1.5rem;
+$space-xl: 2rem;
+$space-xxl: 3rem;
+
+// Borders
+$border-radius-sm: 0.25rem;
+$border-radius-md: 0.5rem;
+$border-radius-lg: 1rem;
+
+// Shadows
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 2px 8px rgba(0, 0, 0, 0.1);
+$shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+// Breakpoints
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
