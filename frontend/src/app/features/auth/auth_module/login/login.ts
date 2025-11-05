@@ -7,10 +7,5 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './login.scss',
 })
 export class Login {
-  @Output() switchToRegister = new EventEmitter<void>();
 
-  onClickMe(): void {
-    console.log('Login button clicked!');
-    this.switchToRegister.emit();
-  }
 }

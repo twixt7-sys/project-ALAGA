@@ -9,5 +9,5 @@ import { ComponentsModule } from '../../shared/components/components-module';
   styleUrl: './auth.scss',
 })
 export class Auth {
-  protected readonly loginEnabled = signal(false);
+  protected readonly switchAuth = signal(true);
 }

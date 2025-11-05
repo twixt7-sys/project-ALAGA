@@ -14,12 +14,23 @@ frontend                            # Angular frontend (IT113)
 |   |   |   |   ├── checkout.model.ts
 │   |   |   |   └── order.model.ts
 │   │   │   ├── services            # ApiService, AuthService (calls Flask API)
-│   │   │   └── utils
+|   │   │   │   ├── api.service.ts
+|   │   │   │   └── auth.service.ts
+│   │   │   └── utils               # Utility functions: formatDate, calculate, etc.
+│   │   │       ├── format-date.ts
+│   │   │       ├── calculate.ts
+│   │   │       └── constants.ts
 │   │   │
 │   │   ├── shared
-│   │   │   ├── components          # Navbar, Footer, ProductCard, etc.
-│   │   │   ├── directives
-│   │   │   └── pipes
+│   │   │   ├── components          # Navbar, Footer, ProductCard, etc.         [high prio]
+│   │   │   ├── directives          # For modular behavior                      [low prio]
+│   │   │   ├── pipes               # Functions for use in templates            [low prio]
+│   │   │   │   ├── currency.pipe.ts
+│   │   │   │   └── date.pipe.ts
+│   │   │   └── styles              # Shared styles: variables, mixins          [mid prio]
+│   │   │       ├── _variables.scss
+│   │   │       ├── _mixins.scss
+│   │   │       └── shared-styles.scss
 │   │   │
 │   │   ├── features
 │   │   │   ├── auth

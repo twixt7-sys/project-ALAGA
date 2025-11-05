@@ -10,7 +10,7 @@
 	width: 200px;
 	padding: $space-xs;
 	border-radius: $radius-lg;
-	background-color: lighten($color-surface, 4%);
+	background-color: $color-surface;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 	cursor: pointer;
 	user-select: none;

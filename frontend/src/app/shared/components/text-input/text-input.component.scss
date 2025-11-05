@@ -7,29 +7,18 @@
 	width: 100%;
 }
 
-.text-input {
-	display: flex;
-	flex-direction: column;
-	gap: $space-xs;
+input {
+  font-size: $font-size-sm;
+  color: $color-text-secondary;
+  font-weight: 500;
+  width: 100%;
+  padding: $space-sm $space-md;
+  background-color: $color-surface;
+  color: $color-text-primary;
+  font-size: $font-size-base;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 
-	label {
-		font-size: $font-size-sm;
-		color: $color-text-secondary;
-		font-weight: 500;
-	}
-
-	input {
-		width: 100%;
-		padding: $space-sm $space-md;
-		border: 1px solid $color-secondary;
-		border-radius: $radius-sm;
-		background-color: $color-surface;
-		color: $color-text-primary;
-		font-size: $font-size-base;
-		transition: border-color 0.2s ease, box-shadow 0.2s ease;
-
-		@include focus-ring($color-primary);
-	}
+  @include focus-ring($color-primary);
 
 	input:focus {
 		border-color: $color-primary;
@@ -64,7 +53,7 @@
 	label {
 		font-size: 0.9rem;
 		font-weight: 500;
-		color: mix($color-text-primary, $color-primary, 30%);
+		color: $color-text-primary;
 		letter-spacing: 0.2px;
 	}
 
@@ -73,7 +62,7 @@
 		padding: $space-sm $space-md;
 		border: 1.5px solid rgba($color-primary, 0.2);
 		border-radius: $radius-md;
-		background-color: lighten($color-surface, 3%);
+		background-color: $color-surface;
 		color: $color-text-primary;
 		font-size: 0.95rem;
 		transition: all 0.25s ease;
@@ -87,18 +76,18 @@
 
 		&:hover {
 			border-color: rgba($color-primary, 0.4);
-			background-color: lighten($color-surface, 6%);
+			background-color: $color-surface;
 		}
 
 		&:focus {
 			border-color: $color-primary;
-			background-color: lighten($color-surface, 10%);
+			background-color: $color-surface;
 			box-shadow: 0 3px 8px rgba($color-primary, 0.2);
 			transform: translateY(-1px);
 		}
 
 		&:disabled {
-			background-color: darken($color-surface, 3%);
+			background-color: $color-surface;
 			color: rgba($color-text-primary, 0.6);
 			cursor: not-allowed;
 		}

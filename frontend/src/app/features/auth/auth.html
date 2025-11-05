@@ -1,16 +1,20 @@
 
 <app-card alignment="center" size="small">
-  {{ loginEnabled() ? 'Login' : 'Register' }}
+  <h1>{{ switchAuth() ? 'Login' : 'Register' }}</h1>
+<app-button (click)="switchAuth.set(!switchAuth())" [label]="switchAuth() ? 'Switch to Register' : 'Switch to Login'"></app-button>
   <br><br>
   <!-- <app-toggle-button
     [options]="['Login', 'Register']"
     [selectedIndex]="loginEnabled() ? 0 : 1"
     (toggle)="loginEnabled.set($event === 'Login')"
-  ></app-toggle-button> -->
+  ></app-toggle-button>
+
   <app-toggle-button
     (toggled)="loginEnabled.set($event === 'login')"
   ></app-toggle-button>
-  @if (loginEnabled()) {
+  -->
+
+  @if (switchAuth()) {
 	<app-login></app-login>
   } @else {
 	<app-register></app-register>

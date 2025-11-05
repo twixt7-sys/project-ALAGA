@@ -4,5 +4,15 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthServices {
-  
+  login() {
+    return "login works!";
+  }
+
+  logout() {
+    return "logout works!";
+  }
+
+  register() {
+    return "register works!";
+  }
 }
