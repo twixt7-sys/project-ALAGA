@@ -1,4 +1,15 @@
+<button (click)="show.set(!show())">Toggle Button: {{ show() ? 'ON' : 'OFF' }}</button>
+
+{{ message }}
+
+
+<!-- Example of dynamic class binding
+
 <div class="toggle-container">
+	<span [ngClass]="{ 'active': selected === 'login' }">
+
+  </span>
+
 	<span
 		class="toggle-option"
 		[class.active]="selected === 'login'"
@@ -13,5 +24,8 @@
 		Register
 	</span>
 
-	<div class="toggle-slider" [class.right]="selected === 'register'"></div>
+<div class="toggle-slider" [class.right]="selected === 'register'"></div>
 </div>
+-->
+
+
