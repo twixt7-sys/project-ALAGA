@@ -52,7 +52,7 @@ frontend                            # Angular frontend (IT113)
 │   │   └── app.module.ts
 │   │
 │   ├── assets
-│   ├── environments
+│   ├── index.html
 │   ├── styles.css
 │   └── main.ts
 │

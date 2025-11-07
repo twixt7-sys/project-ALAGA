@@ -34,67 +34,95 @@ alaga-ecommerce
 │   │   ├── utils                       # Token utils, response helpers
 │   │   └── seed_data.py                # Sample data for testing
 │   │
-│   ├── tests                           # Optional: unit tests
+│   ├── tests                           # Unit tests
 │   ├── requirements.txt
-│   ├── run.py                          # Flask app entry point
+│   ├── run.py                          # entry point
 │   └── README.md
 │
 ├── frontend                            # Angular frontend (IT113)
-│   ├── src
-│   │   ├── app
-│   │   │   ├── core
-│   │   │   │   ├── guards
-│   │   │   │   ├── interceptors
-│   │   │   │   ├── models
-│   │   │   │   ├── services            # ApiService, AuthService (calls Flask API)
-│   │   │   │   └── utils
-│   │   │   │
-│   │   │   ├── shared
-│   │   │   │   ├── components          # Navbar, Footer, ProductCard, etc.
-│   │   │   │   ├── directives
-│   │   │   │   └── pipes
-│   │   │   │
-│   │   │   ├── features
-│   │   │   │   ├── auth
-│   │   │   │   │   ├── login
-│   │   │   │   │   └── register
-│   │   │   │   ├── products
-│   │   │   │   ├── cart
-│   │   │   │   ├── admin
-│   │   │   │   └── user
-│   │   │   │
-│   │   │   ├── app-routing.module.ts
-│   │   │   ├── app.component.ts
-│   │   │   └── app.module.ts
-│   │   │
-│   │   ├── assets
-│   │   ├── environments
-│   │   ├── styles.css
-│   │   └── main.ts
-│   │
-│   ├── package.json
-│   ├── tailwind.config.js
-│   └── angular.json
+|   ├── src
+|   │   ├── app
+|   │   │   ├── core
+|   │   │   │   ├── guards              # Route guards: auth.guard.ts, admin.guard.ts
+|   |   |   |   |   ├── auth.guard.ts
+|   |   |   |   |   └── admin.guard.ts
+|   │   │   │   ├── interceptors        # HttpInterceptor for adding auth tokens
+|   |   │   │   |   └── auth.interceptor.ts
+|   │   │   │   ├── models              # interfaces: User, Product, Order, Cart, Checkout
+|   │   |   |   |   ├── user.model.ts
+|   │   |   |   |   ├── product.model.ts
+|   |   |   |   |   ├── cart.model.ts
+|   |   |   |   |   ├── checkout.model.ts
+|   │   |   |   |   └── order.model.ts
+|   │   │   │   ├── services            # ApiService, AuthService (calls Flask API)
+|   |   │   │   │   ├── api.service.ts
+|   |   │   │   │   └── auth.service.ts
+|   │   │   │   └── utils               # Utility functions: formatDate, calculate, etc.
+|   │   │   │       ├── format-date.ts
+|   │   │   │       ├── calculate.ts
+|   │   │   │       └── constants.ts
+|   │   │   │
+|   │   │   ├── shared
+|   │   │   │   ├── components          # Navbar, Footer, ProductCard, etc.         [high prio]
+|   │   │   │   ├── directives          # For modular behavior                      [low prio]
+|   │   │   │   ├── pipes               # Functions for use in templates            [low prio]
+|   │   │   │   │   ├── currency.pipe.ts
+|   │   │   │   │   └── date.pipe.ts
+|   │   │   │   └── styles              # Shared styles: variables, mixins          [mid prio]
+|   │   │   │       ├── _variables.scss
+|   │   │   │       ├── _mixins.scss
+|   │   │   │       └── shared-styles.scss
+|   |   │   │
+|   │   │   ├── features
+|   │   │   │   ├── auth
+|   │   │   │   │   ├── login
+|   │   │   │   │   └── register
+|   │   │   │   ├── customer
+|   │   │   │   │   ├── shop
+|   │   │   │   │   ├── orders
+|   │   │   │   │   ├── cart
+|   │   │   │   │   └── checkout
+|   │   │   │   ├── admin
+|   │   │   │   │   ├── dashboard
+|   │   │   │   │   ├── inventory
+|   │   │   │   │   ├── orders
+|   │   │   │   │   └── products
+|   │   │   │   │
+|   |   │   │   ├── app-routing.module.ts
+|   │   │   ├── app.component.ts
+|   │   │   └── app.module.ts
+|   │   │
+|   │   ├── assets
+|   │   ├── environments
+|   │   ├── styles.css
+|   │   └── main.ts
+|   │
+|   ├── package.json
+|   ├── tailwind.config.js
+|   └── angular.json
 │
 ├── docs                                # Reports, ERDs, SDDs
-│   ├── SDD_Alaga_Ecommerce.pdf
-│   │   ├── API
-│   │   │   ├── API_structure.json
-│   │   │   └── API_structure.tree
-│   │   ├── ERM
-│   │   │   ├── sample data inserts
-│   │   │   │   ├── cart_items.sql
-│   │   │   │   ├── cart.sql
-│   │   │   │   ├── create_order.sql
-│   │   │   │   ├── products.sql
-│   │   │   │   ├── users.sql
-│   │   │   │   ├── inventory_logs.sql
-│   │   │   │   └── sales_report.sql
-│   │   │   └── API_structure.tree
-│   │   ├── Prototype
-│   ├── ERD_Crowfoot_Diagram.png
-│   ├── ERD_Chen_Diagram.png
-│   ├── requirements.txt
-│   └── proposal.txt
-│
+│   ├── backend
+│   │   ├── API_structure.json
+│   │   └── API_structure.tree
+│   ├── database
+│   │   ├── sample data inserts
+│   │   │   ├── cart_items.sql
+│   │   │   ├── cart.sql
+│   │   │   ├── create_order.sql
+│   │   │   ├── products.sql
+│   │   │   ├── users.sql
+│   │   │   ├── inventory_logs.sql
+│   │   │   └── sales_report.sql
+|   |   └── DDL_query.sql
+│   ├── frontend
+|   |   └── app_structure.tree
+│   ├── prototype
+│   |   ├── screenshots
+│   │   └── prototype_link.txt
+|   ├── project_description.json
+|   ├── project_structure.tree
+|   ├── requirements_analysis.txt
+|   └── requirements.txt
+|
 └── README.md                           # Project overview and setup guide
