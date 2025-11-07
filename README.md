@@ -51,7 +51,7 @@
         <img src="https://img.shields.io/badge/Laravel-FF2D20?logo=laravel&logoColor=white" width="150"/>
     </td>
     <td width="300">
-        <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" width="150"/>
+        <img src="" width="150" alt="flask logo"/>
     </td>
     <td width="300">
         <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" width="180"/>
