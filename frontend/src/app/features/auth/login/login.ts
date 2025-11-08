@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input} from '@angular/core';
 import { ComponentsModule } from '../../../shared/components/components-module';
 
 
@@ -9,5 +9,5 @@ import { ComponentsModule } from '../../../shared/components/components-module';
   styleUrl: './login.scss',
 })
 export class LoginComponent {
-
+  @Input() classAppend: string = '';
 }

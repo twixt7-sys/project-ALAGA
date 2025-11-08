@@ -1,1 +1,6 @@
+@use '../../shared/styles/variables' as *;
 
+.toggle {
+  width: 300px;
+  background-color: $color-secondary;
+}

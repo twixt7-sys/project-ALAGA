@@ -33,9 +33,9 @@ frontend                            # Angular frontend (IT113)
 │   │   │       └── shared-styles.scss
 │   │   │
 │   │   ├── features
-│   │   │   ├── auth
-│   │   │   │   ├── login
-│   │   │   │   └── register
+│   │   │   ├── auth (component)
+│   │   │   │   ├── login (component)
+│   │   │   │   └── register (component)
 │   │   │   ├── customer
 │   │   │   │   ├── shop
 │   │   │   │   ├── orders

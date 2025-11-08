@@ -10,4 +10,5 @@ import { ComponentsModule } from '../../../shared/components/components-module';
 export class RegisterComponent {
   @Input() label: string = 'Register';
   @Input() options: string = '';
+  @Input() classAppend: string = '';
 }
