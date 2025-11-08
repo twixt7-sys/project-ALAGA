@@ -1,8 +1,8 @@
-<!-- button.component.html -->
 <button
 	[type]="type"
 	[class.primary]="variant === 'primary'"
 	[class.secondary]="variant === 'secondary'"
 >
+<ng-content></ng-content>
 	{{ label }}
 </button>
