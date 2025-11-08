@@ -8,7 +8,7 @@
 		<button [class.active]="mode==='register'" (click)="mode='register'">Register</button>
 	</div>
 
-  @if (switchAuth()) {
+  @if (mode === 'login') {
     <app-login></app-login>
   } @else {
     <app-register></app-register>

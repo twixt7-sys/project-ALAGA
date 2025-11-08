@@ -3,11 +3,11 @@ import { AuthModule } from './auth_module/auth-module';
 import { ComponentsModule } from '../../shared/components/components-module';
 
 @Component({
-  selector: 'app-auth',
+	selector: 'app-auth',
   imports: [AuthModule, ComponentsModule],
-  templateUrl: './auth.html',
-  styleUrl: './auth.scss',
+	templateUrl: './auth.html',
+	styleUrls: ['./auth.scss']
 })
 export class Auth {
-  protected readonly switchAuth = signal(true);
+	mode: 'login' | 'register' = 'login';
 }
