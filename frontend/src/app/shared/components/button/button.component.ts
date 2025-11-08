@@ -11,4 +11,5 @@ export class Button {
 	@Input() label = '';
 	@Input() variant: 'primary' | 'secondary' = 'primary';
 	@Input() type: 'button' | 'submit' = 'button';
+  @Input() classAppend: string = '';
 }

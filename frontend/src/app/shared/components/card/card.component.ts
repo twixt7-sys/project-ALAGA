@@ -15,4 +15,5 @@ export class Card {
   @Input() marginPadding: string[] = ['1rem', '1rem', '1rem', '1rem'];
   @Input() minHeight: string = '300px';
   @Input() minWidth: string = '400px';
+  @Input() classAppend: string = '';
 }
