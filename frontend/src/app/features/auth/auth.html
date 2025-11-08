@@ -1,12 +1,14 @@
 
-<app-card>
-	<h3>Alaga Pet Supplies</h3>
+<app-card classAppend="p-6">
+	<br>
+  <h3>Alaga Pet Supplies</h3>
 	<p>Your trusted partner in pet care</p>
-
+  <br>
 	<div class="toggle">
     <app-button [class.active]="mode==='login'" (click)="mode='login'" [label]="'Login'" variant="primary"></app-button>
     <app-button [class.active]="mode==='register'" (click)="mode='register'" [label]="'Register'" variant="primary"></app-button>
 	</div>
+  <br>
 
   @if (mode === 'login') {
     <app-login></app-login>
