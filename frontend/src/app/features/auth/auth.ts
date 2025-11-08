@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { AuthModule } from './auth_module/auth-module';
+import { LoginComponent } from './login/login';
+import { RegisterComponent } from './register/register';
 import { ComponentsModule } from '../../shared/components/components-module';
 
 @Component({
 	selector: 'app-auth',
-  imports: [AuthModule, ComponentsModule],
+  imports: [ComponentsModule, LoginComponent, RegisterComponent],
 	templateUrl: './auth.html',
 	styleUrls: ['./auth.scss']
 })

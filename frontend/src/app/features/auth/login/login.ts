@@ -1,9 +1,10 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { ComponentsModule } from '../../../shared/components/components-module';
 
 
 @Component({
   selector: 'app-login',
-  imports: [],
+  imports: [ComponentsModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })

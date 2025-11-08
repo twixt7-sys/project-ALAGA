@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-dropdown',
-  imports: [],
+  standalone: false,
   templateUrl: './dropdown.html',
   styleUrl: './dropdown.scss',
 })

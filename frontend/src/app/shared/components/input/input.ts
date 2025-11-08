@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-input',
-  imports: [],
+  standalone: false,
   templateUrl: './input.html',
   styleUrl: './input.scss',
 })
