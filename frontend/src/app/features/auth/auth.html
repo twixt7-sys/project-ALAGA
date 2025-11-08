@@ -1,11 +1,11 @@
 
-<app-card class="auth-card">
+<app-card>
 	<h3>Alaga Pet Supplies</h3>
 	<p>Your trusted partner in pet care</p>
 
 	<div class="toggle">
-		<button [class.active]="mode==='login'" (click)="mode='login'">Login</button>
-		<button [class.active]="mode==='register'" (click)="mode='register'">Register</button>
+    <app-button [class.active]="mode==='login'" (click)="mode='login'" [label]="'Login'" variant="primary"></app-button>
+    <app-button [class.active]="mode==='register'" (click)="mode='register'" [label]="'Register'" variant="primary"></app-button>
 	</div>
 
   @if (mode === 'login') {
@@ -13,5 +13,5 @@
   } @else {
     <app-register></app-register>
   }
-  <app-button [label]="'Submit'" variant="primary"></app-button>
+  
 </app-card>
