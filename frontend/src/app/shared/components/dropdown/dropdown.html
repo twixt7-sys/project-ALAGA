@@ -1,1 +1,7 @@
-<p>dropdown works!</p>
+<label>{{ label }}
+	<select>
+    @for (let o of options) {
+      <option>{{ o }}</option>
+    }
+	</select>
+</label>
