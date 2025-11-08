@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, Input } from '@angular/core';
 
 @Component({
   selector: 'app-register',
@@ -7,5 +7,6 @@ import { Component, EventEmitter, Output } from '@angular/core';
   styleUrl: './register.scss',
 })
 export class Register {
-  
+  @Input() label: string = 'Register';
+  @Input() options: string = '';
 }

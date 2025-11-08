@@ -1,7 +1,9 @@
 <label>{{ label }}
 	<select>
-    @for (let o of options) {
+    @for (o of options; track o) {
       <option>{{ o }}</option>
+    } @empty {
+      <option>No options available</option>
     }
 	</select>
 </label>
