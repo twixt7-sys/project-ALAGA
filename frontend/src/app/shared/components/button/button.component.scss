@@ -8,11 +8,10 @@
 }
 
 button {
-	@extend .button; // use the shared button base
-	width: 100%; // or auto depending on design
+	@extend .button;
+	width: 100%;
 	font-size: $font-size-base;
 
-	// you can modify context-specific things here
 	@include respond(sm) {
 		width: 100%;
 		font-size: $font-size-sm;
