@@ -9,8 +9,10 @@ import { Component, Input } from '@angular/core';
 export class Card {
   @Input() variant: 'elevated' | 'outlined' | 'flat' = 'elevated';
   @Input() alignment: 'left' | 'center' | 'right' = 'center';
+  @Input() justifyContent: 'center' | 'space-between' | 'space-evenly' = 'space-evenly';
   @Input() backgroundColor: string = '#ffffff';
   @Input() borderRadius: string = '8px';
   @Input() marginPadding: string[] = ['1rem', '1rem', '1rem', '1rem'];
-  @Input() size: 'small' | 'medium' | 'large' = 'medium';
+  @Input() minHeight: string = '300px';
+  @Input() minWidth: string = '400px';
 }

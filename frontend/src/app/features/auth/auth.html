@@ -1,22 +1,16 @@
 
-<app-card alignment="center" size="small">
-  <h1>{{ switchAuth() ? 'Login' : 'Register' }}</h1>
-<app-button (click)="switchAuth.set(!switchAuth())" [label]="switchAuth() ? 'Switch to Register' : 'Switch to Login'"></app-button>
-  <br><br>
-  <!-- <app-toggle-button
-    [options]="['Login', 'Register']"
-    [selectedIndex]="loginEnabled() ? 0 : 1"
-    (toggle)="loginEnabled.set($event === 'Login')"
-  ></app-toggle-button>
+<app-card class="auth-card">
+	<h3>Alaga Pet Supplies</h3>
+	<p>Your trusted partner in pet care</p>
 
-  <app-toggle-button
-    (toggled)="loginEnabled.set($event === 'login')"
-  ></app-toggle-button>
-  -->
+	<div class="toggle">
+		<button [class.active]="mode==='login'" (click)="mode='login'">Login</button>
+		<button [class.active]="mode==='register'" (click)="mode='register'">Register</button>
+	</div>
 
   @if (switchAuth()) {
-	<app-login></app-login>
+    <app-login></app-login>
   } @else {
-	<app-register></app-register>
+    <app-register></app-register>
   }
 </app-card>

@@ -1,10 +1,12 @@
 <div
 	class="card"
-	[ngClass]="['card--' + variant, 'card--align-' + alignment, 'card--size-' + size]"
+	[ngClass]="['card--' + variant]"
+  [style.align-items]="alignment"
+  [style.justify-content]="justifyContent"
 	[style.background-color]="backgroundColor"
 	[style.border-radius]="borderRadius"
+  [style.min-height]="minHeight"
+  [style.min-width]="minWidth"
 >
-	<div class="card__content">
-		<ng-content></ng-content>
-	</div>
+	<ng-content></ng-content>
 </div>
