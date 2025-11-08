@@ -1,10 +1,11 @@
-<app-text-input
-  [placeholder]="'Enter your username'"
-  value="">
-</app-text-input>
-<app-text-input
-  [placeholder]="'Enter your password'"
-  value="">
-</app-text-input>
-<br>
-<app-button [label]="'Submit'" variant="primary"></app-button>
+<form>
+	<app-input label="Email" placeholder="your@email.com"></app-input>
+	<app-input label="Password" type="password"></app-input>
+	<app-button label="Login"></app-button>
+
+	<div class="demo">
+		<p>Demo credentials:</p>
+		<small>Customer: customer@example.com / customer123</small><br>
+		<small>Admin: admin@alaga.com / admin123</small>
+	</div>
+</form>
