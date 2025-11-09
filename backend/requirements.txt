@@ -3,7 +3,7 @@ Flask==3.1.2
 
 # Database ORM
 SQLAlchemy==2.0.44
-Flask-SQLAlchemy==3.3.1
+Flask-SQLAlchemy==3.1.1
 
 # Environment Management
 python-dotenv==1.2.1
