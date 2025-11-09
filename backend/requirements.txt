@@ -1,0 +1,16 @@
+# Core Framework
+Flask==3.1.2
+
+# Database ORM
+SQLAlchemy==2.0.44
+Flask-SQLAlchemy==3.3.1
+
+# Environment Management
+python-dotenv==1.2.1
+
+# Auth & Security
+Flask-JWT-Extended==4.7.1
+passlib==1.7.4
+
+# Cross-origin Resource Sharing
+flask-cors==6.0.1
