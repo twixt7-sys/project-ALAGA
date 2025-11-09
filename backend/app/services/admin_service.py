@@ -1,5 +1,5 @@
 from ..models.product import Product
-from ..models.sales_report import SalesReport, InventoryLog
+from ..models.report import SalesReport, InventoryLog
 from ..extensions import db
 from datetime import datetime
 
