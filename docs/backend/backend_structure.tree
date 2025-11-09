@@ -1,4 +1,4 @@
-backend                             # Flask backend (IT112) [ CLEAN ARCHITECTURE ]
+backend                             # Flask backend (IT112) [ Clean Layered Architecture { Service-repository pattern } ]
 ├── app
 │   ├── __init__.py
 │   ├── config.py                   # Environment + DB configs
