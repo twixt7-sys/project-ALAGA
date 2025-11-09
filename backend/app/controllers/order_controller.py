@@ -1,11 +1,6 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity
-from ..services.order_service import (
-	list_user_orders,
-	get_order_by_id,
-	update_order_status,
-	perform_checkout
-)
+from ..services.order_service import OrderService
 
 order_bp = Blueprint("order_bp", __name__)
 
@@ -13,14 +8,14 @@ order_bp = Blueprint("order_bp", __name__)
 @jwt_required()
 def list_orders():
 	user = get_jwt_identity()
-	orders = list_user_orders(user["user_id"])
+	orders = OrderService.get_orders(user["user_id"])
 	return jsonify(orders), 200
 
 @order_bp.get("/<int:order_id>")
 @jwt_required()
 def get_order(order_id):
 	user = get_jwt_identity()
-	order = get_order_by_id(order_id, user["user_id"])
+	order = OrderService.get_order(order_id, user["user_id"])
 	if not order:
 		return jsonify({"error": "Order not found"}), 404
 	return jsonify(order), 200
@@ -32,12 +27,12 @@ def change_status(order_id):
 	if user["role"] != "business_owner":
 		return jsonify({"error": "Unauthorized"}), 403
 	data = request.get_json()
-	order = update_order_status(order_id, data)
+	order = OrderService.update_order(order_id, data)
 	return jsonify(order), 200
 
 @order_bp.post("/checkout")
 @jwt_required()
 def checkout():
 	user = get_jwt_identity()
-	result = perform_checkout(user["user_id"])
+	result = OrderService.checkout(user["user_id"])
 	return jsonify(result), 201
