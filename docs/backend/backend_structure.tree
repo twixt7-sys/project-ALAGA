@@ -1,0 +1,38 @@
+backend                             # Flask backend (IT112) [ CLEAN ARCHITECTURE ]
+├── app
+│   ├── __init__.py
+│   ├── config.py                   # Environment + DB configs
+│   ├── extensions.py               # For db, jwt, cors init
+│   │
+│   ├── models                      # SQLAlchemy models [ Data layer ]
+│   │   ├── user.py
+│   │   ├── product.py
+│   │   ├── order.py
+│   │   ├── cart.py
+│   │   └── sales_report.py
+│   │
+│   ├── repositories                # DB access logic [ Repository layer ]
+│   │   ├── user_repository.py
+│   │   ├── product_repository.py
+│   │   ├── order_repository.py
+│   │   └── cart_repository.py
+│   │
+│   ├── services                    # categorized functions [ Business logic layer ]
+│   │   ├── user_service.py
+│   │   ├── product_service.py
+│   │   ├── order_service.py
+│   │   └── cart_service.py
+│   │
+│   ├── controllers                 # REST API endpoints [ Presentation layer ]
+│   │   ├── user_controller.py
+│   │   ├── product_controller.py
+│   │   ├── order_controller.py
+│   │   └── cart_controller.py
+│   │
+│   ├── routes.py                   # Register all blueprints
+│   └── utils                       # Token utils, response helpers
+│
+├── tests                           # Unit tests
+├── requirements.txt
+├── run.py                          # entry point
+└── README.md
