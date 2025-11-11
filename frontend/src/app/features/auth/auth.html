@@ -1,30 +1,32 @@
-<app-card classAppend="p-6 m-6">
-	<br>
-  <h3>Alaga Pet Supplies</h3>
-	<p>Your trusted partner in pet care</p>
-  <br>
-	<div class="toggle p-1 rounded-pill">
-	<app-button
-		class="w-50"
-    classAppend="w-100 rounded-pill p-1"
-		[label]="'Login'"
-		[variant]="mode === 'login' ? 'primary' : 'secondary'"
-		(click)="mode = 'login'">
-	</app-button>
 
-	<app-button
-		class="w-50"
-    classAppend="w-100 rounded-pill p-1"
-		[label]="'Register'"
-		[variant]="mode === 'register' ? 'primary' : 'secondary'"
-		(click)="mode = 'register'">
-	</app-button>
+<div>
+	<app-card classAppend="p-6 m-6">
+		<br>
+		<h3>Alaga Pet Supplies</h3>
+			<p>Your trusted partner in pet care</p>
+		<br>
+		<div class="toggle p-1 rounded-pill">
+			<app-button
+				class="w-50"
+			classAppend="w-100 rounded-pill p-1"
+				[label]="'Login'"
+				[variant]="mode === 'login' ? 'primary' : 'secondary'"
+				(click)="mode = 'login'">
+			</app-button>
+
+			<app-button
+				class="w-50"
+			classAppend="w-100 rounded-pill p-1"
+				[label]="'Register'"
+				[variant]="mode === 'register' ? 'primary' : 'secondary'"
+				(click)="mode = 'register'">
+			</app-button>
+		</div>
+
+		<br>
+
+		@if (mode === 'login') { <app-login class="w-75"></app-login> }
+		@else { <app-register class="w-75" ></app-register> }
+		
+	</app-card>
 </div>
-
-  <br>
-
-  @if (mode === 'login') { <app-login class="w-75"></app-login> }
-  @else { <app-register class="w-75" ></app-register> }
-  
-</app-card>
-
