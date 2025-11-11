@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, request
+from markupsafe import escape
 from .extensions import db, jwt, cors
 from .config import Config
 from .routes import register_blueprints
@@ -13,8 +14,13 @@ def create_app():
     jwt.init_app(app)
     cors.init_app(app)
     
+    @app.route("/api")
+    def hello():
+        name = request.args.get("name", "Flask")
+        return f"Hello, {escape(name)}!"
+
     # blueprint registration
-    register_blueprints(app)
+    app = register_blueprints(app)
     
     # tables creation
     with app.app_context():
