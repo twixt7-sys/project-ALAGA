@@ -5,5 +5,5 @@ export interface User {
 	username: string;
 	email: string;
 	role: UserRole;
-	dateJoined: string;     // ISO string
+	dateJoined: string;
 }
