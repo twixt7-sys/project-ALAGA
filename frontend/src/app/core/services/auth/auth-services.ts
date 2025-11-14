@@ -9,20 +9,22 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class AuthServices {
+  private base = 'http://localhost:5000/api';
+
   constructor (
     private http: HttpClient
   ){}
 
   login(data: any): Observable<any> {
-    return this.http.post('http://127.0.0.1:5000/api/auth/login', data);
+    return this.http.post(`${this.base}/login`, data);
   }
 
   logout(): Observable<any> {
-    return this.http.post('/logout', {})
+    return this.http.post(`${this.base}/logout`, {})
   }
 
   register(data: any): Observable<any> {
-    return this.http.post('/register', data);
+    return this.http.post(`${this.base}/register`, data);
   }
 
   isLoggedIn() {
