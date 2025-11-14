@@ -1,3 +1,3 @@
-export * from './auth-guard';
-export * from './admin-guard';
-export * from './customer-guard';
+export * from './auth/auth-guard';
+export * from './admin/admin-guard';
+export * from './customer/customer-guard';
