@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +19,11 @@ export class AuthServices {
   }
 
   isLoggedIn() {
-    return true; //to develop
+    if (!localStorage.getItem('userId')) {
+      inject(Router).navigate(['/login']);
+      return false;
+    }
+    return true;
   }
 
   getRole() {
