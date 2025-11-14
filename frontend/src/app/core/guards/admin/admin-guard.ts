@@ -3,8 +3,10 @@ import { AuthServices } from '../../services';
 import { inject } from '@angular/core';
 
 export const adminGuard: CanActivateFn = (route, state) => {
-  // get user role
-  const role = inject(AuthServices).getRole()
+
+  const auth = inject(AuthServices)
+  const role = auth.getRole()
+
   // return true if user is admin
-  return role == 'admin' ? true : false;
+  return role === 'admin';
 };
