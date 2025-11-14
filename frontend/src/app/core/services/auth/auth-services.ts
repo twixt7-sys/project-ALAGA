@@ -1,5 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserServices } from '../model';
 
 @Injectable({
   providedIn: 'root',
@@ -27,6 +28,6 @@ export class AuthServices {
   }
 
   getRole() {
-    return 'admin'; //to develop
+    return inject(UserServices).role(true);
   }
 }

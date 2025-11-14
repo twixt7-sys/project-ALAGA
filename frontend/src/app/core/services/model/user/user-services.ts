@@ -5,7 +5,7 @@ import { UserRole } from '../../../models/user.model';
   providedIn: 'root',
 })
 export class UserServices {
-  roles(): UserRole[] {
-    return ['admin', 'customer']
+  role(isAdmin: boolean): UserRole {
+    return isAdmin ? 'admin' : 'customer';
   }
 }
