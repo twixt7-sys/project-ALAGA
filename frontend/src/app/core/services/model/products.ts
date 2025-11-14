@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 
-export class Products {
+export class ProductsService {
   getProducts(): Observable<any>{
     return new Observable(observer => {
       observer.next(["Product 1", "Product 2", "Product 3"]);
