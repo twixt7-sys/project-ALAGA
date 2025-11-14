@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, signal } from '@angular/core';
-import { ApiServices } from '../../../core/services/api-services';
+import { ApiServices } from '../../../core/services/api/api-services';
 
 @Component({
 	selector: 'app-toggle-button',
