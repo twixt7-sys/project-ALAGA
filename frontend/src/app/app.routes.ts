@@ -3,6 +3,9 @@ import { Customer } from './features/customer/customer'
 import { Admin } from './features/admin/admin.component';
 import { Auth } from './features/auth/auth';
 import { Home } from './features/home/home';
+import { authGuard } from './core/guards/auth-guard';
+import { customerGuard } from './core/guards/customer-guard';
+import { adminGuard } from './core/guards/admin-guard';
 
 export const routes: Routes = [
     {
@@ -15,11 +18,13 @@ export const routes: Routes = [
     },
     {
       path: 'customer',
-      component: Customer
+      component: Customer,
+      canActivate: [authGuard, customerGuard]
     },
     {
       path: 'admin',
-      component: Admin
+      component: Admin,
+      canActivate: [authGuard, adminGuard]
     }
 ];
 
