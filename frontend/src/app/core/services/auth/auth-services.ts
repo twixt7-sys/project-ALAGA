@@ -1,22 +1,28 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { UserServices } from '../model';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
+// handles API calls
 @Injectable({
   providedIn: 'root',
 })
 export class AuthServices {
+  constructor (
+    private http: HttpClient
+  ){}
 
-  login() {
-    return "login works!"; //to develop
+  login(data: any): Observable<any> {
+    return this.http.post('http://127.0.0.1:5000/api/auth/login', data);
   }
 
-  logout() {
-    return "logout works!"; //to develop
+  logout(): Observable<any> {
+    return this.http.post('/logout', {})
   }
 
-  register() {
-    return "register works!"; //to develop
+  register(data: any): Observable<any> {
+    return this.http.post('/register', data);
   }
 
   isLoggedIn() {
