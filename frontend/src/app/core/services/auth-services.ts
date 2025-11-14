@@ -4,15 +4,24 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AuthServices {
+
   login() {
-    return "login works!";
+    return "login works!"; //to develop
   }
 
   logout() {
-    return "logout works!";
+    return "logout works!"; //to develop
   }
 
   register() {
-    return "register works!";
+    return "register works!"; //to develop
+  }
+
+  isLoggedIn() {
+    return true; //to develop
+  }
+
+  getRole() {
+    return 'admin'; //to develop
   }
 }
