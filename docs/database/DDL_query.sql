@@ -3,7 +3,7 @@ CREATE TABLE users (
   username VARCHAR(80) NOT NULL UNIQUE,
   password_hash VARCHAR(255) NOT NULL,
   email VARCHAR(120) NOT NULL UNIQUE,
-  role ENUM('business_owner','customer') NOT NULL DEFAULT 'customer',
+  role ENUM('admin','customer') NOT NULL DEFAULT 'customer',
   date_joined DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
@@ -37,7 +37,7 @@ CREATE TABLE cart_items (
 
 CREATE TABLE orders (
   order_id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT NOT NULL,
+  user_id INT NULL,
   order_date DATETIME DEFAULT CURRENT_TIMESTAMP,
   total_amount DECIMAL(12,2) NOT NULL,
   status ENUM('Pending','Processing','Completed','Cancelled') DEFAULT 'Pending',

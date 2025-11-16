@@ -1,8 +1,4 @@
 INSERT INTO users (username, password_hash, email, role)
-VALUES ('owner1','$hash1','owner@example.com','business_owner'),
-       ('customer1','$hash2','alice@example.com','customer');
-
-INSERT INTO users (username, password_hash, email, role)
 VALUES
 	('owner3', '$2b$12$Mk3c4DeF5GhI6JkL7MnOpQ8RsT9UvWxYzA123456789abcdef0', 'owner3@example.com', 'business_owner'),
 	('customer1',  '$2b$12$Na4d5EfG6HiJ7KlM8NoPqR9StU0VwXyZaB23456789abcdef01', 'customer1@example.com', 'customer'),
