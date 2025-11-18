@@ -2,7 +2,7 @@ from flask import Blueprint, request, jsonify
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from ..extensions import db
 from ..models.user import User
-from passlib.hash import bcrypt
+from passlib.hash import pbkdf2_sha256
 
 auth_bp = Blueprint("auth_bp", __name__)
 
@@ -12,9 +12,8 @@ def register():
 	username = data.get("username")
 	email = data.get("email")
 	password = data.get("password")
-	role = data.get("role", "customer")
+	role = data.get("role")
 
-	password = password[:72] # truncation
 
 	if not all([username, email, password]):
 		return jsonify({"error": "Missing fields"}), 400
@@ -23,7 +22,7 @@ def register():
 		return jsonify({"error": "User already exists"}), 400
 
 	user = User(username=username, email=email, role=role)
-	user.password = bcrypt.hash(password)
+	user.password = pbkdf2_sha256.hash(password)
 	db.session.add(user)
 	db.session.commit()
 
@@ -36,7 +35,7 @@ def login():
 	password = data.get("password")
 
 	user = User.query.filter_by(email=email).first()
-	if not user or not bcrypt.verify(password, user.password):
+	if not user or not pbkdf2_sha256.verify(password, user.password):
 		return jsonify({"error": "Invalid credentials"}), 401
 
 	access_token = create_access_token(identity={"user_id": user.user_id, "role": user.role})
