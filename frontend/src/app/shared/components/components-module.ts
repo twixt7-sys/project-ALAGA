@@ -9,10 +9,10 @@ import { DropdownComponent } from './dropdown/dropdown';
 
 
 @NgModule({
-  declarations: [Button, Card, TextInput, ToggleButton, InputComponent, DropdownComponent],
+  declarations: [Button, Card, TextInput, InputComponent, DropdownComponent],
   imports: [
     CommonModule
   ],
-  exports: [Button, Card, TextInput, ToggleButton, InputComponent, DropdownComponent]
+  exports: [Button, Card, TextInput, InputComponent, DropdownComponent]
 })
 export class ComponentsModule { }
