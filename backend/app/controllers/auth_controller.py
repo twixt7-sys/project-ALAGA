@@ -14,6 +14,8 @@ def register():
 	password = data.get("password")
 	role = data.get("role", "customer")
 
+	password = password[:72] # truncation
+
 	if not all([username, email, password]):
 		return jsonify({"error": "Missing fields"}), 400
 
