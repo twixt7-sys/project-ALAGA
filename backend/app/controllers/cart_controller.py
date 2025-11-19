@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from ..services.cart_service import CartService
 
 cart_bp = Blueprint("cart_bp", __name__)
@@ -8,7 +8,8 @@ cart_bp = Blueprint("cart_bp", __name__)
 @jwt_required()
 def view_cart():
 	user = get_jwt_identity()
-	cart = CartService.get_cart(user["user_id"])
+	claims = get_jwt()
+	cart = CartService.get_cart(claims.get("user_id"))
 	return jsonify(cart), 200
 
 @cart_bp.post("/items")

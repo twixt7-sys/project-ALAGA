@@ -27,3 +27,8 @@ class CartItem(db.Model):
 
 	def __repr__(self):
 		return f"<CartItem {self.cart_item_id} (x{self.quantity})>"
+
+	def to_dict(self):
+		return {
+			
+		}
