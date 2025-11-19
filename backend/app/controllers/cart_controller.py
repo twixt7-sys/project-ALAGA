@@ -16,8 +16,14 @@ def view_cart():
 @jwt_required()
 def add_item():
 	user = get_jwt_identity()
+	claims = get_jwt()
+
 	data = request.get_json()
-	item = CartService.add_item(user["user_id"], data)
+	item = CartService.add_item(claims.get("user_id"), data.get("product_id"), data.get("quantity"))
+	
+	print("RAW DATA:", request.data)
+	print("JSON:", request.get_json(silent=True))
+
 	return jsonify(item), 201
 
 @cart_bp.put("/items/<int:cart_item_id>")
