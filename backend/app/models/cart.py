@@ -17,6 +17,17 @@ class Cart(db.Model):
 	def __repr__(self):
 		return f"<Cart {self.cart_id} - User {self.user_id}>"
 
+	def to_dict(self):
+		return {
+			"cart_id": self.cart_id,
+			"user_id": self.user_id,
+			"created_at": self.created_at.isoformat() if self.created_at else None,
+			"updated_at": self.updated_at.isoformat() if self.updated_at else None,
+			"items": [item.to_dict() for item in self.items],
+			"total_items": self.total_items()
+		}
+
+
 class CartItem(db.Model):
 	__tablename__ = 'cart_items'
 

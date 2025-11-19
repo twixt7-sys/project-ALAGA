@@ -1,18 +1,18 @@
 api
-├── auth                               # Authentication & user identity                                     ✅ tesed
-│   ├── POST register                  # Create a new user account                                              ✅ tesed
-│   ├── POST login                     # Authenticate user, returns JWT                                         ✅ tesed
-│   └── GET me                         # Get current logged-in user (JWT protected)                             ✅ tesed
+├── auth                               # Authentication & user identity                                     ✅ tested
+│   ├── POST register                  # Create a new user account                                              ✅ tested
+│   ├── POST login                     # Authenticate user, returns JWT                                         ✅ tested
+│   └── GET me                         # Get current logged-in user (JWT protected)                             ✅ tested
 │
-├── products                           # Product catalog management                                         ✖  untested
-│   ├── GET /                          # List all products (supports ?search=&category=&page=&limit=)           ✅ tesed
-│   ├── GET {id}                       # Get a product by its ID                                                ✖  untested
-│   ├── POST /                         # Create new product (business owner only)                               ✖  untested
-│   ├── PUT {id}                       # Update product details (business owner only)                           ✖  untested
-│   └── DELETE {id}                    # Delete a product (business owner only)                                 ✖  untested
+├── products                           # Product catalog management                                         ✅ tested
+│   ├── GET /                          # List all products (supports ?search=&category=&page=&limit=)           ✅ tested
+│   ├── GET {id}                       # Get a product by its ID                                                ✅ tested
+│   ├── POST /                         # Create new product (admin only)                                        ✅ tested
+│   ├── PUT {id}                       # Update product details (admin only)                                    ✅ tested
+│   └── DELETE {id}                    # Delete a product (admin only)                                          ✅ tested
 │
 ├── cart                               # Shopping cart operations                                           ✖  untested
-│   ├── GET /                          # Get current user's cart                                                ✖  untested
+│   ├── GET /                          # Get current user's cart                                                ✅ tested
 │   ├── POST items                     # Add an item to cart { product_id, quantity }                           ✖  untested
 │   ├── PUT items/{cart_item_id}       # Update quantity of a cart item                                         ✖  untested
 │   └── DELETE items/{cart_item_id}    # Remove item from cart                                                  ✖  untested
