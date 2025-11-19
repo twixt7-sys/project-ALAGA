@@ -34,4 +34,4 @@ def delete_item(cart_item_id):
 	success = CartService.remove_item(cart_item_id)
 	if not success:
 		return jsonify({"error": "Item not found"}), 404
-	return jsonify({"message": "Item removed"}), 200
+	return jsonify({"message": "Item removed"}), 200.
