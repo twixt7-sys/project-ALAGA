@@ -14,3 +14,6 @@ passlib==1.7.4
 
 # Cross-origin Resource Sharing
 flask-cors==6.0.1
+
+# Bycrypt
+bcrypt

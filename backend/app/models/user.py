@@ -17,3 +17,12 @@ class User(db.Model):
 
 	def __repr__(self):
 		return f"<User {self.username}>"
+	
+	def to_dict(self):
+		return {
+			"user_id": self.user_id,
+			"username": self.username,
+			"email": self.email,
+			"role": self.role,
+			"date_joined": self.date_joined.isoformat() if self.date_joined else None
+		}
