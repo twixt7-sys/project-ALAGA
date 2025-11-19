@@ -1,8 +1,8 @@
 api
-├── auth                               # Authentication & user identity                                     ✖  untested
+├── auth                               # Authentication & user identity                                     ✅ tesed
 │   ├── POST register                  # Create a new user account                                              ✅ tesed
 │   ├── POST login                     # Authenticate user, returns JWT                                         ✅ tesed
-│   └── GET me                         # Get current logged-in user (JWT protected)                             ✖  untested
+│   └── GET me                         # Get current logged-in user (JWT protected)                             ✅ tesed
 │
 ├── products                           # Product catalog management                                         ✖  untested
 │   ├── GET /                          # List all products (supports ?search=&category=&page=&limit=)           ✖  untested
