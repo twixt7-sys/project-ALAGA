@@ -5,7 +5,7 @@ api
 │   └── GET me                         # Get current logged-in user (JWT protected)                             ✅ tesed
 │
 ├── products                           # Product catalog management                                         ✖  untested
-│   ├── GET /                          # List all products (supports ?search=&category=&page=&limit=)           ✖  untested
+│   ├── GET /                          # List all products (supports ?search=&category=&page=&limit=)           ✅ tesed
 │   ├── GET {id}                       # Get a product by its ID                                                ✖  untested
 │   ├── POST /                         # Create new product (business owner only)                               ✖  untested
 │   ├── PUT {id}                       # Update product details (business owner only)                           ✖  untested
