@@ -34,11 +34,12 @@ def add_product():
 def edit_product(product_id):
 	user = get_jwt_identity()
 	claims = get_jwt()
+	data = request.get_json()
+	product = ProductService.update(product_id, data)
 
 	if claims.get("role") != "admin":
 		return jsonify({"error": "Unauthorized"}), 403
-	data = request.get_json()
-	product = ProductService.update(product_id, data)
+
 	if not product:
 		return jsonify({"error": "Product not found"}), 404
 	return jsonify(product), 200
@@ -47,7 +48,9 @@ def edit_product(product_id):
 @jwt_required()
 def remove_product(product_id):
 	user = get_jwt_identity()
-	if user["role"] != "admin":
+	claims = get_jwt()
+
+	if claims.get("role") != "admin":
 		return jsonify({"error": "Unauthorized"}), 403
 	success = ProductService.delete(product_id)
 	if not success:
