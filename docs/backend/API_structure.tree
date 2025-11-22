@@ -17,8 +17,8 @@ api
 │   ├── PUT items/{cart_item_id}       # Update quantity of a cart item                                         ✅ tested
 │   └── DELETE items/{cart_item_id}    # Remove item from cart                                                  ✅ tested
 │
-├── checkout                           # Checkout process                                                   ✖  untested
-│   └── POST /                         # Validate items, deduct stock, create order                             ✖  untested
+├── checkout                           # Checkout process                                                   ✅ tested
+│   └── POST /                         # Validate items, deduct stock, create order                             ✅ tested
 │
 ├── orders                             # Order management                                                   ✖  untested
 │   ├── GET /                          # List current user's orders                                             ✖  untested

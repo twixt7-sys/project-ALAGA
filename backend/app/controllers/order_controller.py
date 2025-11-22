@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from ..services.order_service import OrderService
 
 order_bp = Blueprint("order_bp", __name__)
@@ -34,5 +34,6 @@ def change_status(order_id):
 @jwt_required()
 def checkout():
 	user = get_jwt_identity()
-	result = OrderService.checkout(user["user_id"])
+	claims = get_jwt()
+	result = OrderService.checkout(claims.get("user_id"))
 	return jsonify(result), 201
