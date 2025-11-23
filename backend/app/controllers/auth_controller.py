@@ -15,7 +15,6 @@ def register():
 	password = data.get("password")
 	role = data.get("role")
 
-
 	if not all([username, email, password]):
 		return jsonify({"error": "Missing fields"}), 400
 
@@ -32,6 +31,7 @@ def register():
 @auth_bp.post("/login")
 def login():
 	data = request.get_json()
+
 	email = data.get("email")
 	password = data.get("password")
 
