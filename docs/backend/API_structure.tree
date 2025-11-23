@@ -1,23 +1,23 @@
-#=====   tested: ✅ | untested: ✖   =====#
+#=== tested: ✅ | untested: ✖ ==================================== (input) | [output] | {parameter} | <allowed> ===#
 
-✅ api
-├── ✅ auth                               # Authentication & user identity
-│   ├── ✅ POST register                        # Create a new user account
-│   ├── ✅ POST login                           # Authenticate user, returns JWT
-│   └── ✅ GET me                               # Get current logged-in user (JWT protected)
+✅ api                          # Root endpoint
+├── ✅ auth                         # User authentication
+│   ├── ✅ POST register            # Create new user account       (username, email, password, role)
+│   ├── ✅ POST login               # Authenticate User             (email, password)   [jwt]
+│   └── ✅ GET me                   # Get authenticated User        [id, username, email, role]
 │
-├── ✅ products                           # Product catalog management
-│   ├── ✅ GET /                                # List all products (supports ?search=&category=&page=&limit=)
-│   ├── ✅ GET {id}                             # Get a product by its ID
-│   ├── ✅ POST /                               # Create new product (admin only)
-│   ├── ✅ PUT {id}                             # Update product details (admin only)
-│   └── ✅ DELETE {id}                          # Delete a product (admin only)
+├── ✅ products                     # Product catalog management
+│   ├── ✅ GET /                        # List all products         {search, category, page, limit} [products]
+│   ├── ✅ GET {id}                     # Get a product by its ID   [product]
+│   ├── ✅ POST /                       # Create new product        (name, description, category, price, quantity, image_url)   <admin>
+│   ├── ✅ PUT {id}                     # Update product details                <admin>
+│   └── ✅ DELETE {id}                  # Delete a product (admin only)                         <admin>
 │
-├── ✅ cart                               # Shopping cart operations
-│   ├── ✅ GET /                                # Get current user's cart
-│   ├── ✅ POST items                           # Add an item to cart { product_id, quantity }
-│   ├── ✅ PUT items/{cart_item_id}             # Update quantity of a cart item
-│   └── ✅ DELETE items/{cart_item_id}          # Remove item from cart
+├── ✅ cart                         # Shopping cart operations
+│   ├── ✅ GET /                        # Get current user's cart
+│   ├── ✅ POST items                   # Add an item to cart { product_id, quantity }
+│   ├── ✅ PUT items/{cart_item_id}     # Update quantity of a cart item
+│   └── ✅ DELETE items/{cart_item_id}  # Remove item from cart
 │
 ├── ✅ checkout                           # Checkout process
 │   └── ✅ POST /                               # Validate items, deduct stock, create order

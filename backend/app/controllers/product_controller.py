@@ -25,7 +25,9 @@ def add_product():
 
 	if claims.get("role") != "admin":
 		return jsonify({"error": "Unauthorized"}), 403
+	
 	data = request.get_json()
+	
 	product = ProductService.create(data)
 	return jsonify(product), 201
 
