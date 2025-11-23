@@ -1,0 +1,8 @@
+### register user
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin1@test.test",
+  "password": "admin1"
+}
