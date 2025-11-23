@@ -2,9 +2,9 @@
 
 ✅ api                          # Root endpoint
 ├── ✅ auth                         # Auth endpoints
-│   ├── ✅ POST register                # User Creation             ✖ (username, email, password, role)
-│   ├── ✅ POST login                   # User Authentication       ✖ (email, password)   [jwt]
-│   └── ✅ GET me                       # Get Authenticated User    ✖ [id, username, email, role]
+│   ├── ✅ POST register                # User Creation             ✅ (username, email, password, role)
+│   ├── ✅ POST login                   # User Authentication       ✅ (email, password)   [access_token, user]
+│   └── ✅ GET me                       # Get Authenticated User    ✅ [id, username, email, role]
 │
 ├── ✖ admin                         # Administrative endpoints
 │   ├── ✖ GET inventory                 # Detailed Products View    ✖ [products] <admin>
@@ -23,9 +23,8 @@
 │   ├── ✅ PUT items/{cart_item_id}     # Update Cart Item          ✖ (cart_item) <customer>
 │   └── ✅ DELETE items/{cart_item_id}  # Remove Cart Item          ✖ <customer>
 │
-├── ✖ orders                        # Order endpoints
-│   ├── ✅ POST checkout                # Create, Recount, Validate ✖ <customer>
-│   ├── ✖ GET /                         # All Orders List           ✖ [orders] <customer>
-│   ├── ✖ GET {id}                      # Get Order by ID           ✖ [order] <customer>
-│   └── ✖ PUT {id}                      # Alter Order by ID         ✖ <customer>
-│
+└── ✖ orders                        # Order endpoints
+    ├── ✅ POST checkout                # Create, Recount, Validate ✖ <customer>
+    ├── ✖ GET /                         # All Orders List           ✖ [orders] <customer>
+    ├── ✖ GET {id}                      # Get Order by ID           ✖ [order] <customer>
+    └── ✖ PUT {id}                      # Alter Order by ID         ✖ <customer>
