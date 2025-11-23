@@ -1,0 +1,3 @@
+### get logged in user info
+POST http://localhost:5000/api/auth/login
+Content-Type: application/json
