@@ -11,10 +11,10 @@
 │   └── ✅ GET sales                    # Sales Report Generation   ✅ {start_date, end_date} <admin>
 │
 ├── ✅ products                     # Product endpoints
-│   ├── ✅ GET /                        # All Products List         ✖ {search, category, page, limit} [products]
+│   ├── ✅ GET /                        # All Products List         ✅ {search, category, page, limit} [products]
 │   ├── ✅ GET {id}                     # Get Product by ID         ✖ [product]
-│   ├── ✅ POST /                       # Product Creation          ✖ (name, description, category, price, quantity, image_url) <admin>
-│   ├── ✅ PUT {id}                     # Alter Product             ✖ (?name, ?description, ?category, ?price, ?quantity, ?image_url) <admin>
+│   ├── ✅ POST /                       # Product Creation          ✖ (name, description, category, price, quantity, image_url, name, price, product_id, stock_quantity) <admin>
+│   ├── ✅ PUT {id}                     # Alter Product             ✖ (?name, ?description, ?category, ?price, ?quantity, ?image_url, name, price, product_id, stock_quantity) <admin>
 │   └── ✅ DELETE {id}                  # Delete Product            ✖ <admin>
 │
 ├── ✅ cart                         # Cart endpoints
