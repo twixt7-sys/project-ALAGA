@@ -32,7 +32,7 @@ class OrderService:
 
 	@staticmethod
 	def get_order(order_id, user_id):
-		order = Order.query.filter_by(id=order_id, user_id=user_id).first()
+		order = Order.query.filter_by(order_id=order_id, user_id=user_id).first()
 		return order.to_dict() if order else None
 
 	@staticmethod

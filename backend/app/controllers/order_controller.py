@@ -15,7 +15,7 @@ def list_orders():
 @jwt_required()
 def get_order(order_id):
 	user = get_jwt_identity()
-	order = OrderService.get_order(order_id, user["user_id"])
+	order = OrderService.get_order(order_id, int(user))
 	if not order:
 		return jsonify({"error": "Order not found"}), 404
 	return jsonify(order), 200
