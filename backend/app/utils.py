@@ -1,3 +1,4 @@
+import datetime
 from flask import jsonify
 
 
@@ -6,6 +7,23 @@ def is_admin_role(claims: dict) -> bool:
 
 def error(error_msg: str, error_code: int):
     return jsonify({"error": error_msg}), error_code
+
+def normalize_date(val):
+			if not val: return None
+			if isinstance(val, (int, float)): return None
+			val = str(val)
+			try:
+				import json
+				decoded = json.loads(val)
+				if isinstance(decoded, dict):
+					val = decoded.get("date")
+			except Exception:
+				pass
+
+			try:
+				return datetime.fromisoformat(val)
+			except Exception:
+				return None
 
 def agonize():
     return ("""

@@ -3,6 +3,7 @@ from ..models.report import SalesReport, InventoryLog
 from ..extensions import db
 from datetime import datetime
 import json
+from ..utils import normalize_date
 
 class AdminService:
 	@staticmethod
@@ -12,32 +13,6 @@ class AdminService:
 
 	@staticmethod
 	def get_sales_report(start_date=None, end_date=None):
-		def normalize_date(val):
-			if not val:
-				return None
-
-			# convert numbers to None
-			if isinstance(val, (int, float)):
-				return None
-
-			# ensure val is string
-			val = str(val)
-
-			# try json decode
-			try:
-				import json
-				decoded = json.loads(val)
-				if isinstance(decoded, dict):
-					val = decoded.get("date")
-			except Exception:
-				pass
-
-			# try iso parsing
-			try:
-				return datetime.fromisoformat(val)
-			except Exception:
-				return None
-
 		start = normalize_date(start_date)
 		end = normalize_date(end_date)
 
