@@ -27,4 +27,4 @@
     ├── ✅ POST checkout                # Create, Recount, Validate ✅ <customer>
     ├── ✅ GET /                        # All Orders List           ✅ [orders] <customer>
     ├── ✅ GET {id}                     # Get Order by ID           ✅ [order] <customer>
-    └── ✅ PUT {id}                      # Alter Order by ID        ✅ (status) <customer>
+    └── ✅ PUT {id}                     # Alter Order by ID         ✅ (status) <customer>
