@@ -24,7 +24,8 @@ def get_order(order_id):
 @jwt_required()
 def change_status(order_id):
 	user = get_jwt_identity()
-	if user["role"] != "business_owner":
+	claims = get_jwt()
+	if claims.get("role") != "admin":
 		return jsonify({"error": "Unauthorized"}), 403
 	data = request.get_json()
 	order = OrderService.update_order(order_id, data)
