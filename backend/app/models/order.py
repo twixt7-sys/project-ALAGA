@@ -22,6 +22,16 @@ class Order(db.Model):
 	def __repr__(self):
 		return f"<Order {self.order_id} - User {self.user_id}>"
 
+	def to_dict(self):
+		return {
+			"order_id": self.order_id,
+			"user_id": self.user_id,
+			"order_date": self.order_date.isoformat() if self.order_date else None,
+			"total_amount": float(self.total_amount) if self.total_amount is not None else 0,
+			"status": self.status,
+			"order_items": [item.to_dict() for item in self.order_items]
+		}
+
 class OrderItem(db.Model):
 	__tablename__ = 'order_items'
 
@@ -33,3 +43,13 @@ class OrderItem(db.Model):
 
 	def __repr__(self):
 		return f"<OrderItem {self.order_item_id} - Product {self.product_id}>"
+
+	def to_dict(self):
+		return {
+			"order_item_id": self.order_item_id,
+			"order_id": self.order_id,
+			"product_id": self.product_id,
+			"quantity": self.quantity,
+			"price_at_purchase": float(self.price_at_purchase)
+		}
+
