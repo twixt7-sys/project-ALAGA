@@ -6,9 +6,9 @@
 │   ├── ✅ POST login                   # User Authentication       ✅ (email, password)   [access_token, user]
 │   └── ✅ GET me                       # Get Authenticated User    ✅ [id, username, email, role]
 │
-├── ✖ admin                         # Administrative endpoints
-│   ├── ✖ GET inventory                 # Detailed Products View    ✖ [products] <admin>
-│   └── ✖ GET reports/sales             # Sales Report Generation   ✖ {start_date, end_date} <admin>
+├── ✅ admin                         # Administrative endpoints
+│   ├── ✅ GET inventory                # Detailed Products View    ✅ [products] <admin>
+│   └── ✅ GET sales                    # Sales Report Generation   ✅ {start_date, end_date} <admin>
 │
 ├── ✅ products                     # Product endpoints
 │   ├── ✅ GET /                        # All Products List         ✖ {search, category, page, limit} [products]
