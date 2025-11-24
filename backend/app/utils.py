@@ -1,3 +1,12 @@
+from flask import jsonify
+
+
+def is_admin_role(claims: dict) -> bool:
+    return True if claims.get("role") == "admin" else False
+
+def error(error_msg: str, error_code: int):
+    return jsonify({"error": error_msg}), error_code
+
 def agonize():
     return ("""
     ⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿

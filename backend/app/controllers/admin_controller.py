@@ -1,6 +1,7 @@
 from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from ..services.admin_service import AdminService
+from ..utils import is_admin_role, error
 
 admin_bp = Blueprint("admin_bp", __name__)
 
@@ -10,11 +11,10 @@ def inventory():
 	user = get_jwt_identity()
 	claims = get_jwt()
 
-	# make into util functions
-	if claims.get("role") != "admin":
-		return jsonify({"error": "Unauthorized"}), 403
+	if is_admin_role(claims): return error("Unauthorized", 403)
 
 	products = AdminService.get_inventory()
+ 
 	return jsonify(products), 200
 
 @admin_bp.get("/reports/sales")
@@ -27,3 +27,4 @@ def sales_report():
 	end_date = request.args.get("end_date")
 	report = AdminService.get_sales_report(user["user_id"], start_date, end_date)
 	return jsonify(report), 200
+
