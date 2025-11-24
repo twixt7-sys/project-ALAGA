@@ -9,8 +9,8 @@ class Order(db.Model):
 	order_date = db.Column(db.DateTime, default=datetime.utcnow)
 	total_amount = db.Column(db.Numeric(10, 2), nullable=False, default=0)
 	status = db.Column(
-		db.Enum('Pending', 'Processing', 'Completed', 'Cancelled', name='order_status'),
-		default='Pending',
+		db.Enum('pending', 'processing', 'completed', 'cancelled', name='order_status'),
+		default='pending',
 		nullable=False
 	)
 

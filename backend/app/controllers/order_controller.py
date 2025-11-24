@@ -8,7 +8,7 @@ order_bp = Blueprint("order_bp", __name__)
 @jwt_required()
 def list_orders():
 	user = get_jwt_identity()
-	orders = OrderService.get_orders(user["user_id"])
+	orders = OrderService.get_orders(int(user))
 	return jsonify(orders), 200
 
 @order_bp.get("/<int:order_id>")
