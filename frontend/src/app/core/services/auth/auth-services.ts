@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 
 // handles API calls
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthServices {
   private base = 'http://localhost:5000/api';

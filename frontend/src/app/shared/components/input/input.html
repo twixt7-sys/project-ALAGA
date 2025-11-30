@@ -1,1 +1,9 @@
-<label>{{ label }}<input [type]="type||'text'" [placeholder]="placeholder"></label>
+<label>{{ label }}
+<input
+  [type]="type||'text'"
+  [placeholder]="placeholder"
+  [ngModel]="value"
+  (ngModelChange)="valueChange.emit($event)"
+>
+
+</label>

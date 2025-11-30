@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-input',
@@ -10,4 +10,7 @@ export class InputComponent {
   @Input() label: string = '';
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
+
+  @Input() value: string = '';
+  @Output() valueChange = new EventEmitter<string>();
 }
