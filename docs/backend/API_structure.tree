@@ -23,7 +23,7 @@
 │   ├── ✅ PUT items/{cart_item_id}     # Update Cart Item          ✅ (quantity) <customer>
 │   └── ✅ DELETE items/{cart_item_id}  # Remove Cart Item          ✅ <customer>
 │
-└── ✖ orders                        # Order endpoints
+└── ✅ orders                        # Order endpoints
     ├── ✅ POST checkout                # Create, Recount, Validate ✅ <customer>
     ├── ✅ GET /                        # All Orders List           ✅ [orders] <customer>
     ├── ✅ GET {id}                     # Get Order by ID           ✅ [order] <customer>

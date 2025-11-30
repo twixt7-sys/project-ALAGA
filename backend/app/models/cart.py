@@ -27,7 +27,6 @@ class Cart(db.Model):
 			"total_items": self.total_items()
 		}
 
-
 class CartItem(db.Model):
 	__tablename__ = 'cart_items'
 
