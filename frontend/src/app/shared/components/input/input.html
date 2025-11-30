@@ -2,8 +2,7 @@
 <input
   [type]="type||'text'"
   [placeholder]="placeholder"
-  [ngModel]="value"
-  (ngModelChange)="valueChange.emit($event)"
+  [value]="value"
+  (input)="valueChange.emit($any($event.target).value)"
 >
-
 </label>

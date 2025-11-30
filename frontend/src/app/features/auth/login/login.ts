@@ -14,24 +14,27 @@ import { AuthServices } from '../../../core/services';
 export class LoginComponent {
   @Input() classAppend: string = '';
 
-  username: string = '';
+  email: string = '';
   password: string = '';
   message: string = '';
 
-  constructor(private auth: AuthServices, route: Router){
+  constructor(private auth: AuthServices, private route: Router){
 
   }
 
   login() {
     this.auth.login({
-      username: this.username,
+      email: this.email,
       password: this.password
     }).subscribe({
       next: (res) => {
-        // success
+        alert('Login Successful');
+        localStorage.setItem('userId', res.userId);
+        localStorage.setItem('role', res.role);
+        this.route.navigate(res.role === 'admin' ? ['/admin'] : ['/customer']);
       },
       error: (err) => {
-        // error
+        alert('Login Failed: ' + err.error.message);
       }
     })
   }
