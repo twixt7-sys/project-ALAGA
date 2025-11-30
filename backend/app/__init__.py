@@ -90,7 +90,7 @@ def create_app():
                 }
             }
         }
-        # Use jsonify to return the dictionary as a proper JSON response
+
         return jsonify(api_structure)
 
     # blueprint registration
