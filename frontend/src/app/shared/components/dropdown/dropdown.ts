@@ -10,6 +10,6 @@ export class DropdownComponent {
   @Input() label: string = '';
   @Input() options: string[] = [];
 
-  @Input() value: string = '';
+  @Input() value = '';
   @Output() valueChange = new EventEmitter<string>();
 }

@@ -5,13 +5,14 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
+  standalone: true,
   imports: [ComponentsModule],
   templateUrl: './register.html',
   styleUrl: './register.scss',
 })
 export class RegisterComponent {
   @Input() label: string = 'Register';
-  @Input() options: string = '';
+  @Input() options: string[] = [];
   @Input() classAppend: string = '';
 
   username: string = '';
@@ -19,25 +20,29 @@ export class RegisterComponent {
   password: string = '';
   role: string = '';
 
-  constructor(private auth: AuthServices, private route: Router) {
-
-  }
+  constructor(private auth: AuthServices, private route: Router) {}
 
   register() {
+    const normalizedRole = this.role.toLowerCase();
+    
     this.auth.register({
       username: this.username,
       email: this.email,
       password: this.password,
-      role: this.role
+      role: normalizedRole
     }).subscribe({
       next: (res) => {
-        alert('register success')
-        // success
+        localStorage.setItem('userId', res.userId);
+        localStorage.setItem('role', res.role);
+        this.auth.login({
+          username: this.username,
+          email: this.email
+        })
       },
       error: (err) => {
-        alert('register error')
-        // error
+        console.log(err.error);
+        alert('Registration failed: ' + JSON.stringify(err.error));
       }
-    })
+    });
   }
 }
