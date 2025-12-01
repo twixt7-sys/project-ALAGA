@@ -1,8 +1,28 @@
 <form class="{{classAppend}}">
-	<app-input  label="Username" placeholder="johndoe"></app-input>
-	<app-input label="Email" placeholder="your@email.com"></app-input>
-	<app-input label="Password" type="password"></app-input>
-	<app-dropdown label="Account Type" [options]="['Customer','Admin']"></app-dropdown>
+	<app-input
+    label="Username"
+    placeholder="johndoe"
+    [(value)]="username"
+    >
+  </app-input>
+	<app-input
+    label="Email"
+    placeholder="your@email.com"
+    [(value)]="email"
+  >
+  </app-input>
+	<app-input
+    label="Password"
+    type="password"
+    [(value)]="password"
+  >
+  </app-input>
+	<app-dropdown
+    label="Account Type"
+    [options]="['Customer','Admin']"
+    [(value)]="role"
+  >
+  </app-dropdown>
   <br>
   <br>
   <div class="w-100 d-flex justify-content-center align-items-center">
