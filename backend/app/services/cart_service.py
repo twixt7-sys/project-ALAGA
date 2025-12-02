@@ -24,14 +24,14 @@ class CartService:
 		if not product:
 			return {"error": "Product not found"}, 404
 
-		if product.stock < quantity:
+		if product.stock_quantity < quantity:
 			return {"error": "Insufficient stock"}, 400
 
-		item = CartItem.query.filter_by(cart_id=cart.id, product_id=product_id).first()
+		item = CartItem.query.filter_by(cart_id=cart.cart_id, product_id=product_id).first()
 		if item:
 			item.quantity += quantity
 		else:
-			item = CartItem(cart_id=cart.id, product_id=product_id, quantity=quantity)
+			item = CartItem(cart_id=cart.cart_id, product_id=product_id, quantity=quantity)
 			db.session.add(item)
 		db.session.commit()
 		return cart.to_dict()

@@ -1,0 +1,38 @@
+### create product
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "Asus Zenbook Duo 2025",
+  "description": "A high-performance laptop",
+  "category": "Electronics",
+  "price": 1500,
+  "stock_quantity": 10,
+  "image_url": "https://cdn.mos.cms.futurecdn.net/tmorTeJxdHu6zvh6oVxGoQ.jpg"
+}
+
+### create product
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "ASUS Zenbook Duo 2025",
+  "description": "vvvvvvvvv cool laptop",
+  "category": "gadgets",
+  "price": 149000,
+  "stock_quantity": 1,
+  "image_url": "https://shop.villman.com/cdn/shop/files/1_6e5497e4-0874-4345-b28d-e38bd48134bd_1024x.png?v=1715163547"
+}
+
+### create product
+POST http://localhost:5000/api/products
+Content-Type: application/json
+
+{
+  "name": "Asus Zenbook Duo 2025 (2)",
+  "description": "A high-performance laptop",
+  "category": "Electronics",
+  "price": 1500,
+  "stock_quantity": 10,
+  "image_url": "https://cdn.mos.cms.futurecdn.net/tmorTeJxdHu6zvh6oVxGoQ.jpg"
+}

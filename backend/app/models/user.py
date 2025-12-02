@@ -8,7 +8,7 @@ class User(db.Model):
 	username = db.Column(db.String(80), unique=True, nullable=False)
 	password = db.Column(db.String(255), nullable=False)
 	email = db.Column(db.String(120), unique=True, nullable=False)
-	role = db.Column(db.Enum('business_owner', 'customer', name='user_roles'), nullable=False)
+	role = db.Column(db.Enum('admin', 'customer', name='user_roles'), nullable=False)
 	date_joined = db.Column(db.DateTime, default=datetime.utcnow)
 
 	orders = db.relationship('Order', backref='user', lazy=True)

@@ -12,18 +12,18 @@ class OrderService:
 
 		order = Order(user_id=user_id, status="pending")
 		db.session.add(order)
-		db.session.flush()  # get order.id early
+		db.session.flush()
 
 		for item in cart.items:
 			product = Product.query.get(item.product_id)
-			if product.stock < item.quantity:
+			if product.stock_quantity < item.quantity:
 				return {"error": f"Insufficient stock for {product.name}"}, 400
-			product.stock -= item.quantity
-			db.session.add(OrderItem(order_id=order.id, product_id=item.product_id, quantity=item.quantity, price=product.price))
+			product.stock_quantity -= item.quantity
+			db.session.add(OrderItem(order_id=order.order_id, product_id=item.product_id, quantity=item.quantity, price_at_purchase=product.price))
 			db.session.delete(item)
 
 		db.session.commit()
-		return {"message": "Order placed successfully", "order_id": order.id}
+		return {"message": "Order placed successfully", "order_id": order.order_id}
 
 	@staticmethod
 	def get_orders(user_id):
@@ -32,7 +32,7 @@ class OrderService:
 
 	@staticmethod
 	def get_order(order_id, user_id):
-		order = Order.query.filter_by(id=order_id, user_id=user_id).first()
+		order = Order.query.filter_by(order_id=order_id, user_id=user_id).first()
 		return order.to_dict() if order else None
 
 	@staticmethod

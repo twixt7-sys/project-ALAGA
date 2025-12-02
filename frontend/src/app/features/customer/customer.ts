@@ -1,16 +1,11 @@
-import { Component, Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-customer',
-  standalone: true,
-  imports: [FormsModule],
+  imports: [],
   templateUrl: './customer.html',
   styleUrl: './customer.scss',
 })
 export class Customer {
-  name: string = '';
-  setValue() {
-    this.name = '';
-  }
+
 }

@@ -23,7 +23,7 @@ def create_app():
                         "description": "List products",
                         "query_params": ["search", "category", "page", "limit"]
                     },
-                    "GET /api/products/<id>": { # Use standard Flask syntax for path variables
+                    "GET /api/products/<id>": {
                         "description": "Get product by ID"
                     },
                     "POST /api/products": {

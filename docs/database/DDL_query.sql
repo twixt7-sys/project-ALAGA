@@ -65,7 +65,7 @@ CREATE TABLE inventory_logs (
 
 CREATE TABLE sales_reports (
   report_id INT AUTO_INCREMENT PRIMARY KEY,
-  generated_by INT NOT NULL,
+  generated_by INT NULL,
   date_generated DATETIME DEFAULT CURRENT_TIMESTAMP,
   total_sales DECIMAL(12,2),
   total_orders INT,

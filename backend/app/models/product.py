@@ -19,3 +19,15 @@ class Product(db.Model):
 
 	def __repr__(self):
 		return f"<Product {self.name}>"
+
+	def to_dict(self):
+		return {
+			"product_id": self.product_id,
+			"name": self.name,
+			"description": self.description,
+			"category": self.category,
+			"price": float(self.price) if self.price is not None else None,
+			"stock_quantity": self.stock_quantity,
+			"image_url": self.image_url,
+			"date_added": self.date_added.isoformat() if self.date_added else None
+		}

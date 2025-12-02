@@ -9,11 +9,11 @@ auth_bp = Blueprint("auth_bp", __name__)
 @auth_bp.post("/register")
 def register():
 	data = request.get_json()
+
 	username = data.get("username")
 	email = data.get("email")
 	password = data.get("password")
 	role = data.get("role")
-
 
 	if not all([username, email, password]):
 		return jsonify({"error": "Missing fields"}), 400
@@ -31,6 +31,7 @@ def register():
 @auth_bp.post("/login")
 def login():
 	data = request.get_json()
+
 	email = data.get("email")
 	password = data.get("password")
 
@@ -38,14 +39,18 @@ def login():
 	if not user or not pbkdf2_sha256.verify(password, user.password):
 		return jsonify({"error": "Invalid credentials"}), 401
 
-	access_token = create_access_token(identity={"user_id": user.user_id, "role": user.role})
+	access_token = create_access_token(
+		identity=str(user.user_id),
+		additional_claims={"role": user.role}
+	)
+
 	return jsonify({"access_token": access_token, "user": user.to_dict()}), 200
 
 @auth_bp.get("/me")
 @jwt_required()
 def get_me():
-	user_identity = get_jwt_identity()
-	user = User.query.get(user_identity["user_id"])
+	user_id = get_jwt_identity()
+	user = User.query.get(user_id)
 	if not user:
 		return jsonify({"error": "User not found"}), 404
 	return jsonify(user.to_dict()), 200

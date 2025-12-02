@@ -17,6 +17,7 @@ class Config:
 	# jwt auth
 	JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "jwt-secret-key")
 	JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=int(os.getenv("JWT_EXPIRES_HOURS", 2)))
+	JWT_IDENTITY_CLAIM = "user_id"
 
 	# cors
 	CORS_ORIGINS = os.getenv("CORS_ORIGINS", "*")

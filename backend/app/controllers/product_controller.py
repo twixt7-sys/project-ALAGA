@@ -1,5 +1,5 @@
 from flask import Blueprint, request, jsonify
-from flask_jwt_extended import jwt_required, get_jwt_identity
+from flask_jwt_extended import jwt_required, get_jwt_identity, get_jwt
 from ..services.product_service import ProductService
 
 product_bp = Blueprint("product_bp", __name__)
@@ -21,9 +21,13 @@ def get_product(product_id):
 @jwt_required()
 def add_product():
 	user = get_jwt_identity()
-	if user["role"] != "business_owner":
+	claims = get_jwt()
+
+	if claims.get("role") != "admin":
 		return jsonify({"error": "Unauthorized"}), 403
+	
 	data = request.get_json()
+	
 	product = ProductService.create(data)
 	return jsonify(product), 201
 
@@ -31,10 +35,13 @@ def add_product():
 @jwt_required()
 def edit_product(product_id):
 	user = get_jwt_identity()
-	if user["role"] != "business_owner":
-		return jsonify({"error": "Unauthorized"}), 403
+	claims = get_jwt()
 	data = request.get_json()
 	product = ProductService.update(product_id, data)
+
+	if claims.get("role") != "admin":
+		return jsonify({"error": "Unauthorized"}), 403
+
 	if not product:
 		return jsonify({"error": "Product not found"}), 404
 	return jsonify(product), 200
@@ -43,7 +50,9 @@ def edit_product(product_id):
 @jwt_required()
 def remove_product(product_id):
 	user = get_jwt_identity()
-	if user["role"] != "business_owner":
+	claims = get_jwt()
+
+	if claims.get("role") != "admin":
 		return jsonify({"error": "Unauthorized"}), 403
 	success = ProductService.delete(product_id)
 	if not success:
