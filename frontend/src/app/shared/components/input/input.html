@@ -1,1 +1,8 @@
-<label>{{ label }}<input [type]="type||'text'" [placeholder]="placeholder"></label>
+<label>{{ label }}
+<input
+  [type]="type||'text'"
+  [placeholder]="placeholder"
+  [value]="value"
+  (input)="valueChange.emit($any($event.target).value)"
+>
+</label>
