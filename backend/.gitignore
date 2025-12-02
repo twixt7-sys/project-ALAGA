@@ -1,9 +1,3 @@
 /.venv
-<<<<<<< Updated upstream
 extensions.py
 .env
-=======
-.env
-/app/__pycache__
-__pycache__
->>>>>>> Stashed changes
