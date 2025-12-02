@@ -31,7 +31,8 @@ export class LoginComponent {
         alert('Login Successful');
         localStorage.setItem('userId', res.userId);
         localStorage.setItem('role', res.role);
-        this.route.navigate(res.role === 'admin' ? ['/admin'] : ['/customer']);
+        alert("routed to: " + res.role === 'admin' ? ['admin'] : ['customer']);
+        this.route.navigate(res.role === 'admin' ? ['admin'] : ['customer']);
       },
       error: (err) => {
         alert('Login Failed: ' + err.error.message);

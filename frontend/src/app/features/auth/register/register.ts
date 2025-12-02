@@ -32,11 +32,22 @@ export class RegisterComponent {
       role: normalizedRole
     }).subscribe({
       next: (res) => {
-        localStorage.setItem('userId', res.userId);
-        localStorage.setItem('role', res.role);
+          localStorage.setItem('userId', res.userId);
+          localStorage.setItem('role', res.role);
         this.auth.login({
-          username: this.username,
-          email: this.email
+          email: this.email,
+          password: this.password
+        }).subscribe({
+          next: (res) => {
+            alert('Login Successful');
+            localStorage.setItem('userId', res.userId);
+            localStorage.setItem('role', res.role);
+            alert("routed to: " + res.role === 'admin' ? ['admin'] : ['customer']);
+            this.route.navigate(res.role === 'admin' ? ['admin'] : ['customer']);
+          },
+          error: (err) => {
+            alert('Login failed: ' + JSON.stringify(err.error));
+          }
         })
       },
       error: (err) => {
