@@ -35,14 +35,15 @@ export class LoginComponent {
         });
         localStorage.setItem('userId', res.userId);
         localStorage.setItem('role', res.role);
-        this.route.navigate(res.role === 'admin' ? ['admin'] : ['customer']);
+        alert(res.user);
+        this.route.navigate(res.user.role === 'admin' ? ['/admin'] : ['/customer']);
       },
       error: (err) => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
-          text: "Something went wrong!",
-          footer: '<a href="#">Why do I have this issue?</a>'
+          text: `${err.message}`,
+          footer: `<a href="#">Why do I have this issue?</a>` 
         });
       }
     })
