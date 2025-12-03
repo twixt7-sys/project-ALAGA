@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output, Input } from '@angular/core';
 import { ComponentsModule } from '../../../shared/components/components-module';
 import { AuthServices } from '../../../core/services';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-register',
@@ -32,7 +33,11 @@ export class RegisterComponent {
       role: normalizedRole
     }).subscribe({
       next: (res) => {
-        alert('Registration successful!');
+        Swal.fire({
+          title: "Success!",
+          text: "User Logged in!",
+          icon: "success"
+        });
         localStorage.setItem('userId', res.userId);
         localStorage.setItem('role', res.role);
         this.auth.login({
@@ -42,7 +47,12 @@ export class RegisterComponent {
       },
       error: (err) => {
         console.log(err.error);
-        alert('Registration failed: ' + JSON.stringify(err.error));
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="#">Why do I have this issue?</a>'
+        });
       }
     });
   }

@@ -35,10 +35,15 @@ export class LoginComponent {
         });
         localStorage.setItem('userId', res.userId);
         localStorage.setItem('role', res.role);
-        this.route.navigate(res.role === 'admin' ? ['/admin'] : ['/customer']);
+        this.route.navigate(res.role === 'admin' ? ['admin'] : ['customer']);
       },
       error: (err) => {
-        alert('Login Failed: ' + err.error.message);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="#">Why do I have this issue?</a>'
+        });
       }
     })
   }

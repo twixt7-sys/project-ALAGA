@@ -1,384 +1,69 @@
-@use "sass:color";
+$primary: #8B6B4F;
+$secondary: #F5E6CC;
+$accent: #D99873;
+$background: #FAF8F5;
+$text-primary: #3C3C3C;
+$text-secondary: #7A7A7A;
 
-// ============== VARIABLES =========================
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 6rem;
+  background: $background;
+  min-height: 100vh;
 
-$border-size: 1000px;
-
-$header-bg: linear-gradient(to top, #ea7152, #d3976a);
-$nav-bg: #bc936a;
-$text-color: #5e3e1a;
-$accent: #7b6149;
-$accent-hover: #b08054;
-$ivory: #ffca95;
-$product-gradient: linear-gradient(to top, #ffca95, #ffe5b7);
-$shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-$hover-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-
-// =================== MIXINS =======================
-@mixin flex-center($direction: row, $justify: center, $align: center) {
-	display: flex;
-	flex-direction: $direction;
-	justify-content: $justify;
-	align-items: $align;
+  @media (max-width: 900px) {
+    flex-direction: column;
+    text-align: center;
+    padding: 3rem;
+  }
 }
 
-@mixin button-style($bg, $color, $hover-bg: null) {
-	background-color: $bg;
-	color: $color;
-	padding: 10px 40px;
-	border-radius: 5px;
-	text-decoration: none;
-	text-align: center;
-	border: none;
-	cursor: pointer;
-	transition: all 0.25s ease;
+.content {
+  max-width: 480px;
 
-	@if $hover-bg {
-		&:hover {
-			background-color: $hover-bg;
-			transform: translateY(-3px);
-			box-shadow: $hover-shadow;
-		}
+  .title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: $text-primary;
 
-		&:active {
-			transform: translateY(0);
-			box-shadow: $shadow;
-		}
-	}
+    .brand {
+      color: $primary;
+    }
+  }
+
+  .subtitle {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: $text-secondary;
+  }
+
+  .cta-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    background: $primary;
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: 0.2s;
+
+    &:hover {
+      background: $accent;
+      transform: translateY(-3px);
+    }
+  }
 }
 
-@mixin card-style($bg, $opacity: 1) {
-	background: $bg;
-	opacity: $opacity;
-	border-radius: 5px;
-	box-shadow: $shadow;
-	transition: all 0.3s ease;
-}
+.image-wrapper {
+  .hero-img {
+    max-width: 400px;
+    border-radius: 1.5rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  }
 
-@mixin margin-padding($m1: 0, $m2: 0, $p: 0, $p2: 0) {
-	margin: $m1 $m2;
-	padding: $p $p2;
-}
-
-@mixin container() {
-	@include flex-center(column);
-	@include margin-padding(50px, 0, 45px, 50px);
-	width: 60%;
-	height: 80%;
-	box-shadow: $shadow;
-	background: linear-gradient(to bottom right, $ivory, #ffe5b7);
-	border-radius: 24px;
-	gap: 12px;
-}
-
-// ============GLOBAL STYLES===============
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Poppins', sans-serif;
-}
-
-body {
-	width: 100vw;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	background: url('../../../assets/images/background.png') no-repeat center/cover;
-	color: $text-color;
-	overflow: hidden;
-
-	header {
-		@include flex-center(row, space-between);
-		background: $header-bg;
-		padding: 5px 25px;
-		box-shadow: $shadow;
-		#search {
-			border-radius: 25px;
-			border: solid;
-			border-width: 1.5px;
-			border-color: #ffca95;
-			width: 30%;
-			height: 50%;
-			display: flex;
-			align-items: center;
-			background-color: #ffca95;
-			opacity: 0.5;
-			padding: 3px;
-			svg {
-				height: 100%;
-			}
-			input {
-				height: 100%;
-				width: 100%;
-				background-color: #FFF0;
-				border: none;
-				outline: none;
-			}
-		}
-
-		#logo {
-			height: 50px;
-			transition: transform 0.3s ease;
-
-			&:hover {
-				transform: scale(1.05);
-			}
-		}
-
-		nav {
-			@include flex-center(row, flex-start);
-			gap: 0.5rem;
-			z-index: 1;
-
-			a {
-				color: white;
-				text-decoration: none;
-				font-size: 0.8rem;
-				font-weight: 500;
-				position: relative;
-				transition: color 0.3s ease;
-                padding: 5px 10px;
-                border-radius: 3px;
-
-				&::after {
-					content: "";
-					position: absolute;
-					left: 0;
-					bottom: -2px;
-					width: 0%;
-					height: 2px;
-					background: white;
-					transition: width 0.3s ease;
-				}
-
-				&:hover {
-					color: #ffe5b7;
-
-					&::after {
-						width: 100%;
-					}
-				}
-			}
-		}
-	}
-
-	main {
-		@include flex-center(column, center, stretch);
-		width: 100%;
-		height: 100%;
-		flex: 1;
-		position: relative;
-
-		&::before,
-		&::after {
-			content: "";
-			position: fixed;
-			background-size: contain;
-			z-index: -1;
-		}
-
-		&::before {
-			left: 0;
-			bottom: 0;
-			width: $border-size;
-			height: $border-size;
-			background: url('../../../assets/images/border_BL.png') no-repeat bottom left;
-		}
-
-		&::after {
-			top: 10vh;
-			right: 0;
-			width: $border-size;
-			height: $border-size;
-			background: url('../../../assets/images/border_UR.png') no-repeat top right;
-		}
-
-		#hero {
-			@include flex-center(row, center, stretch);
-			width: 100%;
-			height: 100%;
-
-			.hero-content {
-				@include flex-center(row, center, stretch);
-				width: 100%;
-				height: 100%;
-
-				.hero-left {
-					flex: 1;
-					min-width: 400px;
-					position: relative;
-
-					img {
-						position: absolute;
-						top: 15px;
-						left: 55px;
-						height: 180%;
-						transition: transform 0.4s ease;
-					}
-
-					#btn-placeholder {
-						position: relative;
-						top: 60vh;
-                        left: -5vh;
-						width: 55vw;
-						height: 15vh;
-
-						a {
-							@include button-style($accent, #ffe5b7, $accent-hover);
-                            background: linear-gradient(to right, color.adjust($accent, $lightness: 20%), $accent);
-							border-width: 3px;
-                            border-style: solid;
-                            border-color: color.adjust($accent, $lightness: 40%);
-                            padding-left: 33vw;
-							position: relative;
-						}
-					}
-				}
-
-				.hero-right {
-					flex: 1;
-
-					h4 {
-						color: #d44;
-						position: absolute;
-						top: 21vh;
-						left: 42vw;
-					}
-
-                    .subtext-logo {
-                        position: absolute;
-                        top: 0vh;
-                        left: 38vw;
-                        height: 40vh;
-                        transition: transform 0.4s ease;
-
-                        &:hover {
-                            transform: scale(1.05);
-                        }
-                    }
-
-					img {
-						display: flex;
-						position: relative;
-						padding-left: 60px;
-						padding-top: 5vh;
-						height: 90%;
-						transition: transform 0.4s ease;
-
-						&:hover {
-							transform: scale(1.05);
-						}
-					}
-				}
-			}
-		}
-
-		#products-list {
-			@include flex-center(row, center, flex-start);
-			flex-wrap: wrap;
-			width: 100%;
-			height: 95%;
-			margin-top: -25px;
-			gap: 12px;
-			padding: 12px 48px;
-			overflow-y: auto;
-			scroll-behavior: smooth;
-
-			.product-card {
-				@include flex-center(column);
-				@include card-style($product-gradient, 0.85);
-				width: 160px;
-				height: 275px;
-				padding: 12px;
-				cursor: pointer;
-
-				transition: all 0.25s ease;
-
-				&:hover {
-					transform: translateY(-6px) scale(1.03);
-					box-shadow: $hover-shadow;
-				}
-
-				.img-holder {
-					@include flex-center();
-					width: 100%;
-					height: 50%;
-					border-radius: 5px;
-					overflow: hidden;
-
-					img {
-						max-width: 100%;
-						max-height: 100%;
-						object-fit: contain;
-						transition: transform 0.3s ease, filter 0.3s ease;
-                        border-radius: 5px;
-
-						.product-card:hover & {
-							transform: scale(1.1);
-							filter: brightness(1.1);
-						}
-					}
-				}
-
-				.descript-holder {
-					display: flex;
-					flex-direction: column;
-					gap: 8px;
-
-					h5 {
-						color: $accent;
-					}
-				}
-
-				.card-btn {
-					align-self: flex-end;
-					@include button-style($text-color, #ffca95, $accent);
-					padding: 5px 10px;
-					margin-top: 8px;
-				}
-			}
-		}
-        #about {
-            @include flex-center(row, center, center);
-            #container {
-                @include container();
-				text-align: center;
-				article{
-					gap: 12px;
-				}
-            }
-        }
-		#contact {
-			@include flex-center(row, center, center);
-			#container {
-				@include container();
-				text-align: center;
-				form{
-					@include flex-center(column, center, center);
-					gap: 4px;
-					width: 100%;
-					input, textarea {
-						@include margin-padding(0px, 0px, 12px, 12px);
-						background-color: #fdedd3;
-						border-radius: 6px;
-						width: 80%;
-						border: none;
-					}
-					#submit {
-						@include button-style(#fff, #ffca95, $accent);
-						background-color: #bc936a;
-					}
-				}
-			}
-		}
-	}
-	footer {
-		@include flex-center(row, flex-end, center);
-		background: $header-bg;
-		padding: 5px 50px;
-		box-shadow: $shadow;
-		font-weight: 100;
-		font-size: xx-small;
-	}
+  @media (max-width: 900px) {
+    margin-top: 3rem;
+  }
 }
