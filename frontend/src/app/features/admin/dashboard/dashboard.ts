@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Chart, registerables } from 'chart.js';
 import { AdminService } from '../../../core/services/admin/admin.service';
 import { OrdersService } from '../../../core/services/order/order.service';
-import { ProductsService } from '../../services/products.service';
+import { ProductService } from '../../../core/services/product/product.service';
 
 Chart.register(...registerables);
 
@@ -11,8 +11,8 @@ Chart.register(...registerables);
   selector: 'app-dashboard',
   standalone: true,
   imports: [CommonModule],
-  templateUrl: './admin-dashboard.component.html',
-  styleUrls: ['./admin-dashboard.component.css']
+  templateUrl: './dashboard.html',
+  styleUrls: ['./dashboard.scss']
 })
 export class AdminDashboardComponent implements OnInit {
 
@@ -28,7 +28,7 @@ export class AdminDashboardComponent implements OnInit {
   constructor(
     private adminService: AdminService,
     private ordersService: OrdersService,
-    private productService: ProductsService
+    private productService: ProductService
   ) {}
 
   ngOnInit() {
