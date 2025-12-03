@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Chart, registerables } from 'chart.js';
 import { AdminService } from '../../../core/services/admin/admin.service';
-import { OrdersService } from '../../services/orders.service';
+import { OrdersService } from '../../../core/services/order/order.service';
 import { ProductsService } from '../../services/products.service';
 
 Chart.register(...registerables);
