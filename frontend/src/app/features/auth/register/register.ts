@@ -18,7 +18,7 @@ export class RegisterComponent {
   username: string = '';
   email: string = '';
   password: string = '';
-  role: string = '';
+  role: string = 'customer';
 
   constructor(private auth: AuthServices, private route: Router) {}
 
