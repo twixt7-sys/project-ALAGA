@@ -32,26 +32,41 @@ export class RegisterComponent {
       password: this.password,
       role: normalizedRole
     }).subscribe({
-      next: (res) => {
+      next: () => {
         Swal.fire({
-          title: "Success!",
-          text: "User Logged in!",
+          title: "Account Created!",
+          text: "You can now log in.",
           icon: "success"
         });
-        localStorage.setItem('userId', res.userId);
-        localStorage.setItem('role', res.role);
+
+        // Auto-login immediately after registration
         this.auth.login({
-          username: this.username,
-          email: this.email
-        })
+          email: this.email,
+          password: this.password
+        }).subscribe({
+          next: (res) => {
+            // Store JWT ONLY (not userId, not role)
+            localStorage.setItem('access_token', res.access_token);
+
+            // Decode role using your existing auth service
+            const user = this.auth.getCurrentUser();
+
+            this.route.navigate(user?.role === 'admin' ? ['/admin'] : ['/customer']);
+          },
+          error: (err) => {
+            Swal.fire({
+              icon: "error",
+              title: "Login Failed",
+              text: err.error?.message || "Unable to log in after registration."
+            });
+          }
+        });
       },
       error: (err) => {
-        console.log(err.error);
         Swal.fire({
           icon: "error",
-          title: "Oops...",
-          text: `${err.message}`,
-          footer: `<a href="#">Why do I have this issue?</a>` 
+          title: "Registration Failed",
+          text: err.error?.message || err.message
         });
       }
     });

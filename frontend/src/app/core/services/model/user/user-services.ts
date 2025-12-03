@@ -5,7 +5,5 @@ import { UserRole } from '../../../models/user.model';
   providedIn: 'root',
 })
 export class UserServices {
-  role(isAdmin: boolean): UserRole {
-    return isAdmin ? 'admin' : 'customer';
-  }
+  
 }

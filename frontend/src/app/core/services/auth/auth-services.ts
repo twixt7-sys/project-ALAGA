@@ -27,14 +27,29 @@ export class AuthServices {
   }
 
   isLoggedIn() {
-    if (!localStorage.getItem('userId')) {
-      inject(Router).navigate(['/login']);
-      return false;
-    }
-    return true;
+    return !!localStorage.getItem('userId');
   }
 
-  getRole() {
-    return inject(UserServices).role(true);
+  getCurrentUser() {
+    const token = localStorage.getItem('access_token');
+    if (!token) return null;
+
+    const payload = this.decodeToken(token);
+    if (!payload) return null;
+
+    return {
+      userId: payload.userId || payload.sub,
+      role: payload.role
+    };
   }
+
+  private decodeToken(token: string) {
+    try {
+      return JSON.parse(atob(token.split('.')[1]));
+    } catch {
+      return null;
+    }
+  }
+
+  
 }
