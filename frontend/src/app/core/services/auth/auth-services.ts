@@ -4,7 +4,6 @@ import { UserServices } from '../model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-// handles API calls
 @Injectable({
   providedIn: 'root'
 })

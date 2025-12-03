@@ -28,9 +28,9 @@ export class LoginComponent {
       password: this.password
     }).subscribe({
       next: (res) => {
-        alert('Login Successful');
         localStorage.setItem('userId', res.userId);
         localStorage.setItem('role', res.role);
+        alert(res.user)
         this.route.navigate(res.role === 'admin' ? ['/admin'] : ['/customer']);
       },
       error: (err) => {
