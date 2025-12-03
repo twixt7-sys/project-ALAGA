@@ -23,7 +23,7 @@ export const routes: Routes = [
     },
     {
       path: 'admin',
-      component: Admin,
+      loadComponent: () => import('./features/admin/admin.component').then(m => m.Admin),
       canActivate: [authGuard, adminGuard]
     }
 ];
