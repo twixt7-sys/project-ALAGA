@@ -24,7 +24,7 @@ export class RegisterComponent {
 
   register() {
     const normalizedRole = this.role.toLowerCase();
-    
+
     this.auth.register({
       username: this.username,
       email: this.email,
@@ -32,6 +32,7 @@ export class RegisterComponent {
       role: normalizedRole
     }).subscribe({
       next: (res) => {
+        alert('Registration successful!');
         localStorage.setItem('userId', res.userId);
         localStorage.setItem('role', res.role);
         this.auth.login({
