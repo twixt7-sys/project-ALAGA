@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output, Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { ComponentsModule } from '../../../shared/components/components-module';
 import { AuthServices } from '../../../core/services';
-
+import Swal from 'sweetalert2'
 
 @Component({
   selector: 'app-login',
@@ -28,9 +28,13 @@ export class LoginComponent {
       password: this.password
     }).subscribe({
       next: (res) => {
+        Swal.fire({
+          title: "Success!",
+          text: "User Logged in!",
+          icon: "success"
+        });
         localStorage.setItem('userId', res.userId);
         localStorage.setItem('role', res.role);
-        alert(res.user)
         this.route.navigate(res.role === 'admin' ? ['/admin'] : ['/customer']);
       },
       error: (err) => {
