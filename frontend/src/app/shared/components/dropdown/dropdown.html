@@ -1,9 +1,17 @@
-<label>{{ label }}
-	<select [value]="value" (change)="valueChange.emit($any($event.target).value)">
+<label
+  [for]="label"
+>
+  {{ label }}
+  <select
+    class="form-select"
+    [value]="value"
+    (change)="valueChange.emit($any($event.target).value)"
+    [id]="label"
+  >
     @for (o of options; track o) {
       <option [value]="o">{{ o }}</option>
     } @empty {
       <option>No options available</option>
     }
-	</select>
+  </select>
 </label>
