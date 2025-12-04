@@ -1,11 +1,63 @@
-<div class="customer-container d-flex justify-content-center align-items-center flex-column">
-    <div class="w-50 h-50 customer-card d-flex justify-content-center flex-column" >
-        <h1>Temporary Angular Playground</h1>
-        <div class="flex-column d-flex justify-content-center align-items-center">
-            <input [(ngModel)]="name"/>
-            <p>Value: {{ name }}</p>
-            <button (click)="setValue()">RESET</button>
-        </div>
+<div class="shop-container">
+
+  <h2>Browse Our Products</h2>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search for products..."
+      [value]="searchTerm"
+      (input)="onSearch($event)"
+    />
+  </div>
+
+  <div class="category-row">
+    @for (c of categories; track c) {
+      <button
+        [class.active]="activeCategory === c"
+        (click)="filterCategory(c)"
+      >
+        {{ c }}
+      </button>
+    }
+  </div>
+
+  <div class="product-grid">
+
+    @for (p of filtered; track p.id) {
+
+      <div class="product-card">
         
-    </div>
+        <div class="img-wrap">
+          <img
+            [src]="p.imageUrl ?? 'assets/images/placeholder.png'"
+            [alt]="p.name"
+          />
+        </div>
+
+        <div class="details">
+          <h3>{{ p.name }}</h3>
+          <p>{{ p.description }}</p>
+
+          <div class="meta">
+            <span class="price">${{ p.price }}</span>
+            <span class="stock">Stock: {{ p.stockQuantity }}</span>
+          </div>
+
+          @if (p.stockQuantity > 0) {
+            <button class="add-btn">
+              Add to Cart
+            </button>
+          } @else {
+            <button class="add-btn" disabled>
+              Out of Stock
+            </button>
+          }
+        </div>
+
+      </div>
+
+    }
+
+  </div>
 </div>
