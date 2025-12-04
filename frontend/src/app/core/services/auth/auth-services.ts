@@ -18,19 +18,23 @@ export class AuthServices {
     return this.http.post(`${this.base}/login`, data);
   }
 
-  logout(): Observable<any> {
-    return this.http.post(`${this.base}/logout`, {})
+  logout() {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
   }
 
   register(data: any): Observable<any> {
     return this.http.post(`${this.base}/register`, data);
   }
 
-  isLoggedIn() {
-    if (!localStorage.getItem('userId')) {
-      inject(Router).navigate(['/login']);
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('access_token');
+
+    if (!token) {
+      inject(Router).navigate(['/auth']);
       return false;
     }
+
     return true;
   }
 
