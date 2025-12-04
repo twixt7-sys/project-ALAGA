@@ -38,7 +38,16 @@ export class AuthServices {
     return true;
   }
 
-  getRole() {
-    return inject(UserServices).role(true);
+  isAdmin() {
+    return this.getRole() == 'admin' ? true : false;
+  }
+
+  getRole(): string | null {
+    const user = localStorage.getItem('user');
+    if (user) {
+      const parsedUser = JSON.parse(user);
+      return parsedUser.role;
+    }
+    return null;
   }
 }
