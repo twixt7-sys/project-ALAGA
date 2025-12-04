@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
   selector: 'app-customer',
   standalone: true,
   imports: [FormsModule],
+  imports: [CommonModule],
   templateUrl: './customer.html',
   styleUrl: './customer.scss',
 })
