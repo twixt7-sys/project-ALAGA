@@ -30,12 +30,11 @@ export class LoginComponent {
       next: (res) => {
         Swal.fire({
           title: "Success!",
-          text: "User Logged in!",
+          text: "User Logged in as " + res.user.role + "!",
           icon: "success"
         });
         localStorage.setItem('access_token', res.access_token); // token storage
         localStorage.setItem('user', JSON.stringify(res.user)); // user storage
-        // role based navigation
         this.route.navigate(res.user.role === 'admin' ? ['/admin'] : ['/customer']);
       },
       error: (err) => {
