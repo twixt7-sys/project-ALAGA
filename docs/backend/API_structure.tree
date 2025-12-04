@@ -1,7 +1,7 @@
 #=== tested: ✅ | untested: ✖ ==================================== (input) | [output] | {parameter} | <allowed> ===#
 
 ✅ api                          # Root endpoint
-├── ✅ auth                         # Auth endpoints
+├── ✅ auth                          # Auth endpoints
 │   ├── ✅ POST register                # User Creation             ✅ (username, email, password, role)
 │   ├── ✅ POST login                   # User Authentication       ✅ (email, password)   [access_token, user]
 │   └── ✅ GET me                       # Get Authenticated User    ✅ [id, username, email, role]

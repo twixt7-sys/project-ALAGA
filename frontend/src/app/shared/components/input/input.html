@@ -1,1 +1,14 @@
-<label>{{ label }}<input [type]="type||'text'" [placeholder]="placeholder"></label>
+<label
+  class="form-label"
+  [for]="label"
+>
+{{ label }}
+<input
+  class="form-control"
+  [id]="label"
+  [type]="type||'text'"
+  [placeholder]="placeholder"
+  [value]="value"
+  (input)="valueChange.emit($any($event.target).value)"
+>
+</label>

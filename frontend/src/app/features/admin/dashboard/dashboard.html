@@ -1,1 +1,61 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+
+  <h2>Dashboard Overview</h2>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <p>Total Revenue</p>
+      <h3>${{ totalRevenue }}</h3>
+      <span>All time earnings</span>
+    </div>
+
+    <div class="stat-card">
+      <p>Total Orders</p>
+      <h3>{{ totalOrders }}</h3>
+      <span>Orders placed</span>
+    </div>
+
+    <div class="stat-card">
+      <p>Products</p>
+      <h3>{{ productCount }}</h3>
+      <span>In inventory</span>
+    </div>
+
+    <div class="stat-card">
+      <p>Low Stock</p>
+      <h3>{{ lowStockCount }}</h3>
+      <span>Products below 10 units</span>
+    </div>
+  </div>
+
+  <div class="charts-row">
+    <div class="chart-card">
+      <h3>Top Selling Products</h3>
+      <canvas id="topSellingChart"></canvas>
+    </div>
+
+    <div class="chart-card">
+      <h3>Orders by Status</h3>
+      <canvas id="statusChart"></canvas>
+    </div>
+  </div>
+
+  <div class="recent-orders">
+    <h3>Recent Orders</h3>
+    <table>
+      <tr *ngFor="let order of recentOrders">
+        <td>Order #{{ order.order_id }}</td>
+        <td>{{ order.order_date | date }}</td>
+        <td>${{ order.total_amount }}</td>
+        <td>{{ order.status }}</td>
+      </tr>
+    </table>
+  </div>
+  <app-button
+    (click)="logout()"
+    class="w-100"
+    classAppend="w-100"
+    label="Logout"
+    fill="true">
+  </app-button>
+</div>

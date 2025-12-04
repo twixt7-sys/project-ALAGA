@@ -6,6 +6,7 @@ import { Home } from './features/home/home';
 import { authGuard } from './core/guards/auth/auth-guard';
 import { customerGuard } from './core/guards/customer/customer-guard';
 import { adminGuard } from './core/guards/admin/admin-guard';
+import { loginGuard } from './core/guards/login/login-guard';
 
 export const routes: Routes = [
     {
@@ -14,7 +15,8 @@ export const routes: Routes = [
     },
     {
       path: 'auth',
-      component: Auth
+      component: Auth,
+      //canActivate: [loginGuard]
     },
     {
       path: 'customer',
@@ -23,7 +25,7 @@ export const routes: Routes = [
     },
     {
       path: 'admin',
-      component: Admin,
+      loadComponent: () => import('./features/admin/admin.component').then(m => m.Admin),
       canActivate: [authGuard, adminGuard]
     }
 ];

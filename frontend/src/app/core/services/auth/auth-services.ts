@@ -4,12 +4,11 @@ import { UserServices } from '../model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-// handles API calls
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class AuthServices {
-  private base = 'http://localhost:5000/api';
+  private base = 'http://localhost:5000/api/auth';
 
   constructor (
     private http: HttpClient
@@ -19,19 +18,23 @@ export class AuthServices {
     return this.http.post(`${this.base}/login`, data);
   }
 
-  logout(): Observable<any> {
-    return this.http.post(`${this.base}/logout`, {})
+  logout() {
+    localStorage.removeItem('access_token');
+    localStorage.removeItem('user');
   }
 
   register(data: any): Observable<any> {
     return this.http.post(`${this.base}/register`, data);
   }
 
-  isLoggedIn() {
-    if (!localStorage.getItem('userId')) {
-      inject(Router).navigate(['/login']);
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('access_token');
+
+    if (!token) {
+      inject(Router).navigate(['/auth']);
       return false;
     }
+
     return true;
   }
 
