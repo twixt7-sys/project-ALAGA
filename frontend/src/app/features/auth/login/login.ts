@@ -33,9 +33,9 @@ export class LoginComponent {
           text: "User Logged in!",
           icon: "success"
         });
-        localStorage.setItem('userId', res.userId);
-        localStorage.setItem('role', res.role);
-        alert(res.user);
+        localStorage.setItem('access_token', res.access_token); // token storage
+        localStorage.setItem('user', JSON.stringify(res.user)); // user storage
+        // role based navigation
         this.route.navigate(res.user.role === 'admin' ? ['/admin'] : ['/customer']);
       },
       error: (err) => {

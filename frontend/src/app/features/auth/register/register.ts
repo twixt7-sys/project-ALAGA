@@ -35,15 +35,20 @@ export class RegisterComponent {
       next: (res) => {
         Swal.fire({
           title: "Success!",
-          text: "User Logged in!",
+          text: `${res.message}`,
           icon: "success"
         });
-        localStorage.setItem('userId', res.userId);
-        localStorage.setItem('role', res.role);
         this.auth.login({
           username: this.username,
           email: this.email
-        })
+        }).subscribe({
+          next: (res) => {
+            localStorage.setItem('access_token', res.access_token); // token storage
+            localStorage.setItem('user', JSON.stringify(res.user)); // user storage
+            // role based navigation
+            this.route.navigate(res.user.role === 'admin' ? ['/admin'] : ['/customer']);
+          }
+        });
       },
       error: (err) => {
         console.log(err.error);

@@ -6,6 +6,7 @@ import { Home } from './features/home/home';
 import { authGuard } from './core/guards/auth/auth-guard';
 import { customerGuard } from './core/guards/customer/customer-guard';
 import { adminGuard } from './core/guards/admin/admin-guard';
+import { loginGuard } from './core/guards/login/login-guard';
 
 export const routes: Routes = [
     {
@@ -15,7 +16,7 @@ export const routes: Routes = [
     {
       path: 'auth',
       component: Auth,
-      canActivate: [authGuard]
+      //canActivate: [loginGuard]
     },
     {
       path: 'customer',
