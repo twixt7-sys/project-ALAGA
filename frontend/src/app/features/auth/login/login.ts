@@ -19,7 +19,7 @@ export class LoginComponent {
   message: string = '';
 
   constructor(private auth: AuthServices, private route: Router){
-
+    
   }
 
   login() {
