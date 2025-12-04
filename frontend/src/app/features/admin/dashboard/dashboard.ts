@@ -4,13 +4,17 @@ import { Chart, registerables } from 'chart.js';
 import { AdminService } from '../../../core/services/admin/admin.service';
 import { OrdersService } from '../../../core/services/order/order.service';
 import { ProductService } from '../../../core/services/product/product.service';
+import { AuthServices } from '../../../core/services';
+import { ComponentsModule } from '../../../shared/components/components-module';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 Chart.register(...registerables);
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ComponentsModule],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.scss']
 })
@@ -28,7 +32,9 @@ export class AdminDashboardComponent implements OnInit {
   constructor(
     private adminService: AdminService,
     private ordersService: OrdersService,
-    private productService: ProductService
+    private productService: ProductService,
+    private authService: AuthServices,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -89,5 +95,15 @@ export class AdminDashboardComponent implements OnInit {
         }]
       }
     });
+  }
+
+  logout() {
+    this.authService.logout();
+    Swal.fire({
+      title: "Success!",
+      text: "User Logged Out!",
+      icon: "success"
+    });
+    this.router.navigate(['/auth']);
   }
 }
