@@ -45,7 +45,6 @@ export class RegisterComponent {
           next: (res) => {
             localStorage.setItem('access_token', res.access_token); // token storage
             localStorage.setItem('user', JSON.stringify(res.user)); // user storage
-            // role based navigation
             this.route.navigate(res.user.role === 'admin' ? ['/admin'] : ['/customer']);
           }
         });
