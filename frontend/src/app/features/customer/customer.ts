@@ -1,12 +1,15 @@
 import { Component, Input } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { ShopServices } from '../../core/services/features/shop-services';
 import { Product } from '../../core/models/product.model';
 import { CommonModule } from '@angular/common';
+import { AuthServices } from '../../core/services';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
+import { ComponentsModule } from '../../shared/components/components-module';
 @Component({
   selector: 'app-customer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ComponentsModule],
   templateUrl: './customer.html',
   styleUrl: './customer.scss',
 })
@@ -35,7 +38,11 @@ export class Customer {
 
   activeCategory = 'All';
 
-  constructor(private shopService: ShopServices) {
+  constructor(
+    private shopService: ShopServices,
+    private authService: AuthServices,
+    private router: Router
+  ) {
     this.shopService.getProducts().subscribe(list => {
       this.products = list;
       this.filtered = list;
@@ -67,4 +74,14 @@ export class Customer {
 
     this.filtered = temp;
   }
+
+    logout() {
+      this.authService.logout();
+      Swal.fire({
+        title: "Success!",
+        text: "User Logged Out!",
+        icon: "success"
+      });
+      this.router.navigate(['/auth']);
+    }
 }
