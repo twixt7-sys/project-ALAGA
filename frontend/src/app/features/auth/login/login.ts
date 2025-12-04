@@ -43,7 +43,7 @@ export class LoginComponent {
           icon: "error",
           title: "Oops...",
           text: `${err.message}`,
-          footer: `<a href="#">Why do I have this issue?</a>` 
+          footer: `<a href="#">Why do I have this issue?</a>`
         });
       }
     })
