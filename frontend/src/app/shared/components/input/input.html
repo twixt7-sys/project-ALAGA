@@ -1,5 +1,11 @@
-<label>{{ label }}
+<label
+  class="form-label"
+  [for]="label"
+>
+{{ label }}
 <input
+  class="form-control"
+  [id]="label"
   [type]="type||'text'"
   [placeholder]="placeholder"
   [value]="value"
