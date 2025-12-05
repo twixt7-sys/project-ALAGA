@@ -3,7 +3,9 @@
 .auth-container {
   height: 100vh;
   width: 100vw;
-  background: linear-gradient($color-bg, $color-secondary);
+  background-image: url('../../../../public/images/background.png');
+  background-size: cover;
+  background-position: center;
 }
 
 .toggle {

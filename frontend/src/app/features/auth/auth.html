@@ -1,10 +1,13 @@
 
 <div class="auth-container d-flex justify-content-center align-items-center">
-	<app-card class="w-25">
+	<app-card class="w-25" classAppend="rounded-5 border border-5">
 		<br>
-		<h3>Alaga Pet Supplies</h3>
-			<p>Your trusted partner in pet care</p>
-		<br>
+    <div class="text-center">
+      <img src="images/AuthLogo.svg" alt="Alaga Logo" height="250">
+      <br>
+		  <p>Your trusted partner in pet care</p>
+    </div>
+    <hr>
 		<div class="toggle p-1 rounded-pill">
 			<app-button
 				class="w-50"
@@ -24,7 +27,6 @@
 		</div>
 
 		<br>
-
 		@if (mode === 'login') { <app-login class="w-75"></app-login> }
 		@else { <app-register class="w-75" ></app-register> }
 
