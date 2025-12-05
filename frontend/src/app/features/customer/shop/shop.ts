@@ -6,6 +6,7 @@ import { AuthServices } from '../../../core/services';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ComponentsModule } from '../../../shared/components/components-module';
+import { ProductService } from '../../../core/services/product/product.service';
 
 @Component({
   selector: 'app-shop',
@@ -15,11 +16,13 @@ import { ComponentsModule } from '../../../shared/components/components-module';
   styleUrl: './shop.scss',
 })
 export class Shop {
+
   products: Product[] = [];
   filtered: Product[] = [];
 
   searchTerm = '';
 
+  /*
   categories = [
     'All',
     'Food & Bowls',
@@ -32,19 +35,24 @@ export class Shop {
     'Small Animals',
     'Litter & Cleanup'
   ];
-
-  activeCategory = 'All';
+  */
 
   constructor(
     private shopService: ShopServices,
     private authService: AuthServices,
+    private productService: ProductService,
     private router: Router
   ) {
-    this.shopService.getProducts().subscribe(list => {
+    this.productService.getProducts().subscribe(list => {
       this.products = list;
       this.filtered = list;
+      this.categories = ['All', ...new Set(this.products.map(p => p.category))];
     });
   }
+
+  categories = ['All', ...new Set(this.products.map(p => p.category))];
+
+  activeCategory = 'All';
 
   onSearch(event: Event) {
     const input = event.target as HTMLInputElement;
