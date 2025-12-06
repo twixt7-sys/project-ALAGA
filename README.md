@@ -54,7 +54,7 @@
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Angular_gradient_logo.png/1200px-Angular_gradient_logo.png?20231107180344" width="150" alt="angular logo"/>
     </td>
     <td width="300">
-        <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" width="180"/>
+        <img src="https://pngimg.com/uploads/mysql/mysql_PNG9.png" width="180"/>
     </td>
 </tr>
 </table>
