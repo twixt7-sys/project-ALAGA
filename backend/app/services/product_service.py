@@ -3,7 +3,7 @@ from ..extensions import db
 
 class ProductService:
 	@staticmethod
-	def get_all(search=None, category=None, page=1, limit=10):
+	def get_all(search=None, category=None, page=1, limit=100):
 		query = Product.query
 		if search:
 			query = query.filter(Product.name.ilike(f"%{search}%"))
