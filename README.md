@@ -48,10 +48,10 @@
   <th align="center" width="300"> Database </th>
 <tr align="center">
     <td width="300" height="150">
-        <img src="" width="150" alt="flask logo"/>
+        <img src="https://icon.icepanel.io/Technology/png-shadow-512/Flask.png" width="150" alt="flask logo"/>
     </td>
     <td width="300">
-        <img src="" width="150" alt="angular logo"/>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Angular_gradient_logo.png/1200px-Angular_gradient_logo.png?20231107180344" width="150" alt="angular logo"/>
     </td>
     <td width="300">
         <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" width="180"/>
