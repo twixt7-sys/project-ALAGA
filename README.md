@@ -66,6 +66,15 @@
 <table>
     <tr>
         <td>
+            <img src="./docs/prototype/screenshots/auth/auth.login.png" alt="ss0" width="300"/>
+        </td>
+        <td>
+            <img src="./docs/prototype/screenshots/auth/auth.register.png" alt="ss1" width="300"/>
+        </td>
+        <td>
+            <img src="" alt="ss2" width="300"/>
+        </td>
+        <td>
             <img src="" alt="ss0" width="300"/>
         </td>
         <td>
