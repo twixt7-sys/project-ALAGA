@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,6 +8,10 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  @Output() logoutEvent = new EventEmitter<void>();
+
+  @Input() classAppend: string = '';
+
   user = {
     username: 'customer1',
     role: 'customer'
@@ -28,7 +32,6 @@ export class Navbar {
   }
 
   logout() {
-    // integrate with your auth service later
-    this.router.navigate(['/login']);
+    this.logoutEvent.emit();
   }
 }
