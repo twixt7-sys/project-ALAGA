@@ -1,1 +1,26 @@
-<p>navbar works!</p>
+<nav class="nav-container">
+  <div class="nav-left" (click)="goToShop()">
+    <img src="assets/icons/paw.svg" alt="logo" class="logo">
+    <span class="brand">Alaga Pet Supplies</span>
+  </div>
+
+  <div class="nav-center">
+    <button class="nav-link" (click)="goToShop()">Shop</button>
+    <button class="nav-link" (click)="goToOrders()">Orders</button>
+  </div>
+
+  <div class="nav-right">
+    <button class="icon-btn" (click)="goToCart()">
+      <img src="assets/icons/cart.svg" alt="cart">
+    </button>
+
+    <div class="user-menu">
+      <span class="username">
+        {{ user.username }}
+      </span>
+    </div>
+    <div class="dropdown">
+        <button (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>

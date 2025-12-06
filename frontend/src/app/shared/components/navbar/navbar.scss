@@ -1,0 +1,122 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.nav-container {
+  width: 100%;
+  height: 70px;
+  background-color: $color-surface;
+  border-bottom: 1px solid $color-border;
+  padding: 0 $space-xl;
+
+  @include flex-center(row);
+  justify-content: space-between;
+
+  font-family: $font-family-base;
+  color: $color-text-primary;
+  @include shadow(sm);
+}
+
+.nav-left {
+  @include flex-center(row);
+  gap: $space-sm;
+  cursor: pointer;
+
+  .logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .brand {
+    font-size: $font-size-lg;
+    font-weight: 600;
+    color: $color-text-primary;
+    @include text-ellipsis;
+  }
+}
+
+.nav-center {
+  display: flex;
+  gap: $space-md;
+
+  .nav-link {
+    @include button($color-secondary, $color-text-primary);
+    padding: $space-xs $space-md;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+    transition: 0.2s ease;
+
+    &:hover {
+      border-color: $color-border;
+      background-color: $color-secondary;
+      color: $color-text-primary;
+    }
+  }
+}
+
+.nav-right {
+  @include flex-center(row);
+  gap: $space-lg;
+
+  .icon-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: $space-xs;
+
+    img {
+      width: 24px;
+      height: 24px;
+      filter: brightness(0) saturate(100%) invert(28%) sepia(12%) saturate(1535%) hue-rotate(343deg) brightness(96%) contrast(92%);
+    }
+
+    &:hover img {
+      filter: brightness(0) saturate(100%) invert(39%) sepia(18%) saturate(1177%) hue-rotate(345deg) brightness(91%) contrast(90%);
+    }
+  }
+
+  .user-menu {
+    position: relative;
+
+    .username {
+      cursor: pointer;
+      color: $color-text-primary;
+      font-size: $font-size-base;
+    }
+
+    .dropdown {
+      position: absolute;
+      top: calc(100% + $space-xs);
+      right: 0;
+
+      background-color: $color-surface;
+      border: 1px solid $color-border;
+      padding: $space-xs $space-sm;
+      border-radius: $radius-md;
+
+      display: none;
+      @include shadow(sm);
+
+      button {
+        @include button($color-primary);
+        width: 100%;
+        padding: $space-xs $space-md;
+      }
+    }
+
+    &:hover .dropdown {
+      display: block;
+    }
+  }
+}
+
+// responsive
+@include respond(sm) {
+  .nav-container {
+    padding: 0 $space-md;
+  }
+
+  .nav-center {
+    display: none;
+  }
+}
