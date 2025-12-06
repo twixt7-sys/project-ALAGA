@@ -14,6 +14,7 @@
   <div class="category-row">
     @for (c of categories; track c) {
       <button
+        class="magictime swashIn"
         [class.active]="activeCategory === c"
         (click)="filterCategory(c)"
       >
@@ -26,7 +27,7 @@
 
     @for (p of filtered; track p.id) {
 
-      <div class="product-card">
+      <div class="product-card magictime swashIn">
 
         <div class="img-wrap">
           <img
