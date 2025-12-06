@@ -4,7 +4,7 @@
 .nav-container {
   width: 100%;
   height: 70px;
-  background-color: $color-surface;
+  background: linear-gradient(to top, $color-primary, $color-accent);
   border-bottom: 1px solid $color-border;
   padding: 0 $space-xl;
 
@@ -12,7 +12,7 @@
   justify-content: space-between;
 
   font-family: $font-family-base;
-  color: $color-text-primary;
+  color: $color-surface;
   @include shadow(sm);
 }
 
@@ -21,15 +21,10 @@
   gap: $space-sm;
   cursor: pointer;
 
-  .logo {
-    width: 28px;
-    height: 28px;
-  }
-
   .brand {
     font-size: $font-size-lg;
     font-weight: 600;
-    color: $color-text-primary;
+    color: $color-surface;
     @include text-ellipsis;
   }
 }
@@ -39,7 +34,7 @@
   gap: $space-md;
 
   .nav-link {
-    @include button($color-secondary, $color-text-primary);
+    @include button($color-surface, $color-surface);
     padding: $space-xs $space-md;
     background-color: transparent;
     border: 1px solid transparent;
@@ -48,8 +43,8 @@
 
     &:hover {
       border-color: $color-border;
-      background-color: $color-secondary;
-      color: $color-text-primary;
+      background-color: $color-hover;
+      color: $color-surface;
     }
   }
 }
@@ -60,6 +55,7 @@
 
   .icon-btn {
     background: none;
+    color: $color-surface;
     border: none;
     cursor: pointer;
     padding: $space-xs;
@@ -80,7 +76,7 @@
 
     .username {
       cursor: pointer;
-      color: $color-text-primary;
+      color: $color-surface;
       font-size: $font-size-base;
     }
 
@@ -118,5 +114,16 @@
 
   .nav-center {
     display: none;
+  }
+}
+
+.light-logout {
+  color: #ff8282;
+  border-color: #ff8282;
+
+  &:hover {
+    color: #fff;
+    background-color: #ff6f6f;
+    border-color: #ff6f6f;
   }
 }
