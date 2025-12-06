@@ -72,16 +72,46 @@
             <img src="./docs/prototype/screenshots/auth/auth.register.png" alt="ss1" width="300"/>
         </td>
         <td>
-            <img src="" alt="ss2" width="300"/>
+            <img src="./docs/prototype/screenshots/admin/admin.dashboard.png" alt="ss2" width="300"/>
         </td>
         <td>
-            <img src="" alt="ss0" width="300"/>
+            <img src="./docs/prototype/screenshots/admin/admin.orders.png" alt="ss3" width="300"/>
         </td>
         <td>
-            <img src="" alt="ss1" width="300"/>
+            <img src="./docs/prototype/screenshots/admin/admin.products.png" alt="ss4" width="300"/>
         </td>
         <td>
-            <img src="" alt="ss2" width="300"/>
+            <img src="./docs/prototype/screenshots/admin/admin.products.edit.png" alt="ss5" width="300"/>
+        </td>
+        <td>
+            <img src="./docs/prototype/screenshots/admin/admin.invetory.png" alt="ss4" width="300"/>
+        </td>
+        <td>
+            <img src="./docs/prototype/screenshots/admin/admin.inventory.add.png" alt="ss5" width="300"/>
+        </td>
+        <td>
+            <img src="" alt="ss4" width="300"/>
+        </td>
+        <td>
+            <img src="" alt="ss5" width="300"/>
+        </td>
+        <td>
+            <img src="" alt="ss4" width="300"/>
+        </td>
+        <td>
+            <img src="" alt="ss5" width="300"/>
+        </td>
+        <td>
+            <img src="" alt="ss4" width="300"/>
+        </td>
+        <td>
+            <img src="" alt="ss5" width="300"/>
+        </td>
+        <td>
+            <img src="" alt="ss4" width="300"/>
+        </td>
+        <td>
+            <img src="" alt="ss5" width="300"/>
         </td>
     </tr>
 </table>
