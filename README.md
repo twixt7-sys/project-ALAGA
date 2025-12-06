@@ -66,7 +66,7 @@
 <table>
     <tr>
         <td>
-            <img src="./docs/prototype/screenshots/auth/auth.login.png" alt="ss0" width="300"/>
+            <img src="./docs/prototype/screenshots/auth/auth.login.png" alt="ss0" width="300" height="300"/>
         </td>
         <td>
             <img src="./docs/prototype/screenshots/auth/auth.register.png" alt="ss1" width="300"/>
