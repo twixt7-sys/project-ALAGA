@@ -6,7 +6,6 @@
 .customer-container {
     height: 100vh;
     width: 100vw;
-    background-color: $color-primary;
     .customer-card {
         background-color: $color-secondary;
         h1 {
@@ -24,6 +23,7 @@
 h2 {
   font-weight: 600;
   margin-bottom: 15px;
+  color: $color-accent
 }
 
 .search-bar {
@@ -52,7 +52,7 @@ h2 {
     cursor: pointer;
 
     &.active {
-      background: #d4c4a8;
+      background: $color-primary;
       color: white;
     }
   }
