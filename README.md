@@ -5,7 +5,7 @@
 ---
 
 <p align="center">
-    <img src="#" width="150"/><br><br>
+    <img src="./frontend/public/images/headerlogo.svg" width="150"/><br><br>
     A fully functioning e-commerce platform<br>
     for a pet supplies store, featuring customer<br>
     and business owner functionalities <br>
