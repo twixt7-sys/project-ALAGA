@@ -22,21 +22,6 @@ export class Shop {
 
   searchTerm = '';
 
-  /*
-  categories = [
-    'All',
-    'Food & Bowls',
-    'Toys',
-    'Grooming',
-    'Accessories',
-    'Beds & Furniture',
-    'Fish & Aquatic',
-    'Birds',
-    'Small Animals',
-    'Litter & Cleanup'
-  ];
-  */
-
   constructor(
     private shopService: ShopServices,
     private authService: AuthServices,
@@ -80,13 +65,5 @@ export class Shop {
     this.filtered = temp;
   }
 
-  logout() {
-    this.authService.logout();
-    Swal.fire({
-      title: "Success!",
-      text: "User Logged Out!",
-      icon: "success"
-    });
-    this.router.navigate(['/auth']);
-  }
+
 }
