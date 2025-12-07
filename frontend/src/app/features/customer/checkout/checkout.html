@@ -1,9 +1,10 @@
 <div class="checkout-page">
+<div style="height: 70px;"></div>
   <h2 class="page-title">Checkout</h2>
 
   <div class="checkout-container">
     <!-- LEFT: DELIVERY FORM -->
-    <form [formGroup]="deliveryForm" class="delivery-card magictime swashIn">
+    <form [formGroup]="deliveryForm" class="delivery-card">
       <h3>Delivery Information</h3>
 
       <div class="form-grid">
@@ -57,7 +58,7 @@
     </form>
 
     <!-- RIGHT: ORDER SUMMARY -->
-    <div class="summary-card magictime swashIn">
+    <div class="summary-card">
       <h3>Order Summary</h3>
 
       @for (item of cartItems; track item.product_id) {
