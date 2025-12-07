@@ -7,13 +7,14 @@ import { ToggleButton } from './toggle-button/toggle-button.component';
 import { InputComponent } from './input/input';
 import { DropdownComponent } from './dropdown/dropdown';
 import { Navbar } from './navbar/navbar';
+import { Modal } from './modal/modal';
 
 
 @NgModule({
-  declarations: [Button, Card, TextInput, ToggleButton, InputComponent, DropdownComponent, Navbar],
+  declarations: [Button, Card, TextInput, ToggleButton, InputComponent, DropdownComponent, Navbar, Modal],
   imports: [
     CommonModule
   ],
-  exports: [Button, Card, TextInput, ToggleButton, InputComponent, DropdownComponent, Navbar]
+  exports: [Button, Card, TextInput, ToggleButton, InputComponent, DropdownComponent, Navbar, Modal]
 })
 export class ComponentsModule { }

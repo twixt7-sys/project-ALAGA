@@ -7,6 +7,8 @@
   background: linear-gradient(to top, $color-primary, $color-accent);
   border-bottom: 1px solid $color-border;
   padding: 0 $space-xl;
+  position: fixed;
+  z-index: 100;
 
   @include flex-center(row);
   justify-content: space-between;

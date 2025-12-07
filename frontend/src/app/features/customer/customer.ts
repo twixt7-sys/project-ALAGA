@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrl: './customer.scss',
 })
 export class Customer {
-  user = localStorage.getItem('user')
+  user = JSON.parse(localStorage.getItem('user') || '{}');
   constructor(
     private authService: AuthServices,
     private router: Router
