@@ -1,8 +1,36 @@
+@use "../../../shared/styles/variables" as *;
+@use '../../../shared/styles/shared-styles.scss' as *;
+@use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/variables' as *;
+
 .dashboard-container {
   padding: 20px;
   background: linear-gradient();
   color: #3a2e2e;
   font-family: Inter, sans-serif;
+}
+
+.dashboard-card {
+  @include shadow(sm);
+  background: linear-gradient(to left, $color-surface, $color-bg);
+  border-radius: $radius-md;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+	color: $color-text-primary;
+  justify-content: space-between;
+  transition: all 0.2s ease !important;
+
+  &:hover {
+    @include shadow(lg);
+    background: linear-gradient(to bottom, $color-secondary, $color-bg);
+    color: $color-accent;
+    transform: translateY(-2px) scale(1.01) !important;
+    .add-btn{
+      border: 2px solid $color-surface;
+    }
+  }
 }
 
 .stats-row {
