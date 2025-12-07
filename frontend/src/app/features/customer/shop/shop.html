@@ -1,7 +1,7 @@
-<div style="height: 70px;"></div>
 <div class="shop-container">
-  <!-- to convert into component -->
-  <app-modal></app-modal>
+<div style="height: 70px;"></div>
+  <app-confirm-modal [product]="product"></app-confirm-modal>
+  <app-modal [product]="product"></app-modal>
 
   <h2>Browse Our Products</h2>
 
@@ -33,7 +33,7 @@
 
       <div class="product-card magictime swashIn">
 
-        <div class="img-wrap" onclick="window.dialog.showModal();">
+        <div class="img-wrap" (click)="viewProduct(p)">
           <img
             [src]="p.imageUrl ?? 'assets/images/placeholder.png'"
             [alt]="p.name"
@@ -50,7 +50,7 @@
           </div>
 
           @if (p.stockQuantity > 0) {
-            <button class="add-btn">
+            <button type="button" class="add-btn" data-bs-toggle="modal" data-bs-target="#confirmAddModal">
               Add to Cart
             </button>
           } @else {
@@ -64,4 +64,3 @@
     }
   </div>
 </div>
-

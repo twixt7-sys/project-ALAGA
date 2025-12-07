@@ -1,3 +1,7 @@
+@use '../../styles/shared-styles.scss' as *;
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
 dialog {
   padding: 20px;
   border: none;
@@ -11,6 +15,21 @@ dialog {
   margin: auto;
   background: #fff;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  color: $color-primary;
+  gap: 8px;
+  justify-content: space-between;
+
+  .img-wrapper {
+    width: 100%;
+    height: 260px;
+    background: #eee;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 
   h2 {
     margin-top: 0;
@@ -26,6 +45,26 @@ dialog {
     font-size: 1.1rem;
     cursor: pointer;
     padding: 0;
+  }
+
+  .add-btn {
+    width: 100%;
+    padding: 10px;
+    background: #6f4e37;
+    color: white;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      @include shadow(lg);
+      background: $color-bg;
+      color: $color-primary;
+      font-weight: bolder;
+      transform: translateY(-2px) scale(1.02);
+      border: 3px solid $color-primary;
+    }
   }
 }
 
@@ -55,6 +94,7 @@ button.primary {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }

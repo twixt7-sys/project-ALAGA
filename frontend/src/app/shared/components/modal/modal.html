@@ -1,6 +1,21 @@
 <dialog id="dialog">
-  <h2>TITLE</h2>
-  <p>Lorem Ipsum chuchcuhu</p>
-  <p>Test Code chuchuchu</p>
+  <div class="img-wrapper">
+    <img
+      [src]="product.imageUrl ?? 'assets/images/placeholder.png'"
+      [alt]="product.name"
+    />
+  </div>
+  <h2>{{product.name}}</h2>
+  <p>{{product.category}}</p>
+  <p>{{product.description}}</p>
+  @if (product.stockQuantity > 0) {
+    <button type="button" class="add-btn" data-bs-toggle="modal" data-bs-target="#confirmModal" onclick="window.dialog.close();" >
+      Add to Cart
+    </button>
+  } @else {
+    <button class="add-btn" disabled>
+      Out of Stock
+    </button>
+  }
   <button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
 </dialog>

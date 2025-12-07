@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { ShopServices } from '../../../core/services/features/shop-services';
 import { Product } from '../../../core/models/product.model';
 import { CommonModule } from '@angular/common';
@@ -16,6 +16,7 @@ import { ProductService } from '../../../core/services/product/product.service';
   styleUrl: './shop.scss',
 })
 export class Shop {
+  @Input() product: any = {};
 
   products: Product[] = [];
   filtered: Product[] = [];
@@ -65,5 +66,12 @@ export class Shop {
     this.filtered = temp;
   }
 
+  viewProduct(p: Product) {
+    this.product = p;
+    (window as any).dialog.showModal();
+  }
 
+  addToCart() {
+
+  }
 }
