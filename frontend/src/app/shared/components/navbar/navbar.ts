@@ -9,34 +9,47 @@ import { User } from '../../../core/models/user.model';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  constructor(private router: Router) {}
+  @Input() user: User = JSON.parse(localStorage.getItem("user") || '{}');
+
+  isAdmin: boolean = this.user.role === 'admin'? true : false;
+  @Input() classAppend: string = '';
+
+  @Input() adminPages: any = [
+    "AdminDashboard",
+    "AdminOrders",
+    "AdminInventory"
+  ];
+
+  @Input() customerPages: any = [
+    "CustomerShop",
+    "CustomerOrders",
+    "CustomerCart"
+  ];
+
+  pages: Array<string> = this.isAdmin ? this.adminPages : this.customerPages;
+
   //admin nav items
-  @Output() goToDashboardEvent = new EventEmitter<void>();
-  @Output() goToAdminOrdersEvent = new EventEmitter<void>();
-  @Output() goToInventoryEvent = new EventEmitter<void>();
+  @Output() adminDashboardEvent = new EventEmitter<void>();
+  @Output() adminOrdersEvent = new EventEmitter<void>();
+  @Output() adminInventoryEvent = new EventEmitter<void>();
 
   //customer nav items
-  @Output() goToCartEvent = new EventEmitter<void>();
-  @Output() goToShopEvent = new EventEmitter<void>();
-  @Output() goToAOrdersEvent = new EventEmitter<void>();
+  @Output() custCartEvent = new EventEmitter<void>();
+  @Output() custShopEvent = new EventEmitter<void>();
+  @Output() custOrdersEvent = new EventEmitter<void>();
 
   @Output() logoutEvent = new EventEmitter<void>();
 
-  @Input() classAppend: string = '';
-  @Input() user: any = {};
+  // admin signals
+  adminDashboard() { this.adminDashboardEvent.emit() }
+  adminOrders() { this.adminOrdersEvent.emit() }
+  adminInventory() { this.adminInventoryEvent.emit() }
 
-  constructor(private router: Router) {}
-
-  goToCart() {
-    this.goToCartEvent.emit();
-  }
-
-  goToAdminOrders() {
-    this.goToCartEvent.emit();
-  }
-
-  goToShop() {
-    this.goToCartEvent.emit();
-  }
+  // customer signals
+  custCart() { this.custCartEvent.emit(); }
+  custShop() { this.custShopEvent.emit(); }
+  custOrders() { this.custOrdersEvent.emit(); }
 
   logout() {
     this.logoutEvent.emit();
