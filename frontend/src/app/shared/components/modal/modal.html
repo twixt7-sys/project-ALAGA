@@ -9,7 +9,7 @@
   <p>{{product.category}}</p>
   <p>{{product.description}}</p>
   @if (product.stockQuantity > 0) {
-    <button type="button" class="add-btn" data-bs-toggle="modal" data-bs-target="#confirmModal" onclick="window.dialog.close();" >
+    <button type="button" class="add-btn" data-bs-toggle="modal" data-bs-target="#confirmAddModal" onclick="window.dialog.close();" >
       Add to Cart
     </button>
   } @else {
