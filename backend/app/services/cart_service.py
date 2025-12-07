@@ -13,7 +13,7 @@ class CartService:
 		return cart.to_dict()
 
 	@staticmethod
-	def add_item(user_id, product_id, quantity):
+	def add_item(user_id, product_id, quantity=1):
 		cart = Cart.query.filter_by(user_id=user_id).first()
 		if not cart:
 			cart = Cart(user_id=user_id)
