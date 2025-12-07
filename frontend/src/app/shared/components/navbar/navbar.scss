@@ -54,11 +54,14 @@
   gap: $space-lg;
 
   .icon-btn {
-    background: none;
+    @include button($color-surface, $color-surface);
+    padding: $space-xs $space-md;
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: $radius-md;
+    transition: 0.2s ease;
     color: $color-surface;
-    border: none;
     cursor: pointer;
-    padding: $space-xs;
 
     img {
       width: 24px;
@@ -68,6 +71,12 @@
 
     &:hover img {
       filter: brightness(0) saturate(100%) invert(39%) sepia(18%) saturate(1177%) hue-rotate(345deg) brightness(91%) contrast(90%);
+    }
+
+    &:hover {
+      border-color: $color-border;
+      background-color: $color-hover;
+      color: $color-surface;
     }
   }
 

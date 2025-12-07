@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from '../../../core/models/user.model';
 
 @Component({
   selector: 'app-navbar',
@@ -8,27 +9,33 @@ import { Router } from '@angular/router';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  //admin nav items
+  @Output() goToDashboardEvent = new EventEmitter<void>();
+  @Output() goToAdminOrdersEvent = new EventEmitter<void>();
+  @Output() goToInventoryEvent = new EventEmitter<void>();
+
+  //customer nav items
+  @Output() goToCartEvent = new EventEmitter<void>();
+  @Output() goToShopEvent = new EventEmitter<void>();
+  @Output() goToAOrdersEvent = new EventEmitter<void>();
+
   @Output() logoutEvent = new EventEmitter<void>();
 
   @Input() classAppend: string = '';
-
-  user = {
-    username: 'customer1',
-    role: 'customer'
-  };
+  @Input() user: any = {};
 
   constructor(private router: Router) {}
 
   goToCart() {
-    this.router.navigate(['/cart']);
+    this.goToCartEvent.emit();
   }
 
-  goToOrders() {
-    this.router.navigate(['/orders']);
+  goToAdminOrders() {
+    this.goToCartEvent.emit();
   }
 
   goToShop() {
-    this.router.navigate(['/shop']);
+    this.goToCartEvent.emit();
   }
 
   logout() {

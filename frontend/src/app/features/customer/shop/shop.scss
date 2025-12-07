@@ -46,14 +46,20 @@ h2 {
 
   button {
     padding: 7px 15px;
-    background: #f5f5f5;
+    background: $color-bg;
+    color: $color-primary;
     border-radius: 20px;
+    transition: all 0.2s ease;
     border: none;
     cursor: pointer;
 
     &.active {
       background: $color-primary;
       color: white;
+    }
+
+    &:hover {
+      background: $color-secondary;
     }
   }
 }
@@ -66,7 +72,7 @@ h2 {
 
 .product-card {
   @include shadow(sm);
-  background: white;
+  background: linear-gradient(to left, $color-surface, $color-bg);
   border-radius: $radius-md;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
@@ -74,12 +80,7 @@ h2 {
   flex-direction: column;
 	transition: all 0.2s ease;
 	color: $color-text-primary;
-
-	// hover states
-	&:hover {
-		@include shadow(lg);
-		transform: translateY(-2px);
-	}
+  justify-content: space-between;
 
   .img-wrap {
     width: 100%;
@@ -126,9 +127,72 @@ h2 {
       padding: 10px;
       background: #6f4e37;
       color: white;
-      border: none;
+      border: 2px solid transparent;
       border-radius: 6px;
       cursor: pointer;
+      transition: all 0.2s ease;
+      &:hover {
+        @include shadow(lg);
+        background: $color-bg;
+        color: $color-primary;
+        font-weight: bolder;
+        transform: translateY(-2px) scale(1.02);
+        border: 3px solid $color-primary;
+      }
     }
   }
+  &:hover {
+      @include shadow(lg);
+      background: linear-gradient(to bottom, $color-secondary, $color-bg);
+      color: $color-accent;
+      transform: translateY(-2px);
+      .add-btn{
+        border: 2px solid $color-surface;
+      }
+    }
+}
+
+dialog {
+  padding: 20px;
+  border: none;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  animation: fadeIn 0.2s ease;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+button.primary {
+	display: inline-block;
+	font-size: 0.8rem;
+	color: #fff !important;
+	background: rgb(var(--vs-primary) / 100%);
+	padding: 13px 25px;
+	border-radius: 17px;
+	transition: background-color 0.1s ease;
+	box-sizing: border-box;
+	transition: all 0.25s ease;
+	border: 0;
+	cursor: pointer;
+	box-shadow: 0 10px 20px -10px rgb(var(--vs-primary) / 50%);
+	&:hover {
+		box-shadow: 0 20px 20px -10px rgb(var(--vs-primary) / 50%);
+		transform: translateY(-5px);
+	}
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
 }

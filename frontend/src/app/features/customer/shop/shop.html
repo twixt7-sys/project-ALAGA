@@ -1,4 +1,13 @@
 <div class="shop-container">
+
+  <!-- to convert into component -->
+  <dialog id="dialog">
+      <h2>Hello.</h2>
+      <p>A CSS-only modal based on the <a href="https://developer.mozilla.org/es/docs/Web/CSS/::backdrop" target="_blank">::backdrop</a> pseudo-class. Hope you find it helpful.</p>
+      <p>You can also change the styles of the <code>::backdrop</code> from the CSS.</p>
+      <button onclick="window.dialog.close();" aria-label="close" class="x">❌</button>
+  </dialog>
+
   <h2>Browse Our Products</h2>
 
   <div class="search-bar">
@@ -29,7 +38,7 @@
 
       <div class="product-card magictime swashIn">
 
-        <div class="img-wrap">
+        <div class="img-wrap" onclick="window.dialog.showModal();">
           <img
             [src]="p.imageUrl ?? 'assets/images/placeholder.png'"
             [alt]="p.name"
@@ -55,10 +64,9 @@
             </button>
           }
         </div>
-
       </div>
 
     }
   </div>
-
 </div>
+
