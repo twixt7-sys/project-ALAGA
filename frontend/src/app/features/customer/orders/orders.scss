@@ -1,0 +1,102 @@
+.orders-page {
+  padding: 40px 60px;
+  background: #faf8f5;
+  min-height: 100vh;
+}
+
+.page-title {
+  font-size: 20px;
+  margin-bottom: 25px;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ORDER CARD */
+.order-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 26px 28px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+/* HEADER */
+.order-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.order-header h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.order-header .date {
+  font-size: 12px;
+  color: #8a8a8a;
+  margin-top: 4px;
+}
+
+/* STATUS */
+.status {
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.status.pending {
+  background: #f6b100;
+  color: white;
+}
+
+/* ITEMS */
+.order-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.item-name {
+  font-size: 14px;
+  margin: 0 0 3px 0;
+}
+
+.item-meta {
+  font-size: 12px;
+  color: #8a8a8a;
+  margin: 0;
+}
+
+/* TOTAL */
+.order-total {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .orders-page {
+    padding: 25px;
+  }
+
+  .order-card {
+    padding: 20px;
+  }
+}
