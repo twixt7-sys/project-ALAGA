@@ -1,6 +1,6 @@
 <div class="shop-container">
 <div style="height: 70px;"></div>
-  <app-confirm-modal [product]="product"></app-confirm-modal>
+  <app-confirm-modal [product]="product" (yesEvent)="addToCart(product)"></app-confirm-modal>
   <app-modal [product]="product"></app-modal>
 
   <h2>Browse Our Products</h2>
@@ -50,7 +50,7 @@
           </div>
 
           @if (p.stockQuantity > 0) {
-            <button type="button" class="add-btn" data-bs-toggle="modal" data-bs-target="#confirmAddModal">
+            <button type="button" class="add-btn" data-bs-toggle="modal" data-bs-target="#confirmAddModal" (click)="this.product = p;">
               Add to Cart
             </button>
           } @else {
