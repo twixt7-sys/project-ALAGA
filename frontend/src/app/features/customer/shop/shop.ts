@@ -2,7 +2,7 @@ import { Component, Input } from '@angular/core';
 import { ShopServices } from '../../../core/services/features/shop-services';
 import { Product } from '../../../core/models/product.model';
 import { CommonModule } from '@angular/common';
-import { AuthServices } from '../../../core/services';
+import { AuthServices, CartServices } from '../../../core/services';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ComponentsModule } from '../../../shared/components/components-module';
@@ -27,7 +27,8 @@ export class Shop {
     private shopService: ShopServices,
     private authService: AuthServices,
     private productService: ProductService,
-    private router: Router
+    private router: Router,
+    private cartService: CartServices
   ) {
     this.productService.getProducts().subscribe(list => {
       this.products = list;
@@ -71,7 +72,27 @@ export class Shop {
     (window as any).dialog.showModal();
   }
 
-  addToCart() {
+  addToCart(product: Product) {
+    this.cartService.addItem({
+      product_id: product.id,
+      quantity: 1
+    }).subscribe({
+      next: (res) => {
+        Swal.fire({
+          title: "Success!",
+          text: `${product.name} added to cart!`,
+          icon: "success"
+        });
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: `${err.message}`,
+          footer: `<a href="#">Why do I have this issue?</a>`
+        });
+      }
+    })
 
   }
 }
