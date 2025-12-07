@@ -1,44 +1,55 @@
 <div class="orders-page">
-<div style="height: 70px;"></div>
+
   <h2 class="page-title">Order History</h2>
 
   <div class="orders-list">
-    @for (order of orders; track order.order_id) {
+
+    @for (order of orders; track order.id) {
       <div class="order-card o-card">
+
         <!-- HEADER -->
         <div class="order-header">
           <div>
-            <h3>Order #{{ order.order_id }}</h3>
-            <p class="date">{{ order.date }}</p>
+            <h4>Order #{{ order.id }}</h4>
+            <p class="date">{{ formatDate(order.orderDate) }}</p>
           </div>
 
-          <span class="status pending">
+          <span class="status-badge" [class]="getStatusClass(order.status)">
             {{ order.status }}
           </span>
         </div>
 
         <!-- ITEMS -->
         <div class="order-items">
-          @for (item of order.items; track item.name) {
-            <div class="item-row">
-              <div class="item-info">
-                <p class="item-name">{{ item.name }}</p>
-                <p class="item-meta">
-                  Quantity: {{ item.quantity }} × {{ currency(item.price) }}
+          @for (item of order.items ?? []; track item.id) {
+            <div class="order-item-row">
+
+              <div class="left">
+                <p class="item-name">
+                  Product #{{ item.productId }}
+                </p>
+                <p class="item-qty">
+                  Quantity: {{ item.quantity }} × {{ currency(item.priceAtPurchase) }}
                 </p>
               </div>
 
-              <strong>{{ currency(item.quantity * item.price) }}</strong>
+              <div class="right">
+                {{ currency(item.quantity * item.priceAtPurchase) }}
+              </div>
+
             </div>
           }
         </div>
 
-        <!-- TOTAL -->
+        <!-- FOOTER -->
         <div class="order-total">
           <span>Total</span>
-          <strong>{{ currency(order.total) }}</strong>
+          <strong>{{ currency(order.totalAmount) }}</strong>
         </div>
+
       </div>
     }
+
   </div>
+
 </div>

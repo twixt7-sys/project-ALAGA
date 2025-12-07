@@ -25,106 +25,101 @@
     }
   }
 }
-
 .orders-page {
-  padding: 40px 60px;
-  background: #faf8f5;
+  padding: 100px 60px;
+  background: #faf7f3;
   min-height: 100vh;
 }
 
 .page-title {
+  margin-bottom: 24px;
   font-size: 20px;
-  margin-bottom: 25px;
+  font-weight: 600;
 }
 
 .orders-list {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
 }
 
-/* ORDER CARD */
 .order-card {
-  background: #ffffff;
+  background: #fff;
   border-radius: 14px;
-  padding: 26px 28px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+  padding: 24px;
+  border: 1px solid #e7ddd4;
 }
 
-/* HEADER */
 .order-header {
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-between;
   margin-bottom: 20px;
+
+  h4 {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .date {
+    font-size: 13px;
+    color: #777;
+  }
 }
 
-.order-header h3 {
-  font-size: 15px;
-  font-weight: 600;
-  margin: 0;
-}
-
-.order-header .date {
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
   font-size: 12px;
-  color: #8a8a8a;
-  margin-top: 4px;
-}
-
-/* STATUS */
-.status {
-  font-size: 11px;
-  padding: 4px 10px;
-  border-radius: 999px;
   font-weight: 600;
+  text-transform: capitalize;
+
+  &.pending {
+    background: #f5b301;
+    color: #fff;
+  }
+
+  &.processing {
+    background: #3b82f6;
+    color: #fff;
+  }
+
+  &.completed {
+    background: #22c55e;
+    color: #fff;
+  }
+
+  &.cancelled {
+    background: #ef4444;
+    color: #fff;
+  }
 }
 
-.status.pending {
-  background: #f6b100;
-  color: white;
-}
-
-/* ITEMS */
 .order-items {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.item-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.item-name {
-  font-size: 14px;
-  margin: 0 0 3px 0;
-}
-
-.item-meta {
-  font-size: 12px;
-  color: #8a8a8a;
-  margin: 0;
-}
-
-/* TOTAL */
-.order-total {
-  margin-top: 20px;
-  padding-top: 16px;
   border-top: 1px solid #eee;
-  display: flex;
-  justify-content: space-between;
-  font-weight: 600;
+  border-bottom: 1px solid #eee;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .orders-page {
-    padding: 25px;
+.order-item-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 14px 0;
+  font-size: 14px;
+
+  .item-name {
+    font-weight: 500;
   }
 
-  .order-card {
-    padding: 20px;
+  .item-qty {
+    font-size: 13px;
+    color: #666;
   }
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 18px;
+  font-weight: 600;
+  font-size: 15px;
 }

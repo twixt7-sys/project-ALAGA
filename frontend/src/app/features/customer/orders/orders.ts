@@ -1,20 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { Order } from '../../../core/models/order.model';
+import { OrderItem } from '../../../core/models/order-item.model';
 
-interface OrderItem {
+interface CartProduct extends OrderItem {
   name: string;
-  quantity: number;
-  price: number;
+  image: string;
 }
-
-interface Order {
-  order_id: number;
-  date: string;
-  status: 'Pending' | 'Processing' | 'Completed' | 'Cancelled';
-  items: OrderItem[];
-  total: number;
-}
-
 
 @Component({
   selector: 'app-orders',
@@ -25,28 +17,62 @@ interface Order {
 export class Orders {
   orders: Order[] = [
     {
-      order_id: 3,
-      date: 'November 2, 2025 at 03:04 PM',
+      id: 3,
+      userId: 1,
+      orderDate: '2025-11-02T15:04:00',
+      totalAmount: 40.98,
       status: 'Pending',
       items: [
-        { name: 'Premium Dog Food Bowl Set', quantity: 1, price: 24.99 },
-        { name: 'Interactive Cat Toy Bundle', quantity: 1, price: 15.99 },
-      ],
-      total: 40.98,
+        {
+          id: 1,
+          orderId: 3,
+          productId: 101,
+          quantity: 1,
+          priceAtPurchase: 24.99
+        },
+        {
+          id: 2,
+          orderId: 3,
+          productId: 102,
+          quantity: 1,
+          priceAtPurchase: 15.99
+        }
+      ]
     },
     {
-      order_id: 4,
-      date: 'November 2, 2025 at 03:04 PM',
+      id: 4,
+      userId: 1,
+      orderDate: '2025-11-02T15:04:00',
+      totalAmount: 133.94,
       status: 'Pending',
       items: [
-        { name: 'Pet Grooming Kit Professional', quantity: 2, price: 34.99 },
-        { name: 'Interactive Cat Toy Bundle', quantity: 4, price: 15.99 },
-      ],
-      total: 133.94,
-    },
+        {
+          id: 3,
+          orderId: 4,
+          productId: 103,
+          quantity: 2,
+          priceAtPurchase: 34.99
+        },
+        {
+          id: 4,
+          orderId: 4,
+          productId: 102,
+          quantity: 4,
+          priceAtPurchase: 15.99
+        }
+      ]
+    }
   ];
 
-  currency(amount: number) {
-    return '$' + amount.toFixed(2);
+  formatDate(date: string) {
+    return new Date(date).toLocaleString();
+  }
+
+  currency(value: number) {
+    return '$' + value.toFixed(2);
+  }
+
+  getStatusClass(status: string) {
+    return status.toLowerCase();
   }
 }
