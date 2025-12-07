@@ -1,1 +1,37 @@
-<p>navbar works!</p>
+<nav class="nav-container {{classAppend}} shadow-lg">
+
+  <div class="nav-left" (click)="isAdmin ? custShop() : adminDashboard()">
+    <img src="images/headerlogo.svg" alt="logo" class="logo" height="50">
+    <span class="brand">Alaga Pet Supplies</span>
+  </div>
+
+  <div class="nav-center">
+  @if (!isAdmin) {
+    <button class="nav-link magictime puffIn {{active == 'custShop' ? 'active' : 'x'}}" (click)="custShop()">Shop</button>
+    <button class="nav-link magictime puffIn {{active == 'custOrders' ? 'active' : 'x'}}" (click)="custOrders()">Orders</button>
+  } @else {
+    <button class="nav-link magictime puffIn {{active == 'adminDashboard' ? 'active' : 'x'}}" (click)="adminDashboard()">Dashboard</button>
+    <button class="nav-link magictime puffIn {{active == 'adminOrders' ? 'active' : 'x'}}" (click)="adminOrders()">Orders</button>
+  }
+  </div>
+
+  <div class="nav-right">
+    <button class="icon-btn magictime swashIn {{active == 'custCheckout' ? 'active' : 'x'}}" (click)="custCart()">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9" cy="21" r="1" />
+        <circle cx="20" cy="21" r="1" />
+        <path d="M1 1h4l2.68 13.39c.09.45.49.78.96.78h9.72c.46 0 .86-.32.96-.78L23 6H6" />
+      </svg>
+    </button>
+
+    <div class="user-menu">
+      <span class="username">
+        {{ user.username }}
+      </span>
+    </div>
+
+    <div class="dropdown">
+      <button (click)="logout()" class="btn btn-outline-danger light-logout">Logout</button>
+    </div>
+  </div>
+</nav>

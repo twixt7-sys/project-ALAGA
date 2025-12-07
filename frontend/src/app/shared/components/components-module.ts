@@ -6,13 +6,16 @@ import { TextInput } from '../components/text-input/text-input.component';
 import { ToggleButton } from './toggle-button/toggle-button.component';
 import { InputComponent } from './input/input';
 import { DropdownComponent } from './dropdown/dropdown';
+import { Navbar } from './navbar/navbar';
+import { Modal } from './modal/modal';
+import { ConfirmModal } from './confirm-modal/confirm-modal';
 
 
 @NgModule({
-  declarations: [Button, Card, TextInput, InputComponent, DropdownComponent],
+  declarations: [Button, Card, TextInput, ToggleButton, InputComponent, DropdownComponent, Navbar, Modal, ConfirmModal],
   imports: [
     CommonModule
   ],
-  exports: [Button, Card, TextInput, InputComponent, DropdownComponent]
+  exports: [Button, Card, TextInput, ToggleButton, InputComponent, DropdownComponent, Navbar, Modal, ConfirmModal]
 })
 export class ComponentsModule { }

@@ -1,1 +1,20 @@
-<app-shop></app-shop>
+<div id="customer-container">
+  <app-navbar
+    (logoutEvent)="logout()"
+    (custCartEvent)="goToCheckout()"
+    (custShopEvent)="goToShop()"
+    [user]="user"
+    [active]="active"
+    >
+  </app-navbar>
+
+  @switch (active) {
+    @case ('custShop') {
+      <app-shop (checkout)="goToCheckout()"></app-shop>
+    }
+
+    @case ('custCheckout') {
+      <app-checkout></app-checkout>
+    }
+  }
+</div>

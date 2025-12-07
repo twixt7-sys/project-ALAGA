@@ -1,0 +1,23 @@
+
+  <div class="modal fade confirm-modal" id="confirmAddModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-sm">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <p class="question">
+            would you like to add {{ product?.name }} to cart?
+          </p>
+
+          <div class="actions">
+            <button type="button" class="btn-yes" (click)="yes(product)" data-bs-dismiss="modal">
+              yes
+            </button>
+
+            <button type="button" class="btn-no" data-bs-dismiss="modal">
+              no
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

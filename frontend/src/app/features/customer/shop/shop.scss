@@ -1,9 +1,11 @@
 @use "../../../shared/styles/variables" as *;
+@use '../../../shared/styles/shared-styles.scss' as *;
+@use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/variables' as *;
 
 .customer-container {
     height: 100vh;
     width: 100vw;
-    background-color: $color-primary;
     .customer-card {
         background-color: $color-secondary;
         h1 {
@@ -21,6 +23,7 @@
 h2 {
   font-weight: 600;
   margin-bottom: 15px;
+  color: $color-accent
 }
 
 .search-bar {
@@ -40,17 +43,27 @@ h2 {
   overflow-x: auto;
   padding-bottom: 10px;
   margin-bottom: 25px;
+  height: 60px;
+  gap: 12px;
 
   button {
     padding: 7px 15px;
-    background: #f5f5f5;
+    background: $color-bg;
+    color: $color-primary;
     border-radius: 20px;
+    transition: all 0.2s ease;
     border: none;
     cursor: pointer;
 
     &.active {
-      background: #d4c4a8;
+      background: $color-primary;
       color: white;
+    }
+
+    &:hover {
+      background: $color-secondary;
+      transform: scale(0.98) !important;
+      border: 2px solid $color-primary;
     }
   }
 }
@@ -62,12 +75,16 @@ h2 {
 }
 
 .product-card {
-  background: white;
-  border-radius: 10px;
+  @include shadow(sm);
+  background: linear-gradient(to left, $color-surface, $color-bg);
+  border-radius: $radius-md;
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
+	color: $color-text-primary;
+  justify-content: space-between;
+  transition: all 0.2s ease !important;
 
   .img-wrap {
     width: 100%;
@@ -114,9 +131,28 @@ h2 {
       padding: 10px;
       background: #6f4e37;
       color: white;
-      border: none;
+      border: 2px solid transparent;
       border-radius: 6px;
       cursor: pointer;
+      transition: all 0.2s ease;
+      &:hover {
+        @include shadow(lg);
+        background: $color-bg;
+        color: $color-primary;
+        font-weight: bolder;
+        transform: translateY(-2px) scale(1.02);
+        border: 3px solid $color-primary;
+      }
+    }
+  }
+  &:hover {
+    @include shadow(lg);
+    background: linear-gradient(to bottom, $color-secondary, $color-bg);
+    color: $color-accent;
+    transform: translateY(-2px) scale(1.01) !important;
+    .add-btn{
+      border: 2px solid $color-surface;
     }
   }
 }
+

@@ -1,1 +1,4 @@
-<app-dashboard></app-dashboard>
+<div id="customer-container">
+  <app-navbar (logoutEvent)="logout()" [user]="user"></app-navbar>
+  <app-dashboard></app-dashboard>
+</div>

@@ -1,0 +1,8 @@
+@use "../../shared/styles/variables" as *;
+@use '../../shared/styles/shared-styles.scss' as *;
+@use '../../shared/styles/mixins' as *;
+@use '../../shared/styles/variables' as *;
+
+#customer-container {
+  background: linear-gradient(to bottom, $color-secondary, $color-bg);
+}

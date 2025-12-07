@@ -1,9 +1,13 @@
 <div class="shop-container">
+<div style="height: 70px;"></div>
+  <app-confirm-modal [product]="product" (yesEvent)="addToCart(product)"></app-confirm-modal>
+  <app-modal [product]="product"></app-modal>
 
   <h2>Browse Our Products</h2>
 
   <div class="search-bar">
     <input
+      class="form-control"
       type="text"
       placeholder="Search for products..."
       [value]="searchTerm"
@@ -14,6 +18,7 @@
   <div class="category-row">
     @for (c of categories; track c) {
       <button
+        class="magictime swashIn"
         [class.active]="activeCategory === c"
         (click)="filterCategory(c)"
       >
@@ -26,9 +31,9 @@
 
     @for (p of filtered; track p.id) {
 
-      <div class="product-card">
-        
-        <div class="img-wrap">
+      <div class="product-card magictime swashIn">
+
+        <div class="img-wrap" (click)="viewProduct(p)">
           <img
             [src]="p.imageUrl ?? 'assets/images/placeholder.png'"
             [alt]="p.name"
@@ -45,7 +50,7 @@
           </div>
 
           @if (p.stockQuantity > 0) {
-            <button class="add-btn">
+            <button type="button" class="add-btn" data-bs-toggle="modal" data-bs-target="#confirmAddModal" (click)="this.product = p;">
               Add to Cart
             </button>
           } @else {
@@ -54,16 +59,8 @@
             </button>
           }
         </div>
-
       </div>
 
     }
   </div>
-  <app-button
-      (click)="logout()"
-      class="w-100"
-      classAppend="w-100"
-      label="Logout"
-      fill="true">
-    </app-button>
 </div>
