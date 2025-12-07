@@ -1,9 +1,10 @@
 <div id="customer-container">
   <app-navbar
     (logoutEvent)="logout()"
-    (custCartEvent)="goToCheckout()"
+    (custCartEvent)="goToCart()"
     (custShopEvent)="goToShop()"
     (custOrdersEvent)="goToOrders()"
+    (custCheckout)="goToCheckout()"
     [user]="user"
     [active]="active"
     >
@@ -20,6 +21,10 @@
 
     @case ('custOrders') {
       <app-orders></app-orders>
+    }
+
+    @case ('custCart') {
+      <app-cart></app-cart>
     }
   }
 </div>
