@@ -4,15 +4,17 @@ import { ComponentsModule } from '../../shared/components/components-module';
 import { AuthServices } from '../../core/services';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Checkout } from './checkout/checkout';
 
 @Component({
   selector: 'app-customer',
   standalone: true,
-  imports: [Shop, ComponentsModule],
+  imports: [Shop, Checkout, ComponentsModule],
   templateUrl: './customer.html',
   styleUrl: './customer.scss',
 })
 export class Customer {
+  active: 'custShop' | 'custOrders' | 'custCart' | 'custCheckout' = 'custShop';
   user = JSON.parse(localStorage.getItem('user') || '{}');
   constructor(
     private authService: AuthServices,
@@ -27,4 +29,8 @@ export class Customer {
     });
     this.router.navigate(['/auth']);
   }
+
+  goToCheckout() { this.active = 'custCheckout'; }
+
+  goToShop() { this.active = 'custShop'; }
 }

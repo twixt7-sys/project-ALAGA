@@ -7,16 +7,16 @@
 
   <div class="nav-center">
   @if (!isAdmin) {
-    <button class="nav-link magictime puffIn" (click)="custShop()">Shop</button>
-    <button class="nav-link magictime puffIn" (click)="custOrders()">Orders</button>
+    <button class="nav-link magictime puffIn {{active == 'custShop' ? 'active' : 'x'}}" (click)="custShop()">Shop</button>
+    <button class="nav-link magictime puffIn {{active == 'custOrders' ? 'active' : 'x'}}" (click)="custOrders()">Orders</button>
   } @else {
-    <button class="nav-link magictime puffIn" (click)="adminDashboard()">Dashboard</button>
-    <button class="nav-link magictime puffIn" (click)="adminDashboard()">Orders</button>
+    <button class="nav-link magictime puffIn {{active == 'adminDashboard' ? 'active' : 'x'}}" (click)="adminDashboard()">Dashboard</button>
+    <button class="nav-link magictime puffIn {{active == 'adminOrders' ? 'active' : 'x'}}" (click)="adminOrders()">Orders</button>
   }
   </div>
 
   <div class="nav-right">
-    <button class="icon-btn" (click)="custCart()">
+    <button class="icon-btn magictime swashIn {{active == 'custCheckout' ? 'active' : 'x'}}" (click)="custCart()">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="9" cy="21" r="1" />
         <circle cx="20" cy="21" r="1" />

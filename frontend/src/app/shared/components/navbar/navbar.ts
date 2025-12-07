@@ -9,6 +9,8 @@ import { User } from '../../../core/models/user.model';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
+  @Input() active: '' | 'adminDashboard' | 'adminOrders' | 'adminInventory' | 'custShop' | 'custOrders' | 'custCart' | 'custCheckout' = '';
+
   constructor(private router: Router) {}
   @Input() user: User = JSON.parse(localStorage.getItem("user") || '{}');
 
@@ -16,7 +18,7 @@ export class Navbar {
   @Input() classAppend: string = '';
 
   @Input() adminPages: any = [
-    "AdminDashboard",
+    "",
     "AdminOrders",
     "AdminInventory"
   ];

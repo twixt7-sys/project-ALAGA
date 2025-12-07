@@ -48,6 +48,12 @@
       background-color: $color-hover;
       color: $color-surface;
     }
+
+    &.active {
+      border-color: $color-border;
+      background-color: $color-hover;
+      color: $color-surface;
+    }
   }
 }
 
@@ -76,6 +82,12 @@
     }
 
     &:hover {
+      border-color: $color-border;
+      background-color: $color-hover;
+      color: $color-surface;
+    }
+
+    &.active {
       border-color: $color-border;
       background-color: $color-hover;
       color: $color-surface;
