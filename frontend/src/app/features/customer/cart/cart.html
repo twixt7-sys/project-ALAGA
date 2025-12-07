@@ -1,1 +1,76 @@
 <p>cart works!</p>
+a<div class="cart-page">
+
+  <h2 class="page-title">Shopping Cart</h2>
+
+  <div class="cart-layout">
+
+    <!-- LEFT: CART ITEMS -->
+    <div class="cart-items">
+
+      @for (item of cart; track item.id) {
+        <div class="cart-item-card">
+
+          <div class="item-left">
+            <img [src]="item.image" alt="product" />
+
+            <div class="item-details">
+              <h4>{{ item.name }}</h4>
+              <p class="price-each">{{ currency(item.price) }} each</p>
+
+              <div class="qty-controls">
+                <button (click)="decrease(item)">−</button>
+                <span>{{ item.quantity }}</span>
+                <button (click)="increase(item)">+</button>
+
+                <button class="delete" (click)="remove(item)">
+                  🗑
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <strong class="item-total">
+            {{ currency(item.price * item.quantity) }}
+          </strong>
+
+        </div>
+      }
+
+    </div>
+
+    <!-- RIGHT: ORDER SUMMARY -->
+    <div class="order-summary">
+
+      <h3>Order Summary</h3>
+
+      <div class="summary-row">
+        <span>Subtotal</span>
+        <span>{{ currency(subtotal) }}</span>
+      </div>
+
+      <div class="summary-row">
+        <span>Shipping</span>
+        <span class="muted">Calculated at checkout</span>
+      </div>
+
+      <hr />
+
+      <div class="summary-total">
+        <span>Total</span>
+        <strong>{{ currency(subtotal) }}</strong>
+      </div>
+
+      <button class="checkout-btn" (click)="proceedToCheckout()">
+        Proceed to Checkout
+      </button>
+
+      <p class="cod-note">
+        Payment will be collected upon delivery
+      </p>
+
+    </div>
+
+  </div>
+
+</div>
