@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from markupsafe import escape
-from .extensions import db, jwt, cors
+from .extensions import db, jwt
+from flask_cors import CORS
 from .config import Config
 from .routes import register_blueprints
 
@@ -12,7 +13,16 @@ def create_app():
     # extension initialization
     db.init_app(app)
     jwt.init_app(app)
-    cors.init_app(app)
+    
+    CORS(app,
+        supports_credentials=True,
+        resources={r"/api/*": {"origins": "http://localhost:4200"}}
+    )
+
+    @app.before_request
+    def handle_preflight():
+        if request.method == "OPTIONS":
+            return '', 200
     
     @app.route("/api")
     def hello():

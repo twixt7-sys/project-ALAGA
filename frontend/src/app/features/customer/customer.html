@@ -5,6 +5,8 @@
     (custShopEvent)="goToShop()"
     (custOrdersEvent)="goToOrders()"
     (custCheckout)="goToCheckout()"
+
+
     [user]="user"
     [active]="active"
     >
@@ -12,11 +14,11 @@
 
   @switch (active) {
     @case ('custShop') {
-      <app-shop (checkout)="goToCheckout()"></app-shop>
+      <app-shop></app-shop>
     }
 
     @case ('custCheckout') {
-      <app-checkout></app-checkout>
+      <app-checkout (toCartEvent)="goToCart()"></app-checkout>
     }
 
     @case ('custOrders') {
@@ -24,7 +26,7 @@
     }
 
     @case ('custCart') {
-      <app-cart></app-cart>
+      <app-cart (checkout)="goToCheckout()"></app-cart>
     }
   }
 </div>

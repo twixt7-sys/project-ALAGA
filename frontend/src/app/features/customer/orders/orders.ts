@@ -2,6 +2,9 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Order } from '../../../core/models/order.model';
 import { OrderItem } from '../../../core/models/order-item.model';
+import { OrderServices } from '../../../core/services';
+import { User } from '../../../core/models/user.model';
+import Swal from 'sweetalert2';
 
 interface CartProduct extends OrderItem {
   name: string;
@@ -10,69 +13,45 @@ interface CartProduct extends OrderItem {
 
 @Component({
   selector: 'app-orders',
+  standalone: true,
   imports: [CommonModule],
   templateUrl: './orders.html',
   styleUrl: './orders.scss',
 })
 export class Orders {
-  orders: Order[] = [
-    {
-      id: 3,
-      userId: 1,
-      orderDate: '2025-11-02T15:04:00',
-      totalAmount: 40.98,
-      status: 'Pending',
-      items: [
-        {
-          id: 1,
-          orderId: 3,
-          productId: 101,
-          quantity: 1,
-          priceAtPurchase: 24.99
-        },
-        {
-          id: 2,
-          orderId: 3,
-          productId: 102,
-          quantity: 1,
-          priceAtPurchase: 15.99
-        }
-      ]
-    },
-    {
-      id: 4,
-      userId: 1,
-      orderDate: '2025-11-02T15:04:00',
-      totalAmount: 133.94,
-      status: 'Pending',
-      items: [
-        {
-          id: 3,
-          orderId: 4,
-          productId: 103,
-          quantity: 2,
-          priceAtPurchase: 34.99
-        },
-        {
-          id: 4,
-          orderId: 4,
-          productId: 102,
-          quantity: 4,
-          priceAtPurchase: 15.99
-        }
-      ]
+  user: any = JSON.parse(localStorage.getItem('user') || '{}');
+  orders: Order[] = [];
+
+  loading = true;
+  error = false;
+
+  constructor(private orderService: OrderServices) {}
+
+  ngOnInit(): void {
+    if (!this.user?.user_id) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: `User not found :(`,
+      });
+      this.loading = false;
+      return;
     }
-  ];
 
-  formatDate(date: string) {
-    return new Date(date).toLocaleString();
-  }
-
-  currency(value: number) {
-    return '$' + value.toFixed(2);
-  }
-
-  getStatusClass(status: string) {
-    return status.toLowerCase();
+    this.orderService.getOrdersByUser(this.user.user_id).subscribe({
+      next: (res) => {
+        this.orders = res;
+        this.loading = false;
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message || 'Failed to load orders'
+        });
+        this.error = true;
+        this.loading = false;
+      }
+    });
   }
 }
