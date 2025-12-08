@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
+import { CartServices } from '../../../core/services';
 
 interface CartItem {
   id: number;
@@ -18,33 +19,15 @@ interface CartItem {
 export class Cart {
   @Output() checkout = new EventEmitter<void>();
 
+  constructor(
+    private cartService: CartServices
+  ){}
   cart: CartItem[] = [
     {
       id: 1,
       name: 'Premium Dog Food Bowl Set',
       image: 'assets/img/dog-bowl.jpg',
       price: 24.99,
-      quantity: 1
-    },
-    {
-      id: 2,
-      name: 'Interactive Cat Toy Bundle',
-      image: 'assets/img/cat-toy.jpg',
-      price: 15.99,
-      quantity: 1
-    },
-    {
-      id: 3,
-      name: 'Pet Grooming Kit Professional',
-      image: 'assets/img/grooming.jpg',
-      price: 34.99,
-      quantity: 1
-    },
-    {
-      id: 4,
-      name: 'Adjustable Leather Dog Collar',
-      image: 'assets/img/dog-collar.jpg',
-      price: 18.99,
       quantity: 1
     }
   ];
