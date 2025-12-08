@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 })
 export class CheckService {
   user: any = JSON.parse(localStorage.getItem('user') || '{}');
-  checkUser(): boolean{
+  userNotFound(): boolean{
     if (!this.user?.user_id) {
       Swal.fire({
         icon: "error",

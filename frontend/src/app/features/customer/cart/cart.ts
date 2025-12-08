@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
-import { CartServices } from '../../../core/services';
+import { CartServices, CheckService } from '../../../core/services';
 
 interface CartItem {
   id: number;
@@ -17,11 +17,23 @@ interface CartItem {
   styleUrl: './cart.scss',
 })
 export class Cart {
+  loading = true;
+  error = false;
+
   @Output() checkout = new EventEmitter<void>();
 
   constructor(
-    private cartService: CartServices
+    private cartService: CartServices,
+    private checkService: CheckService
   ){}
+
+  ngOnInit(): void{
+    if (this.checkService.userNotFound()) {
+      this.loading = false;
+      return;
+    }
+  }
+
   cart: CartItem[] = [
     {
       id: 1,

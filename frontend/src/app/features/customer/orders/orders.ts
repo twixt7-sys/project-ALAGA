@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Order } from '../../../core/models/order.model';
 import { OrderItem } from '../../../core/models/order-item.model';
-import { OrderServices } from '../../../core/services';
+import { CheckService, OrderServices } from '../../../core/services';
 import { User } from '../../../core/models/user.model';
 import Swal from 'sweetalert2';
 
@@ -25,15 +25,13 @@ export class Orders {
   loading = true;
   error = false;
 
-  constructor(private orderService: OrderServices) {}
+  constructor(
+    private orderService: OrderServices,
+    private checkService: CheckService
+  ) {}
 
   ngOnInit(): void {
-    if (!this.user?.user_id) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: `User not found :(`,
-      });
+    if (this.checkService.userNotFound()) {
       this.loading = false;
       return;
     }
