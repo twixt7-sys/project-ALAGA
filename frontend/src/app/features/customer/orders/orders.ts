@@ -36,7 +36,7 @@ export class Orders {
       return;
     }
 
-    this.orderService.getOrdersByUser(this.user.user_id).subscribe({
+    this.orderService.getMyOrders().subscribe({
       next: (res) => {
         this.orders = res;
         this.loading = false;
@@ -51,5 +51,33 @@ export class Orders {
         this.loading = false;
       }
     });
+  }
+
+  currency(amount: number): string {
+    if (typeof amount !== 'number') return 'N/A';
+    return new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    }).format(amount);
+  }
+
+  getStatusClass(status: string): string {
+    const statusMap: { [key: string]: string } = {
+      'Pending': 'status-pending',
+      'Processing': 'status-processing',
+      'Completed': 'status-completed',
+      'Cancelled': 'status-cancelled'
+    };
+    return statusMap[status] || '';
+  }
+
+  formatDate(dateString: string): string {
+    if (!dateString) return 'N/A';
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }).format(date);
   }
 }

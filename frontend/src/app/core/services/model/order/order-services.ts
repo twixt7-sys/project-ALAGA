@@ -7,22 +7,43 @@ import { Order } from '../../../models/order.model';
   providedIn: 'root',
 })
 export class OrderServices {
-  private base = 'http://localhost:5000/api/orders';
+  private base = 'http://localhost:5000/api/orders/';
 
   constructor(private http: HttpClient) {}
 
-  getOrdersByUser(userId: number): Observable<Order[]> {
-    return this.http.get<Order[]>(this.base).pipe(
+  getMyOrders(): Observable<Order[]> {
+    return this.http.get<any[]>('http://localhost:5000/api/orders').pipe(
       map(list =>
-        list.filter(o => o.userId === userId).map(o => ({
-          id: o.id,
-          userId: o.userId,
-          orderDate: o.orderDate,
-          totalAmount: o.totalAmount,
-          status: o.status,
-          items: o.items ?? []
+        list.map(o => ({
+          id: o.order_id,
+          userId: o.user_id,
+          orderDate: o.order_date,
+          totalAmount: o.total_amount,
+          status: this.normalizeStatus(o.status),
+          items: (o.order_items || []).map((i: any) => ({
+            id: i.order_item_id,
+            orderId: i.order_id,
+            productId: i.product_id,
+            quantity: i.quantity,
+            priceAtPurchase: i.price_at_purchase
+          }))
         }))
       )
     );
+  }
+
+  private normalizeStatus(status: string){
+    switch (status.toLowerCase()) {
+      case 'pending':
+        return 'Pending';
+      case 'processing':
+        return 'Processing';
+      case 'completed':
+        return 'Completed';
+      case 'cancelled':
+        return 'Cancelled';
+      default:
+        return 'Pending';
+    }
   }
 }
