@@ -10,19 +10,19 @@ export class ProductService {
 
   constructor(private http: HttpClient) {}
   getProducts() {
-  return this.http.get<any[]>(`${this.base}`).pipe(
-    map(list =>
-      list.map(p => ({
-        id: p.product_id,
-        name: p.name,
-        description: p.description,
-        category: p.category,
-        price: p.price,
-        imageUrl: p.image_url,
-        stockQuantity: p.stock_quantity,
-        dateAdded: p.date_added
-      }))
-    )
-  );
-}
+    return this.http.get<any[]>(`${this.base}`).pipe(
+      map(list =>
+        list.map(p => ({
+          id: p.product_id,
+          name: p.name,
+          description: p.description,
+          category: p.category,
+          price: p.price,
+          imageUrl: p.image_url,
+          stockQuantity: p.stock_quantity,
+          dateAdded: p.date_added
+        }))
+      )
+    );
+  }
 }
