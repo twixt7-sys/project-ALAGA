@@ -5,11 +5,13 @@ import { AuthServices } from '../../core/services';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Checkout } from './checkout/checkout';
+import { Orders } from './orders/orders';
+import { Cart } from './cart/cart';
 
 @Component({
   selector: 'app-customer',
   standalone: true,
-  imports: [Shop, Checkout, ComponentsModule],
+  imports: [Shop, Checkout, Orders, Cart, ComponentsModule],
   templateUrl: './customer.html',
   styleUrl: './customer.scss',
 })
@@ -33,4 +35,8 @@ export class Customer {
   goToCheckout() { this.active = 'custCheckout'; }
 
   goToShop() { this.active = 'custShop'; }
+
+  goToOrders() { this.active = 'custOrders'; }
+
+  goToCart() { this.active = 'custCart'; }
 }

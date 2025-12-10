@@ -1,1 +1,54 @@
-<p>orders works!</p>
+<div class="orders-page">
+
+  <h2 class="page-title">Order History</h2>
+
+  <div class="orders-list">
+
+    @for (order of orders; track order.id) {
+      <div class="order-card o-card">
+
+        <div class="order-header">
+          <div>
+            <h4>Order #{{ order.id }}</h4>
+            <p class="date">{{ formatDate(order.orderDate) }}</p>
+          </div>
+
+          <span class="status-badge" [class]="getStatusClass(order.status)">
+            {{ order.status }}
+          </span>
+        </div>
+
+        <!-- ITEMS -->
+        <div class="order-items">
+          @for (item of order.items ?? []; track item.id) {
+            <div class="order-item-row">
+
+              <div class="left">
+                <p class="item-name">
+                  Product #{{ item.productId }}
+                </p>
+                <p class="item-qty">
+                  Quantity: {{ item.quantity }} × {{ currency(item.priceAtPurchase) }}
+                </p>
+              </div>
+
+              <div class="right">
+                {{ currency(item.quantity * item.priceAtPurchase) }}
+              </div>
+
+            </div>
+          }
+        </div>
+
+        <!-- FOOTER -->
+        <div class="order-total">
+          <span>Total</span>
+          <strong>{{ currency(order.totalAmount) }}</strong>
+        </div>
+
+      </div>
+    }
+
+  </div>
+
+</div>

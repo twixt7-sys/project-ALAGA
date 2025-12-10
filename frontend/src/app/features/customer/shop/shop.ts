@@ -6,8 +6,7 @@ import { AuthServices, CartServices } from '../../../core/services';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ComponentsModule } from '../../../shared/components/components-module';
-import { ProductService } from '../../../core/services/product/product.service';
-
+import { ProductService } from '../../../core/services';
 @Component({
   selector: 'app-shop',
   standalone: true,

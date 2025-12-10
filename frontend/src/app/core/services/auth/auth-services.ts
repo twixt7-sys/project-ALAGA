@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { UserServices } from '../model';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { User } from '../../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -49,5 +50,9 @@ export class AuthServices {
       return parsedUser.role;
     }
     return null;
+  }
+
+  getUser(): Observable<User> {
+    return JSON.parse(localStorage.getItem('user') || '{}');
   }
 }

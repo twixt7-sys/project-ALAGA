@@ -22,6 +22,7 @@ class OrderService:
 			db.session.add(OrderItem(order_id=order.order_id, product_id=item.product_id, quantity=item.quantity, price_at_purchase=product.price))
 			db.session.delete(item)
 
+		order.calc_total()
 		db.session.commit()
 		return {"message": "Order placed successfully", "order_id": order.order_id}
 
@@ -36,10 +37,11 @@ class OrderService:
 		return order.to_dict() if order else None
 
 	@staticmethod
-	def update_order(order_id, status):
+	def update_order(order_id, data):
 		order = Order.query.get(order_id)
 		if not order:
 			return {"error": "Order not found"}, 404
-		order.status = status
+		if 'status' in data:
+			order.status = data['status']
 		db.session.commit()
 		return order.to_dict()

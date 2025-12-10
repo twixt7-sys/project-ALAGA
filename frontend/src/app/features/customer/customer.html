@@ -1,8 +1,12 @@
 <div id="customer-container">
   <app-navbar
     (logoutEvent)="logout()"
-    (custCartEvent)="goToCheckout()"
+    (custCartEvent)="goToCart()"
     (custShopEvent)="goToShop()"
+    (custOrdersEvent)="goToOrders()"
+    (custCheckout)="goToCheckout()"
+
+
     [user]="user"
     [active]="active"
     >
@@ -10,11 +14,19 @@
 
   @switch (active) {
     @case ('custShop') {
-      <app-shop (checkout)="goToCheckout()"></app-shop>
+      <app-shop></app-shop>
     }
 
     @case ('custCheckout') {
-      <app-checkout></app-checkout>
+      <app-checkout (toCartEvent)="goToCart()"></app-checkout>
+    }
+
+    @case ('custOrders') {
+      <app-orders></app-orders>
+    }
+
+    @case ('custCart') {
+      <app-cart (checkout)="goToCheckout()"></app-cart>
     }
   }
 </div>

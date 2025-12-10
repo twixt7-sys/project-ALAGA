@@ -1,0 +1,125 @@
+@use "../../../shared/styles/variables" as *;
+@use '../../../shared/styles/shared-styles.scss' as *;
+@use '../../../shared/styles/mixins' as *;
+@use '../../../shared/styles/variables' as *;
+
+.o-card {
+  @include shadow(sm);
+  background: linear-gradient(to left, $color-surface, $color-bg);
+  border-radius: $radius-md;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+	color: $color-text-primary;
+  justify-content: space-between;
+  transition: all 0.2s ease !important;
+
+  &:hover {
+    @include shadow(lg);
+    background: linear-gradient(to bottom, $color-secondary, $color-bg);
+    color: $color-accent;
+    transform: translateY(-2px) scale(1.01) !important;
+    .add-btn{
+      border: 2px solid $color-surface;
+    }
+  }
+}
+.orders-page {
+  padding: 100px 60px;
+  background: #faf7f3;
+  min-height: 100vh;
+}
+
+.page-title {
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.order-card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 24px;
+  border: 1px solid #e7ddd4;
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h4 {
+    margin: 0;
+    font-size: 16px;
+  }
+
+  .date {
+    font-size: 13px;
+    color: #777;
+  }
+}
+
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: capitalize;
+
+  &.pending {
+    background: #f5b301;
+    color: #fff;
+  }
+
+  &.processing {
+    background: #3b82f6;
+    color: #fff;
+  }
+
+  &.completed {
+    background: #22c55e;
+    color: #fff;
+  }
+
+  &.cancelled {
+    background: #ef4444;
+    color: #fff;
+  }
+}
+
+.order-items {
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.order-item-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 14px 0;
+  font-size: 14px;
+
+  .item-name {
+    font-weight: 500;
+  }
+
+  .item-qty {
+    font-size: 13px;
+    color: #666;
+  }
+}
+
+.order-total {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 18px;
+  font-weight: 600;
+  font-size: 15px;
+}

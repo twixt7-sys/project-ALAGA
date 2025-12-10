@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { Chart, registerables } from 'chart.js';
 import { AdminService } from '../../../core/services/admin/admin.service';
 import { OrdersService } from '../../../core/services/order/order.service';
-import { ProductService } from '../../../core/services/product/product.service';
+import { ProductService } from '../../../core/services';
 import { AuthServices } from '../../../core/services';
 import { ComponentsModule } from '../../../shared/components/components-module';
 import { Router } from '@angular/router';
