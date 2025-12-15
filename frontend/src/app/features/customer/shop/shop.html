@@ -28,33 +28,27 @@
   </div>
 
   <ul class="pagination">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="prevPage()">&laquo;</a>
+    </li>
 
-  <li class="page-item disabled">
-    <a class="page-link">&laquo;</a>
-  </li>
+    @for (page of pages; track page) {
+      <li class="page-item" [class.active]="currentPage === page">
+        <a class="page-link" (click)="goToPage(page)">
+          {{ page }}
+        </a>
+      </li>
+    }
 
-  <li class="page-item active">
-    <a class="page-link">1</a>
-  </li>
-
-  <li class="page-item">
-    <a class="page-link">2</a>
-  </li>
-
-  <li class="page-item">
-    <a class="page-link">3</a>
-  </li>
-
-  <li class="page-item">
-    <a class="page-link">&raquo;</a>
-  </li>
-
-</ul>
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a class="page-link" (click)="nextPage()">&raquo;</a>
+    </li>
+  </ul>
 
   <br>
   <div class="product-grid">
 
-    @for (p of filtered; track p.id) {
+    @for (p of paginated; track p.id) {
 
       <div class="product-card magictime swashIn">
 
@@ -88,4 +82,23 @@
 
     }
   </div>
+  <br>
+      <ul class="pagination">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <a class="page-link" (click)="prevPage()">&laquo;</a>
+    </li>
+
+    @for (page of pages; track page) {
+      <li class="page-item" [class.active]="currentPage === page">
+        <a class="page-link" (click)="goToPage(page)">
+          {{ page }}
+        </a>
+      </li>
+    }
+
+    <li class="page-item" [class.disabled]="currentPage === totalPages">
+      <a class="page-link" (click)="nextPage()">&raquo;</a>
+    </li>
+  </ul>
+  <br>
 </div>

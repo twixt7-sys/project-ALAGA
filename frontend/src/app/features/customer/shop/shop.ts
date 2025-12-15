@@ -21,7 +21,7 @@ export class Shop {
   filtered: Product[] = [];
 
   currentPage = 1;
-  pageSize = 9;
+  pageSize = 28;
   totalPages = 1;
   paginated: Product[] = [];
 
@@ -42,6 +42,10 @@ export class Shop {
       this.totalPages = Math.ceil(this.filtered.length / this.pageSize);
       this.updatePage();
     });
+  }
+
+  get pages(): number[] {
+    return Array.from({ length: this.totalPages }, (_, i) => i + 1);
   }
 
   categories = ['All', ...new Set(this.products.map(p => p.category))];
