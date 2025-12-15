@@ -4,12 +4,10 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
-export interface CartItem {
-product_id: number;
-name: string;
-price: number;
-quantity: number;
-}
+import { CartItem } from '../../../core/models/cart-item.model';
+import Swal from 'sweetalert2';
+import { CartServices } from '../../../core/services/model/cart/cart-services';
+import { CheckService } from '../../../core/services/util/check-service';
 
 @Component({
   selector: 'app-checkout',
@@ -18,91 +16,85 @@ quantity: number;
   styleUrl: './checkout.scss',
 })
 export class Checkout {
-  deliveryForm!: FormGroup;
-  // stub sample cart items - replace with your CartService injection to get live cart
-  cartItems: CartItem[] = [
-  // Example items. In production, fetch from CartService.
-  { product_id: 1, name: 'Premium Dog Food Bowl Set', price: 24.99, quantity: 1 },
-  { product_id: 2, name: 'Interactive Cat Toy Bundle', price: 15.99, quantity: 1 },
-  { product_id: 3, name: 'Pet Grooming Kit Professional', price: 34.99, quantity: 1 },
-  { product_id: 4, name: 'Adjustable Leather Dog Collar', price: 18.99, quantity: 1 }
-  ];
-
-
+    deliveryForm!: FormGroup;
+  cartItems: CartItem[] = [];
   placing = false;
 
   @Output() toCartEvent = new EventEmitter<void>();
-  constructor(private fb: FormBuilder, private http: HttpClient, private router: Router) {}
+
+  constructor(
+    private fb: FormBuilder,
+    private cartService: CartServices,
+    private checkService: CheckService,
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
+    if (this.checkService.userNotFound()) {
+      Swal.fire('Error', 'User not logged in', 'error');
+      return;
+    }
+
     this.deliveryForm = this.fb.group({
-    fullName: ['', [Validators.required, Validators.minLength(2)]],
-    phone: ['', [Validators.required, Validators.minLength(6)]],
-    street: ['', Validators.required],
-    city: ['', Validators.required],
-    postalCode: ['', Validators.required],
-    notes: ['']
-  });
+      fullName: ['', Validators.required],
+      phone: ['', Validators.required],
+      street: ['', Validators.required],
+      city: ['', Validators.required],
+      postalCode: ['', Validators.required],
+      notes: ['']
+    });
+
+    this.loadCart();
   }
 
-
-
+  loadCart() {
+    this.cartService.getCart().subscribe({
+      next: res => this.cartItems = res.items,
+      error: () => Swal.fire('Error', 'Failed to load cart', 'error')
+    });
+  }
 
   get subtotal() {
-  return this.cartItems.reduce((s, i) => s + i.price * i.quantity, 0);
+    return this.cartItems.reduce(
+      (sum, item) => sum + item.product.price * item.quantity,
+      0
+    );
   }
 
-
-  get f() {
-  return this.deliveryForm.controls;
+  currency(v: number) {
+    return '$' + v.toFixed(2);
   }
-
-
-  currency(amount: number) {
-  return '$' + amount.toFixed(2);
-  }
-
 
   backToCart() {
     this.toCartEvent.emit();
   }
 
+  placeOrder() {
+    if (this.deliveryForm.invalid) {
+      this.deliveryForm.markAllAsTouched();
+      return;
+    }
 
-  async placeOrder() {
-  if (this.deliveryForm.invalid) {
-  this.deliveryForm.markAllAsTouched();
-  return;
-  }
+    if (this.cartItems.length === 0) {
+      Swal.fire('Empty Cart', 'Your cart is empty', 'info');
+      return;
+    }
 
+    this.placing = true;
 
-  if (this.cartItems.length === 0) {
-  alert('Your cart is empty.');
-  return;
-  }
-
-
-  this.placing = true;
-
-
-  const payload = {
-  user_id: null, // fill with logged in user id from auth state
-  delivery: this.deliveryForm.value,
-  items: this.cartItems.map(i => ({ product_id: i.product_id, quantity: i.quantity }))
-  };
-
-
-  try {
-  // Use your real endpoint: POST /checkout or /orders/checkout depending on backend
-  await this.http.post('/api/orders/checkout', payload).toPromise();
-
-
-  // On success: clear cart (call CartService), navigate to order confirmation
-  // this.cartService.clear();
-  this.router.navigate(['/orders']);
-  } catch (err) {
-  console.error(err);
-  alert('Something went wrong while placing the order. Please try again.');
-  } finally {
-  this.placing = false;
-  }
+    this.cartService.checkout().subscribe({
+      next: () => {
+        Swal.fire('Success', 'Order placed successfully', 'success');
+        this.router.navigate(['/orders']);
+      },
+      error: (err) => {
+        Swal.fire(
+          'Checkout Failed',
+          err.error?.error ?? 'Something went wrong',
+          'error'
+        );
+        this.placing = false;
+      }
+    });
   }
 }

@@ -89,26 +89,22 @@ export class Shop {
   }
 
   addToCart(product: Product) {
-    this.cartService.addItem({
-      product_id: product.id,
-      quantity: 1
-    }).subscribe({
-      next: (res) => {
+    this.cartService.addItem(product.id, 1).subscribe({
+      next: () => {
         Swal.fire({
-          title: "Success!",
+          title: 'Success!',
           text: `${product.name} added to cart!`,
-          icon: "success"
+          icon: 'success'
         });
       },
       error: (err) => {
         Swal.fire({
-          icon: "error",
-          title: "Oops...",
-          text: `${err.message}`,
-          footer: `<a href="#">Why do I have this issue?</a>`
+          icon: 'error',
+          title: 'Oops...',
+          text: err.error?.error ?? 'Failed to add item'
         });
       }
-    })
+    });
   }
 
   updatePage() {

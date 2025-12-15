@@ -1,14 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CartServices, CheckService } from '../../../core/services';
+import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
-interface CartItem {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-  quantity: number;
-}
+//import { Cart } from '../../../core/models/cart.model';
+import { CartItem } from '../../../core/models/cart-item.model';
 
 @Component({
   selector: 'app-cart',
@@ -16,7 +13,11 @@ interface CartItem {
   templateUrl: './cart.html',
   styleUrl: './cart.scss',
 })
-export class Cart {
+export class CartComponent {
+
+  cartItems: CartItem[] = [];
+
+
   loading = true;
   error = false;
 
@@ -24,49 +25,99 @@ export class Cart {
 
   constructor(
     private cartService: CartServices,
-    private checkService: CheckService
+    private checkService: CheckService,
+    private router: Router
   ){}
 
-  ngOnInit(): void{
+  cart: CartItem[] = [];
+
+  ngOnInit(): void {
     if (this.checkService.userNotFound()) {
       this.loading = false;
+
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Failed'
+      });
       return;
     }
+
+    this.loadCart();
   }
 
-  cart: CartItem[] = [
-    {
-      id: 1,
-      name: 'Premium Dog Food Bowl Set',
-      image: 'assets/img/dog-bowl.jpg',
-      price: 24.99,
-      quantity: 1
-    }
-  ];
+  loadCart() {
+    this.loading = true;
+
+    this.cartService.getCart().subscribe({
+      next: (res) => {
+        this.cartItems = res.items;
+        this.loading = false;
+      },
+      error: () => {
+        this.error = true;
+        this.loading = false;
+      }
+    });
+  }
 
   increase(item: CartItem) {
-    item.quantity++;
+    if (item.quantity >= item.product.stockQuantity) return;
+
+    this.cartService
+      .updateItem(item.cart_item_id, item.quantity + 1)
+      .subscribe(() => item.quantity++);
   }
 
   decrease(item: CartItem) {
-    if (item.quantity > 1) {
-      item.quantity--;
-    }
+    if (item.quantity <= 1) return;
+
+    this.cartService
+      .updateItem(item.cart_item_id, item.quantity - 1)
+      .subscribe(() => item.quantity--);
   }
 
   remove(item: CartItem) {
-    this.cart = this.cart.filter(i => i.id !== item.id);
+    this.cartService.removeItem(item.cart_item_id).subscribe(() => {
+      this.cartItems = this.cartItems.filter(
+        i => i.cart_item_id !== item.cart_item_id
+      );
+    });
   }
 
+
   get subtotal() {
-    return this.cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+    return this.cartItems.reduce(
+      (sum, item) => sum + item.product.price * item.quantity,
+      0
+    );
   }
+
 
   currency(value: number) {
     return '$' + value.toFixed(2);
   }
 
   proceedToCheckout() {
-    this.checkout.emit();
+    this.cartService.checkout().subscribe({
+      next: () => {
+        this.checkout.emit();
+        /*
+        Swal.fire({
+          title: 'Success!',
+          text: `Items ordered successfully!`,
+          icon: 'success'
+        });
+        this.cart = [];
+        */
+      },
+      error: (err) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.error?.error ?? 'Order Failed'
+        });
+      }
+    });
   }
 }

@@ -7,14 +7,32 @@ import { Cart } from '../../../models/cart.model';
   providedIn: 'root',
 })
 export class CartServices {
-  private base = 'http://localhost:5000/api/cart';
+  private root = 'http://localhost:5000/api';
+  private base = `${this.root}/cart`;
   constructor(private http: HttpClient) {}
 
-  addItem(data: any): Observable<any> {
-    return this.http.post(`${this.base}/items`, data);
+  getCart(): Observable<Cart> {
+    return this.http.get<Cart>(`${this.base}`);
   }
 
-  getCart(userId: number): Observable<Cart> {
-    return this.http.get<Cart>(this.base);
+  addItem(product_id: number, quantity = 1) {
+    return this.http.post(`${this.base}/items`, {
+      product_id,
+      quantity
+    });
+  }
+
+  updateItem(cart_item_id: number, quantity: number) {
+    return this.http.put(`${this.base}/items/${cart_item_id}`, {
+      quantity
+    });
+  }
+
+  removeItem(cart_item_id: number) {
+    return this.http.delete(`${this.base}/items/${cart_item_id}`);
+  }
+
+  checkout(): Observable<any> {
+    return this.http.post(`${this.root}/orders/checkout`, {});
   }
 }

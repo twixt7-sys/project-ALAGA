@@ -30,7 +30,8 @@ def add_item():
 @jwt_required()
 def update_item(cart_item_id):
 	data = request.get_json()
-	item = CartService.update_item(cart_item_id, data)
+	quantity = data.get("quantity")
+	item = CartService.update_item(cart_item_id, quantity)
 	if not item:
 		return jsonify({"error": "Item not found"}), 404
 	return jsonify(item), 200

@@ -1,9 +1,10 @@
 import { CartItem } from './cart-item.model';
 
 export interface Cart {
-	id: number;
-	userId: number;
-	createdAt: string;
-	updatedAt: string;
-	items?: CartItem[];
+  cart_id: number;
+  user_id: number;
+  created_at: string;
+  updated_at: string;
+  items: CartItem[];
+  total_items: number;
 }

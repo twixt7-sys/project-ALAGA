@@ -61,10 +61,14 @@
     <div class="summary-card">
       <h3>Order Summary</h3>
 
-      @for (item of cartItems; track item.product_id) {
+      @for (item of cartItems; track item.cart_item_id) {
         <div class="summary-item">
-          <span>{{ item.name }} × {{ item.quantity }}</span>
-          <strong>{{ currency(item.price * item.quantity) }}</strong>
+          <span>
+            {{ item.product.name }} × {{ item.quantity }}
+          </span>
+          <strong>
+            {{ currency(item.product.price * item.quantity) }}
+          </strong>
         </div>
       }
 

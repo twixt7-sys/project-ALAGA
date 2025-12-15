@@ -6,12 +6,12 @@ import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { Checkout } from './checkout/checkout';
 import { Orders } from './orders/orders';
-import { Cart } from './cart/cart';
+import { CartComponent } from './cart/cart';
 
 @Component({
   selector: 'app-customer',
   standalone: true,
-  imports: [Shop, Checkout, Orders, Cart, ComponentsModule],
+  imports: [Shop, Checkout, Orders, CartComponent, ComponentsModule],
   templateUrl: './customer.html',
   styleUrl: './customer.scss',
 })
