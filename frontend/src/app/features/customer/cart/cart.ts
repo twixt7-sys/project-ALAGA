@@ -4,7 +4,6 @@ import { CartServices, CheckService } from '../../../core/services';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 
-//import { Cart } from '../../../core/models/cart.model';
 import { CartItem } from '../../../core/models/cart-item.model';
 
 @Component({
@@ -100,27 +99,5 @@ export class CartComponent {
 
   proceedToCheckout() {
     this.checkout.emit();
-    /*
-    this.cartService.checkout().subscribe({
-      next: () => {
-
-
-        Swal.fire({
-          title: 'Success!',
-          text: `Items ordered successfully!`,
-          icon: 'success'
-        });
-        this.cart = [];
-
-      },
-      error: (err) => {
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: err.error?.error ?? 'Order Failed'
-        });
-      }
-    });
-    */
   }
 }

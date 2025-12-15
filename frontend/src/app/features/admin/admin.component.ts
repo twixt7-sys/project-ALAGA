@@ -13,6 +13,7 @@ import { ComponentsModule } from '../../shared/components/components-module';
   styleUrl: './admin.component.scss',
 })
 export class Admin {
+  active: 'adminDashboard' | 'adminOrders' | 'adminInventory' = 'adminDashboard';
   user = JSON.parse(localStorage.getItem('user') || '{}');
   constructor(
     private authService: AuthServices,
@@ -27,4 +28,8 @@ export class Admin {
     });
     this.router.navigate(['/auth']);
   }
+
+  goToDashboard() { this.active = 'adminDashboard'; }
+  goToOrders() { this.active = 'adminOrders'; }
+  goToInventory() { this.active = 'adminInventory'; }
 }

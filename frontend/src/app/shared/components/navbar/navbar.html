@@ -12,10 +12,12 @@
   } @else {
     <button class="nav-link magictime puffIn {{active == 'adminDashboard' ? 'active' : 'x'}}" (click)="adminDashboard()">Dashboard</button>
     <button class="nav-link magictime puffIn {{active == 'adminOrders' ? 'active' : 'x'}}" (click)="adminOrders()">Orders</button>
+    <button class="nav-link magictime puffIn {{active == 'adminInventory' ? 'active' : 'x'}}" (click)="adminInventory()">Inventory</button>
   }
   </div>
 
   <div class="nav-right">
+   @if (!isAdmin) {
     <button class="icon-btn magictime swashIn {{active == 'custCart' ? 'active' : 'x'}}" (click)="custCart()">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="9" cy="21" r="1" />
@@ -23,6 +25,7 @@
         <path d="M1 1h4l2.68 13.39c.09.45.49.78.96.78h9.72c.46 0 .86-.32.96-.78L23 6H6" />
       </svg>
     </button>
+  }
 
     <div class="user-menu">
       <span class="username">

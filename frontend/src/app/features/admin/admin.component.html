@@ -1,4 +1,12 @@
-<div id="customer-container">
-  <app-navbar (logoutEvent)="logout()" [user]="user"></app-navbar>
+<div id="admin-container">
+  <app-navbar
+    (logoutEvent)="logout()"
+    (adminDashboardEvent)="goToDashboard()"
+    (adminOrdersEvent)="goToOrders()"
+    (adminInventoryEvent)="goToInventory()"
+    [user]="user"
+    [active]="active"
+  >
+  </app-navbar>
   <app-dashboard></app-dashboard>
 </div>
