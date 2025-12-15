@@ -19,7 +19,12 @@ class OrderService:
 			if product.stock_quantity < item.quantity:
 				return {"error": f"Insufficient stock for {product.name}"}, 400
 			product.stock_quantity -= item.quantity
-			db.session.add(OrderItem(order_id=order.order_id, product_id=item.product_id, quantity=item.quantity, price_at_purchase=product.price))
+			order_item = OrderItem(
+				product_id=item.product_id,
+				quantity=item.quantity,
+				price_at_purchase=product.price
+			)
+			order.order_items.append(order_item)
 			db.session.delete(item)
 
 		order.calc_total()

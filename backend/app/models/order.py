@@ -1,5 +1,6 @@
 from datetime import datetime
 from ..extensions import db
+from decimal import Decimal
 
 class Order(db.Model):
 	__tablename__ = 'orders'
@@ -17,7 +18,10 @@ class Order(db.Model):
 	order_items = db.relationship('OrderItem', backref='order', cascade='all, delete-orphan', lazy=True)
 
 	def calc_total(self):
-		self.total_amount = sum(item.price_at_purchase * item.quantity for item in self.order_items)
+		self.total_amount = sum(
+			(item.price_at_purchase * item.quantity for item in self.order_items),
+			Decimal("0.00")
+		)
 
 	def __repr__(self):
 		return f"<Order {self.order_id} - User {self.user_id}>"

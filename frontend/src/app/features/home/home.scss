@@ -78,12 +78,12 @@ $hover-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
 	font-family: 'Poppins', sans-serif;
 }
 
-body {
+#home-container {
 	width: 100vw;
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	background: url('images/images/background.png') no-repeat center/cover;
+	background: url('/images/images/background.png') no-repeat center/cover;
 	color: $text-color;
 	overflow: hidden;
 
@@ -196,7 +196,7 @@ body {
 			bottom: 0;
 			width: $border-size;
 			height: $border-size;
-			background: url('images/images/border_BL.png') no-repeat bottom left;
+			background: url('/images/border_BL.png') no-repeat bottom left;
 		}
 
 		&::after {
@@ -205,7 +205,7 @@ body {
 			right: 0;
 			width: $border-size;
 			height: $border-size;
-			background: url('images/images/border_UR.png') no-repeat top right;
+			background: url('/images/border_UR.png') no-repeat top right;
 		}
 
 		#hero {
