@@ -20,6 +20,11 @@ export class Shop {
   products: Product[] = [];
   filtered: Product[] = [];
 
+  currentPage = 1;
+  pageSize = 9;
+  totalPages = 1;
+  paginated: Product[] = [];
+
   searchTerm = '';
 
   constructor(
@@ -33,6 +38,9 @@ export class Shop {
       this.products = list;
       this.filtered = list;
       this.categories = ['All', ...new Set(this.products.map(p => p.category))];
+
+      this.totalPages = Math.ceil(this.filtered.length / this.pageSize);
+      this.updatePage();
     });
   }
 
@@ -64,7 +72,12 @@ export class Shop {
     }
 
     this.filtered = temp;
+
+    this.totalPages = Math.ceil(this.filtered.length / this.pageSize);
+    this.currentPage = 1; // reset page on new filter
+    this.updatePage();
   }
+
 
   viewProduct(p: Product) {
     this.product = p;
@@ -92,6 +105,26 @@ export class Shop {
         });
       }
     })
-
   }
+
+  updatePage() {
+    const start = (this.currentPage - 1) * this.pageSize;
+    const end = start + this.pageSize;
+    this.paginated = this.filtered.slice(start, end);
+  }
+
+  goToPage(page: number) {
+    if (page < 1 || page > this.totalPages) return;
+    this.currentPage = page;
+    this.updatePage();
+  }
+
+  nextPage() {
+    this.goToPage(this.currentPage + 1);
+  }
+
+  prevPage() {
+    this.goToPage(this.currentPage - 1);
+  }
+
 }
