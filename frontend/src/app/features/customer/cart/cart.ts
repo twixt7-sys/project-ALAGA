@@ -99,17 +99,19 @@ export class CartComponent {
   }
 
   proceedToCheckout() {
+    this.checkout.emit();
+    /*
     this.cartService.checkout().subscribe({
       next: () => {
-        this.checkout.emit();
-        /*
+
+
         Swal.fire({
           title: 'Success!',
           text: `Items ordered successfully!`,
           icon: 'success'
         });
         this.cart = [];
-        */
+
       },
       error: (err) => {
         Swal.fire({
@@ -119,5 +121,6 @@ export class CartComponent {
         });
       }
     });
+    */
   }
 }

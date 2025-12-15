@@ -16,11 +16,13 @@ import { CheckService } from '../../../core/services/util/check-service';
   styleUrl: './checkout.scss',
 })
 export class Checkout {
-    deliveryForm!: FormGroup;
+  deliveryForm!: FormGroup;
   cartItems: CartItem[] = [];
   placing = false;
 
   @Output() toCartEvent = new EventEmitter<void>();
+  @Output() toShopEvent = new EventEmitter<void>();
+
 
   constructor(
     private fb: FormBuilder,
@@ -85,7 +87,7 @@ export class Checkout {
     this.cartService.checkout().subscribe({
       next: () => {
         Swal.fire('Success', 'Order placed successfully', 'success');
-        this.router.navigate(['/orders']);
+        this.toShopEvent.emit();
       },
       error: (err) => {
         Swal.fire(

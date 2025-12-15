@@ -17,7 +17,7 @@
     }
 
     @case ('custCheckout') {
-      <app-checkout (toCartEvent)="goToCart()"></app-checkout>
+      <app-checkout (toCartEvent)="goToCart()" (toShopEvent)="goToShop()"></app-checkout>
     }
 
     @case ('custOrders') {
