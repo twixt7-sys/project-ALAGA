@@ -8,6 +8,7 @@ import { CartItem } from '../../../core/models/cart-item.model';
 import Swal from 'sweetalert2';
 import { CartServices } from '../../../core/services/model/cart/cart-services';
 import { CheckService } from '../../../core/services/util/check-service';
+import { OrderServices } from '../../../core/services';
 
 @Component({
   selector: 'app-checkout',
@@ -28,7 +29,8 @@ export class Checkout {
     private fb: FormBuilder,
     private cartService: CartServices,
     private checkService: CheckService,
-    private router: Router
+    private router: Router,
+    private orderService: OrderServices
   ) {}
 
   ngOnInit(): void {
@@ -87,6 +89,7 @@ export class Checkout {
     this.cartService.checkout().subscribe({
       next: () => {
         Swal.fire('Success', 'Order placed successfully', 'success');
+        this.orderService.notifyOrdersUpdated();
         this.toShopEvent.emit();
       },
       error: (err) => {

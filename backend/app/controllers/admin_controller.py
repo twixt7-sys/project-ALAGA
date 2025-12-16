@@ -19,12 +19,13 @@ def inventory():
 @admin_bp.get("/sales")
 @jwt_required()
 def sales_report():
-	claims = get_jwt()
-	if not is_admin_role(claims):
-		return error("Unauthorized", 403)
+    claims = get_jwt()
+    if not is_admin_role(claims):
+        return error("Unauthorized", 403)
 
-	start_date = request.args.get("start_date")
-	end_date = request.args.get("end_date")
-	report = AdminService.get_sales_report(start_date, end_date)
-	return jsonify(report), 200
+    start_date = request.args.get("start_date")
+    end_date = request.args.get("end_date")
+
+    report = AdminService.get_sales_report(start_date, end_date)
+    return jsonify(report), 200
 

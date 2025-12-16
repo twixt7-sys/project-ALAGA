@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, Subject } from 'rxjs';
 import { Order } from '../../../models/order.model';
 
 @Injectable({
@@ -8,8 +8,27 @@ import { Order } from '../../../models/order.model';
 })
 export class OrderServices {
   private base = 'http://localhost:5000/api/orders/';
+  private ordersUpdatedSource = new Subject<void>();
+  ordersUpdated$ = this.ordersUpdatedSource.asObservable();
+
+  notifyOrdersUpdated() {
+    this.ordersUpdatedSource.next();
+  }
 
   constructor(private http: HttpClient) {}
+
+  getAllOrders(): Observable<any[]> {
+    return this.http.get<any[]>('http://localhost:5000/api/orders').pipe(
+      map(list =>
+        list.map(o => ({
+          order_id: o.order_id,
+          order_date: o.order_date,
+          total_amount: Number(o.total_amount),
+          status: this.normalizeStatus(o.status)
+        }))
+      )
+    );
+  }
 
   getMyOrders(): Observable<Order[]> {
     return this.http.get<any[]>('http://localhost:5000/api/orders').pipe(

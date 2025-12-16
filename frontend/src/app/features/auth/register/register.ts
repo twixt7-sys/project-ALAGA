@@ -39,8 +39,8 @@ export class RegisterComponent {
           icon: "success"
         });
         this.auth.login({
-          username: this.username,
-          email: this.email
+          email: this.email,
+          password: this.password
         }).subscribe({
           next: (res) => {
             localStorage.setItem('access_token', res.access_token); // token storage

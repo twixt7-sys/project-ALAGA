@@ -5,12 +5,12 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class AdminService {
-  private base = '/api/admin';
+  private base = 'http://localhost:5000/api/admin';
 
   constructor(private http: HttpClient) {}
 
   getSalesReport() {
-    return this.http.get(`${this.base}/reports/sales`);
+    return this.http.get<any[]>(`${this.base}/sales`);
   }
 
   getInventory() {

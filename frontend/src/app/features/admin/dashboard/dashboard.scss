@@ -5,7 +5,7 @@
 
 .dashboard-container {
   padding: 20px;
-  background: linear-gradient();
+  background: linear-gradient(); // Ensure this line is completed in your actual project
   color: #3a2e2e;
   font-family: Inter, sans-serif;
 }
@@ -18,15 +18,16 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
-	color: $color-text-primary;
+  color: $color-text-primary;
   justify-content: space-between;
   transition: all 0.2s ease !important;
+  min-height: 100px; /* Ensures the card has minimum vertical space */
 
   &:hover {
     @include shadow(lg);
     background: linear-gradient(to bottom, $color-secondary, $color-bg);
     color: $color-accent;
-    transform: translateY(-2px) scale(1.01) !important;
+transform: translateY(-2px) scale(1.01) !important;
     .add-btn{
       border: 2px solid $color-surface;
     }
@@ -34,13 +35,17 @@
 }
 
 .stats-row {
-  display: flex;
+  display: flex; /* 1. Use Flexbox for horizontal alignment */
   gap: 20px;
   margin-bottom: 30px;
+  flex-wrap: wrap; /* Allows cards to stack on smaller screens */
 }
 
 .stat-card {
-  flex: 1;
+  /* 2. Key Fix: flex-grow: 1, flex-shrink: 1, flex-basis: 0.
+        This makes all cards share the row width equally.
+     */
+  flex: 1 1 0;
   background: white;
   padding: 15px 20px;
   border-radius: 10px;
@@ -52,16 +57,18 @@
 }
 
 .charts-row {
-  display: flex;
+  display: flex; /* 3. Use Flexbox for chart row */
   gap: 20px;
 }
 
 .chart-card {
-  flex: 1;
+  flex: 1; /* 4. Key Fix: Ensures the chart card fills the entire row width */
   padding: 20px;
   background: white;
   border-radius: 10px;
   box-shadow: 0 1px 3px #d6d6d6;
+  width: 100%; /* Can be redundant with flex: 1, but doesn't hurt */
+  height: 800px;
 }
 
 .recent-orders {
