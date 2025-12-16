@@ -1,1 +1,51 @@
-<p>products works!</p>
+<div style="height: 100px;"></div>
+
+<div class="products-container">
+  <h3>Products Management</h3>
+  <br>
+
+  <button class="add-btn" (click)="openCreate()">+ Add Product</button>
+
+  <div class="products-card">
+    @for (p of products; track p.id) {
+      <div class="product-row">
+        <div class="left">
+          <img [src]="p.imageUrl || '/assets/placeholder.png'" />
+          <div>
+            <strong>{{ p.name }}</strong>
+            <p>{{ p.category }}</p>
+            <small>₱{{ p.price }}</small>
+          </div>
+        </div>
+
+        <div class="right">
+          <span class="badge">{{ p.stockQuantity }} stock</span>
+          <button (click)="openEdit(p)">✏️</button>
+          <button class="danger" (click)="confirmDelete(p)">🗑</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+@if (showModal) {
+  <div class="overlay">
+    <div class="modall">
+      <h3>{{ isEdit ? 'Edit Product' : 'Add Product' }}</h3>
+
+      <input placeholder="Name" [(ngModel)]="form.name" />
+      <input placeholder="Category" [(ngModel)]="form.category" />
+      <input type="number" placeholder="Price" [(ngModel)]="form.price" />
+      <input type="number" placeholder="Stock Quantity" [(ngModel)]="form.stockQuantity" />
+      <input placeholder="Image URL" [(ngModel)]="form.imageUrl" />
+      <textarea placeholder="Description" [(ngModel)]="form.description"></textarea>
+
+      <div class="actions">
+        <button class="secondary" (click)="closeModal()">Cancel</button>
+        <button class="primary" (click)="saveProduct()">
+          {{ isEdit ? 'Update' : 'Create' }}
+        </button>
+      </div>
+    </div>
+  </div>
+}

@@ -9,7 +9,7 @@ import { User } from '../../../core/models/user.model';
   styleUrl: './navbar.scss',
 })
 export class Navbar {
-  @Input() active: '' | 'adminDashboard' | 'adminOrders' | 'adminInventory' | 'custShop' | 'custOrders' | 'custCart' | 'custCheckout' = '';
+  @Input() active: '' | 'adminDashboard' | 'adminOrders' | 'adminInventory' | 'adminProducts' | 'custShop' | 'custOrders' | 'custCart' | 'custCheckout' = '';
 
   constructor(private router: Router) {}
   @Input() user: User = JSON.parse(localStorage.getItem("user") || '{}');
@@ -34,6 +34,7 @@ export class Navbar {
   //admin nav items
   @Output() adminDashboardEvent = new EventEmitter<void>();
   @Output() adminOrdersEvent = new EventEmitter<void>();
+  @Output() adminProductsEvent = new EventEmitter<void>();
   @Output() adminInventoryEvent = new EventEmitter<void>();
 
   //customer nav items
@@ -47,6 +48,7 @@ export class Navbar {
   adminDashboard() { this.adminDashboardEvent.emit() }
   adminOrders() { this.adminOrdersEvent.emit() }
   adminInventory() { this.adminInventoryEvent.emit() }
+  adminProducts() { this.adminProductsEvent.emit() }
 
   // customer signals
   custCart() { this.custCartEvent.emit(); }

@@ -1,1 +1,56 @@
-<p>inventory works!</p>
+<div style="height: 100px;"></div>
+
+<div class="inventory-container">
+  <br>
+
+  <h3 style="margin-left: 30px;">Inventory</h3>
+  <br>
+
+  <div class="inventory-card">
+    @for (p of products; track p.id) {
+      <div class="inventory-row">
+        <div class="left">
+          <img [src]="p.imageUrl" alt="{{ p.name }}" />
+          <div>
+            <strong>{{ p.name }}</strong>
+            <p>{{ p.category }}</p>
+          </div>
+        </div>
+
+        <div class="right">
+          <span class="badge">
+            {{ p.stockQuantity }} in stock
+          </span>
+          <button (click)="openRestock(p)">+</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+@if (showModal) {
+  <div class="overlay">
+    <div class="modall">
+      <h3>Restock Product</h3>
+
+      <p><strong>{{ selectedProduct?.name }}</strong></p>
+
+      <small>
+        Current Stock:
+        <strong>{{ selectedProduct?.stockQuantity }}</strong> units
+      </small>
+
+      <input
+        type="number"
+        min="1"
+        placeholder="Enter quantity"
+        [(ngModel)]="restockQty"
+      />
+
+      <div class="actions">
+        <button class="secondary" (click)="closeModal()">Cancel</button>
+        <button class="primary" (click)="confirmRestock()">Restock</button>
+      </div>
+    </div>
+  </div>
+}

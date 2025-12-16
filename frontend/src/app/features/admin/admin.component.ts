@@ -6,15 +6,16 @@ import Swal from 'sweetalert2';
 import { ComponentsModule } from '../../shared/components/components-module';
 import { Orders } from './orders/orders';
 import { Inventory } from './inventory/inventory';
+import { Products } from './products/products';
 
 @Component({
   selector: 'app-admin',
-  imports: [AdminDashboardComponent, ComponentsModule, Orders, Inventory],
+  imports: [AdminDashboardComponent, ComponentsModule, Orders, Inventory, Products],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
 })
 export class Admin {
-  active: 'adminDashboard' | 'adminOrders' | 'adminInventory' = 'adminDashboard';
+  active: 'adminDashboard' | 'adminOrders' | 'adminInventory' | 'adminProducts' = 'adminDashboard';
   user = JSON.parse(localStorage.getItem('user') || '{}');
   constructor(
     private authService: AuthServices,
@@ -32,5 +33,6 @@ export class Admin {
 
   goToDashboard() { this.active = 'adminDashboard'; }
   goToOrders() { this.active = 'adminOrders'; }
+  goToProducts() { this.active = 'adminProducts'; }
   goToInventory() { this.active = 'adminInventory'; }
 }

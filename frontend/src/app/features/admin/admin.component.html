@@ -4,6 +4,7 @@
     (adminDashboardEvent)="goToDashboard()"
     (adminOrdersEvent)="goToOrders()"
     (adminInventoryEvent)="goToInventory()"
+    (adminProductsEvent)="goToProducts()"
     [user]="user"
     [active]="active"
   >
@@ -19,6 +20,10 @@
 
     @case ('adminInventory') {
       <app-inventory></app-inventory>
+    }
+
+    @case ('adminProducts') {
+      <app-productss></app-productss>
     }
   }
 </div>

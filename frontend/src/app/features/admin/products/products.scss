@@ -1,0 +1,119 @@
+.products-container {
+  padding: 0 30px;
+}
+
+.add-btn {
+  margin-bottom: 14px;
+  background: #8B6B4F;
+  color: #FAF8F5;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(139, 107, 79, 0.3);
+  width: 100%;
+}
+
+.products-card {
+  background: #FFF;
+  border-radius: 18px;
+  padding: 10px 20px;
+}
+
+.product-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(139, 107, 79, 0.15);
+}
+
+.product-row .left {
+  display: flex;
+  gap: 14px;
+}
+
+.product-row img {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.product-row .right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.badge {
+  background: linear-gradient(135deg, #8B6B4F, #D99873);
+  color: #FFF;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+}
+
+.product-row button {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: #F5E6CC;
+}
+
+.product-row button.danger {
+  background: #f76e6e;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(60, 60, 60, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modall {
+  background: #FAF8F5;
+  width: 420px;
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.modall input,
+.modall textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(139, 107, 79, 0.25);
+}
+
+.modall textarea {
+  resize: none;
+  height: 80px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid #8B6B4F;
+  color: #8B6B4F;
+  padding: 8px 16px;
+  border-radius: 12px;
+}
+
+.primary {
+  background: #8B6B4F;
+  color: #FFF;
+  padding: 8px 18px;
+  border-radius: 12px;
+  border: none;
+}
