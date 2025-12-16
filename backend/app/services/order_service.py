@@ -32,8 +32,11 @@ class OrderService:
 		return {"message": "Order placed successfully", "order_id": order.order_id}
 
 	@staticmethod
-	def get_orders(user_id):
-		orders = Order.query.filter_by(user_id=user_id).all()
+	def get_orders(user_id, is_admin=False):
+		if is_admin:
+			orders = Order.query.all()
+		else:
+			orders = Order.query.filter_by(user_id=user_id).all()
 		return [o.to_dict() for o in orders]
 
 	@staticmethod

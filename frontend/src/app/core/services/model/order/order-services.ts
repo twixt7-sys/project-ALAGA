@@ -11,20 +11,34 @@ export class OrderServices {
   private ordersUpdatedSource = new Subject<void>();
   ordersUpdated$ = this.ordersUpdatedSource.asObservable();
 
+  updateOrderStatus(orderId: number, data: { status: string }) {
+  return this.http.put(
+    `http://localhost:5000/api/orders/${orderId}`,
+    data
+  );
+}
   notifyOrdersUpdated() {
     this.ordersUpdatedSource.next();
   }
 
   constructor(private http: HttpClient) {}
 
-  getAllOrders(): Observable<any[]> {
+  getAllOrders(): Observable<Order[]> {
     return this.http.get<any[]>('http://localhost:5000/api/orders').pipe(
       map(list =>
         list.map(o => ({
-          order_id: o.order_id,
-          order_date: o.order_date,
-          total_amount: Number(o.total_amount),
-          status: this.normalizeStatus(o.status)
+          id: o.order_id,
+          userId: o.user_id,
+          orderDate: o.order_date,
+          totalAmount: Number(o.total_amount),
+          status: this.normalizeStatus(o.status),
+          items: (o.order_items || []).map((i: any) => ({
+            id: i.order_item_id,
+            orderId: i.order_id,
+            productId: i.product_id,
+            quantity: i.quantity,
+            priceAtPurchase: i.price_at_purchase
+          }))
         }))
       )
     );
