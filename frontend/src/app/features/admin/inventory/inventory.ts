@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-inventory',
-  standalone: false,
+  standalone: true,
   templateUrl: './inventory.html',
   styleUrl: './inventory.scss',
 })

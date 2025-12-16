@@ -8,5 +8,17 @@
     [active]="active"
   >
   </app-navbar>
-  <app-dashboard></app-dashboard>
+  @switch (active) {
+    @case ('adminDashboard') {
+      <app-dashboard></app-dashboard>
+    }
+
+    @case ('adminOrders') {
+      <app-orders></app-orders>
+    }
+
+    @case ('adminInventory') {
+      <app-inventory></app-inventory>
+    }
+  }
 </div>

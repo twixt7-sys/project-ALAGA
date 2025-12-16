@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
 import { AdminDashboardComponent } from './dashboard/dashboard';
-import { CommonModule } from '@angular/common';
 import { AuthServices } from '../../core/services';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { ComponentsModule } from '../../shared/components/components-module';
+import { Orders } from './orders/orders';
+import { Inventory } from './inventory/inventory';
 
 @Component({
   selector: 'app-admin',
-  imports: [AdminDashboardComponent, ComponentsModule],
+  imports: [AdminDashboardComponent, ComponentsModule, Orders, Inventory],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
 })
