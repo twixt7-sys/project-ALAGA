@@ -1,0 +1,61 @@
+<div style="height: 100px;"></div>
+
+<div class="orders-container">
+  <h3>Orders Management</h3>
+  <br />
+
+  <div class="orders-card">
+    @for (o of orders; track o.id) {
+      <div class="order-row" (click)="openOrder(o)">
+        <div class="left">
+          <strong>Order #{{ o.id }}</strong>
+          <p>{{ o.orderDate | date: 'medium' }}</p>
+        </div>
+
+        <div class="right">
+          <span class="badge status-{{ o.status.toLowerCase() }}">
+            {{ o.status }}
+          </span>
+          <span class="amount">₱{{ o.totalAmount }}</span>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+@if (showModal) {
+  <div class="overlay">
+    <div class="modall">
+      <h3>Order #{{ selectedOrder?.id }}</h3>
+
+      <small>
+        Date: {{ selectedOrder?.orderDate | date: 'medium' }}
+      </small>
+
+      <div class="items">
+        @for (i of selectedOrder?.items; track i.id) {
+          <div class="item">
+            <span>Product #{{ i.productId }}</span>
+            <span>{{ i.quantity }} × ₱{{ i.priceAtPurchase }}</span>
+          </div>
+        }
+      </div>
+
+      <p class="total">
+        Total: <strong>₱{{ selectedOrder?.totalAmount }}</strong>
+      </p>
+
+      <select [(ngModel)]="selectedStatus">
+        <option value="Pending">Pending</option>
+        <option value="Processing">Processing</option>
+        <option value="Completed">Completed</option>
+        <option value="Cancelled">Cancelled</option>
+      </select>
+
+      <div class="actions">
+        <button class="secondary" (click)="closeModal()">Close</button>
+        <button class="primary" (click)="updateStatus()">Update Status</button>
+      </div>
+    </div>
+  </div>
+}
