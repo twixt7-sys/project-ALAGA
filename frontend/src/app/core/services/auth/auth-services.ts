@@ -34,8 +34,11 @@ export class AuthServices {
     }
     return true;
   }
+<<<<<<< Updated upstream
 
   getRole() {
     return inject(UserServices).role(true);
   }
+=======
+>>>>>>> Stashed changes
 }
